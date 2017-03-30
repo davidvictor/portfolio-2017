@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="512px" height="913px" viewBox="0 0 512 913" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>iphone</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="iphone" sketch:type="MSLayerGroup" transform="translate(8.000000, 8.000000)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7.26935484,742.484375 L489.12934,742.484375 L7.26935484,742.484375 L7.26935484,742.484375 Z" id="Path_3_" stroke="#A57F5F" sketch:type="MSShapeGroup"></path>
+            <path d="M495.795161,838.805804 C495.795161,870.912946 469.690323,897 437.56129,897 L58.4387097,897 C26.3096774,897 0.20483871,870.912946 0.20483871,838.805804 L0.20483871,58.2008929 C0.20483871,26.09375 26.3096774,0.00669642857 58.4387097,0.00669642857 L437.56129,0.00669642857 C469.690323,0.00669642857 495.795161,26.09375 495.795161,58.2008929 L495.795161,838.805804 L495.795161,838.805804 L495.795161,838.805804 Z" id="Path" stroke="#2C2828" sketch:type="MSShapeGroup"></path>
+            <path id="Path_1_" stroke="#A57F5F" sketch:type="MSShapeGroup" d="M16.2693548,154.923661 L480.132258,154.923661 L16.2693548,154.923661 L16.2693548,154.923661 Z"></path>
+            <path d="M201.412903,81.8799107 L294.185484,81.8799107 L201.412903,81.8799107 L201.412903,81.8799107 Z" id="Path_2_" stroke="#2C2828" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>
