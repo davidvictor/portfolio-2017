@@ -3,7 +3,7 @@ import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
 
-class MSH extends Component {
+class Branding extends Component {
 	
 	constructor(props) {
 		super(props);
@@ -11,13 +11,13 @@ class MSH extends Component {
 	}
 	
 	render() {
-		const classes    = classNames("mysecondhome", style.root);
+		const classes = classNames("branding", style.section);
 		return (
 			<div className={classes}>
-					my second home
+				vet on demand
 			</div>
 		);
 	}
 }
 
-export default MSH;
+export default Branding;

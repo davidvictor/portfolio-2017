@@ -30,10 +30,10 @@ class App extends Component {
 		return (
 			<div className={classes}>
 				<Flex align='flex-start'>
-					<Box px={2}>
+					<Box px={3}>
 						<Sidebar/>
 					</Box>
-					<Box flexAuto>
+					<Box flexAuto className={style.content}>
 						<Route exact path="/" component={Home}/>
 						<Route exact path="/work/amptube" component={Amptube}/>
 						<Route exact path="/work/vetondemand" component={VOD}/>

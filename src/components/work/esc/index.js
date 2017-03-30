@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Flex, Box} from 'reflexbox';
+import Hero from '../../project/hero';
+import Deets from '../../project/deets';
 import classNames from 'classnames';
 import style from './style.scss';
 
@@ -14,7 +15,11 @@ class ESC extends Component {
 		const classes    = classNames("esc", style.root);
 		return (
 			<div className={classes}>
-					esc
+				<Hero
+					bg="/images/archive/lib-11-sm.jpg"
+					logo="">
+					<Deets title="ESC Lab Sciences"/>
+				</Hero>
 			</div>
 		);
 	}

@@ -1,4 +1,53 @@
+$height: 9;
+
 .root {
-	width: 100vw;
-	min-height: 100vh;
+	
+}
+
+.hero {
+	position: relative;
+	img {
+		position:  absolute;
+		width:     20%;
+		max-width: 80px;
+		top:       calc(50% + #{$height * .5vh});
+		left:      50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.cover {
+	height:          100vh - $height;
+	width:           100%;
+	min-height:      300px;
+	min-width:       260px;
+	background-size: cover;
+}
+
+.fold {
+	height: 1vh * $height;
+}
+
+.deets {
+	height: 1vh * $height;
+	> div {
+		height: 1vh * $height;
+	}
+	.label {
+		display:        inline-block;
+		font-size:      .7rem;
+		color:          lighten(black, 60%);
+		text-transform: uppercase;
+		letter-spacing: .10rem;
+		//margin-bottom: .5rem;
+	}
+	h1 {
+		font-size: 1.5rem;
+		margin:    0;
+	}
+	h2 {
+		font-size: 1.0rem;
+		text-transform: uppercase;
+		margin:    0;
+	}
 }

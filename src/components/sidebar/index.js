@@ -60,7 +60,7 @@ const Footer = withActive(({active, on, off, toggle}) => {
 					<div className={style.emailme}>
 						<Flex justify='center' align='center' wrap={false}>
 							<Box>
-								<a href="mailTo:hello@davidvictor.me">hello@davidvictor.me</a>
+								<a href="mailTo:hello@davidvictor.me">hello<span>@</span>davidvictor.me</a>
 							</Box>
 						</Flex>
 					</div>

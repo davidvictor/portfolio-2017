@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Flex, Box} from 'reflexbox';
+import Hero from '../../project/hero';
+import Deets from '../../project/deets';
 import classNames from 'classnames';
 import style from './style.scss';
 
@@ -14,7 +15,11 @@ class LifeisBeautiful extends Component {
 		const classes    = classNames("lifeisbeautiful", style.root);
 		return (
 			<div className={classes}>
-				life is beautiful
+				<Hero
+					bg="/images/archive/lib-11-sm.jpg"
+					logo="">
+					<Deets title="Life is Beautiful"/>
+				</Hero>
 			</div>
 		);
 	}

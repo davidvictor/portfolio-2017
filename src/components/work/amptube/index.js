@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Flex, Box} from 'reflexbox';
+import Hero from '../../project/hero';
+import Deets from '../../project/deets';
 import classNames from 'classnames';
 import style from './style.scss';
 
@@ -14,7 +15,11 @@ class Amptube extends Component {
 		const classes    = classNames("amptube", style.root);
 		return (
 			<div className={classes}>
-					amptube
+				<Hero
+					bg="/images/amptube/at-bg.png"
+					logo="/images/amptube/mark.svg">
+					<Deets title="Amptube"/>
+				</Hero>
 			</div>
 		);
 	}

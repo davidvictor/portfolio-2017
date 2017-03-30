@@ -1,5 +1,5 @@
 .root {
-	width:  16rem;
+	width:  14rem;
 	height: 100vh;
 }
 
@@ -50,7 +50,7 @@
 	left:     0;
 	right:    0;
 	bottom:   0;
-	background-color: transparentize(white,0.1);
+	background-color: transparentize(white,0.03);
 }
 
 .emailme {
@@ -60,5 +60,10 @@
 	}
 	a {
 		font-size: 5vw;
+		letter-spacing: 0.2rem;
+		font-weight: 200;
+		span {
+			color: rgb(165, 127, 95);
+		}
 	}
 }
