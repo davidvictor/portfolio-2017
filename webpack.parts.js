@@ -29,14 +29,14 @@ const extractGlobalStyle = new ExtractTextPlugin({
 
 const gitTag = gitRevisionPlugin.commithash().slice(0, 5);
 
-console.log(gitTag);
+//console.log(gitTag);
 
 exports.buildHtml = function(local) {
 	const index = local ? 'src/template/index-local.html' : 'src/template/index.html';
 	return {
 		plugins: [
 			new HtmlWebpackPlugin({
-				title:    'Amptube',
+				title:    'David Victor 🕴 Product Innovator',
 				template: path.resolve(__dirname, index),
 				filename: 'index.html',
 			}),
@@ -413,8 +413,8 @@ exports.uploadS3 = function(env) {
 				exclude:         /.*\.html$/,
 				basePath:        `${env}/${gitTag}`,
 				s3Options:       {
-					accessKeyId:     'AKIAJQ5BBXBX4GNWNOBQ',
-					secretAccessKey: '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',
+					//accessKeyId:     'AKIAJQ5BBXBX4GNWNOBQ',
+					//secretAccessKey: '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',
 					region:          'us-east-1'
 				},
 				s3UploadOptions: {

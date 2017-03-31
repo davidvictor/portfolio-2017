@@ -42,7 +42,7 @@ $height: 9;
 		//margin-bottom: .5rem;
 	}
 	h1 {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		margin:    0;
 	}
 	h2 {
@@ -50,4 +50,11 @@ $height: 9;
 		text-transform: uppercase;
 		margin:    0;
 	}
+}
+
+@media only screen and (max-width: 960px) {
+	.deets {
+		padding-left: 64px;
+	}
+	
 }

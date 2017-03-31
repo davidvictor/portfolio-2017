@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactModal from 'react-modal';
+import ContactButton from '../contact';
 import {Link} from 'react-router-dom';
 import Menu from '../menu';
 import {Flex, Box} from 'reflexbox';
@@ -32,12 +32,7 @@ const Header = () => {
 	)
 };
 
-const Footer = withActive(({active, on, off, toggle}) => {
-	const getParent      = () => {return document.querySelector('#root');};
-	const onRequestClose = () => {
-		off();
-	};
-	const afterOpen      = () => {};
+const Footer = () => {
 	const classes        = classNames("footer", style.footer);
 	return (
 		<div className={classes}>
@@ -46,35 +41,24 @@ const Footer = withActive(({active, on, off, toggle}) => {
 					<img src="/images/geo/geo-29.svg" className={style.geo}/>
 				</Box>
 				<Box>
-					<button onClick={toggle}>Contact</button>
+					<ContactButton/>
 				</Box>
-				<ReactModal
-					isOpen={active}
-					onRequestClose={() => onRequestClose()}
-					className={style.modal}
-					overlayClassName={style.modalOverlay}
-					contentLabel="Contact David"
-					parentSelector={getParent}
-					shouldCloseOnOverlayClick={true}
-					onAfterOpen={afterOpen}>
-					<div className={style.emailme}>
-						<Flex justify='center' align='center' wrap={false}>
-							<Box>
-								<a href="mailTo:hello@davidvictor.me">hello<span>@</span>davidvictor.me</a>
-							</Box>
-						</Flex>
-					</div>
-				</ReactModal>
 			</Flex>
 		</div>
 	)
-});
+};
 
-const Sidebar = () => {
-	const classes = classNames("sidebar", style.root);
+const Sidebar = withActive(({active, on, off, toggle}) => {
+	const classes = classNames("sidebar", style.root, {
+		[style.active] : active,
+	});
+	const buttonClasses = classNames(style.mobileButton,{
+		[style.buttonActive] : !active,
+	});
 	return (
 		<div className={classes}>
-			<Flex flexColumn wrap={false} flex className={style.inner}>
+			<button onClick={toggle} className={buttonClasses}>Menu</button>
+			<Flex flexColumn wrap={false} flex className={style.inner} px={3}>
 				<Box>
 					<Header/>
 				</Box>
@@ -87,6 +71,6 @@ const Sidebar = () => {
 			</Flex>
 		</div>
 	);
-};
+});
 
 export default Sidebar;

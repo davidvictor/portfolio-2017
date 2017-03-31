@@ -8,7 +8,6 @@ import Amptube from '../work/amptube';
 import VOD from '../work/vetondemand';
 import LIB from '../work/lifeisbeautiful';
 import ESC from '../work/esc';
-import MSH from '../work/mysecondhome';
 import Archive from '../work/archive';
 
 import {Flex, Box} from 'reflexbox';
@@ -30,7 +29,7 @@ class App extends Component {
 		return (
 			<div className={classes}>
 				<Flex align='flex-start'>
-					<Box px={3}>
+					<Box>
 						<Sidebar/>
 					</Box>
 					<Box flexAuto className={style.content}>
@@ -39,7 +38,6 @@ class App extends Component {
 						<Route exact path="/work/vetondemand" component={VOD}/>
 						<Route exact path="/work/lifeisbeautiful" component={LIB}/>
 						<Route exact path="/work/esc" component={ESC}/>
-						<Route exact path="/work/mysecondhome" component={MSH}/>
 						<Route exact path="/work/archive" component={Archive}/>
 					</Box>
 				</Flex>

@@ -20,9 +20,6 @@ class Menu extends Component {
 						<NavLink to="/work/lifeisbeautiful" activeClassName={style.selected}>Life is Beautiful</NavLink>
 					</Box>
 					<Box py={1}>
-						<NavLink to="/work/esc" activeClassName={style.selected}>ESC Lab Sciences</NavLink>
-					</Box>
-					<Box py={1}>
 						<NavLink to="/work/archive" activeClassName={style.selected}>Archive</NavLink>
 					</Box>
 				</Flex>
