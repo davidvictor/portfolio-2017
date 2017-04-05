@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import Headroom from 'react-headroom';
 import {Flex, Box} from 'reflexbox';
-import {Button} from 'rebass';
+import {Button,ButtonOutline} from 'rebass';
 import classNames from 'classnames';
 import style from './style.scss';
 
@@ -36,11 +36,11 @@ const Deets = ({title, url}, context) => {
 						<Flex justify='center' flexColumn>
 							<Box>
 								{url ?
-									<Button backgroundColor='transparent'
+									<ButtonOutline
 									        color={context.rebass.colors.primary}
 									        onClick={() => openLink(url)}>
 										VISIT
-									</Button> : false}
+									</ButtonOutline> : false}
 							</Box>
 						</Flex>
 					</Box>

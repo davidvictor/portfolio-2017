@@ -42,8 +42,8 @@ class App extends Component {
 				colors:    colors,
 				scale:     scale,
 				fontSizes: fontSizes,
-				Button:    {
-					fontSize:      fontSizes[6],
+				ButtonOutline:    {
+					fontSize:      fontSizes[7],
 					letterSpacing: '0.02rem',
 				}
 			}

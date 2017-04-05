@@ -1,0 +1,20 @@
+@mixin color-card($color) {
+	.color-preview {
+		background-color: $color;
+	}
+	.color-shades {
+		background-image: linear-gradient(to left,
+			mix($color, white, 20%) 0%,
+			mix($color, white, 20%) 20%,
+			mix($color, white, 40%) 21%,
+			mix($color, white, 40%) 40%,
+			mix($color, white, 60%) 41%,
+			mix($color, white, 60%) 60%,
+			mix($color, white, 80%) 61%,
+			mix($color, white, 80%) 80%,
+			mix($color, white, 90%) 81%,
+			mix($color, white, 90%) 100%
+											);
+	}
+}
+

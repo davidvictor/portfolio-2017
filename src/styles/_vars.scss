@@ -22,6 +22,12 @@ $faces: (
 						weight: 300,
 						style: normal
 					),
+					"brandonL": (
+						family: "brandon",
+						url: "#{$assetUrl}/fonts/brandon-text/BrandonText-Light",
+						weight: 200,
+						style: normal
+					),
 					"brandonT": (
 						family: "brandon",
 						url: "#{$assetUrl}/fonts/brandon-text/BrandonText-Thin",
@@ -54,3 +60,17 @@ $faces: (
 					),
 				);
 $font-formats: eot woff ttf;
+
+$black: hsla(345, 6%, 13%, 1);
+$gold: hsla(27, 28%, 51%, 1);
+$vod-purple: #49287a;
+$vod-yellow: #efa343;
+
+
+$vod-brand-colors: (
+										 purple:$vod-purple,
+										 gold:$vod-yellow,
+										 grey1:#eeeeee,
+										 grey2:#d5d5d5,
+										 gunmetal:#353535
+									 );

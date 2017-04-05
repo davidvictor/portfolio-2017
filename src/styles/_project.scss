@@ -1,0 +1,68 @@
+$colorCardWidth: 100px;
+$colorCardWidthMobile: 23vw;
+
+.color-card {
+	width:   $colorCardWidth;
+	padding: 4px;
+	.color-preview {
+		padding-bottom: 100%;
+	}
+	.color-shades {
+		height: $colorCardWidth / 5;
+	}
+	@each $item, $color in $vod-brand-colors {
+		&.#{$item} {
+			@include color-card($color)
+		}
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.color-card {
+		width: $colorCardWidthMobile;
+		.color-shades {
+			height: $colorCardWidthMobile / 5;
+		}
+	}
+}
+
+.typeset-project {
+	text-align: center;
+	h3 {
+		font-size:      1.1rem;
+		margin:         24px 0 18px;
+		letter-spacing: .055rem;
+	}
+	h4 {
+		font-size:      0.9rem;
+		margin:         18px 0 18px;
+		letter-spacing: .055rem;
+	}
+	p {
+		font-size:      0.9rem;
+		font-weight: 200;
+		line-height: 1.6;
+		color: lighten($black,20%);
+		widows: 3;
+		orphans: 3;
+		&.large {
+			font-size: 1rem;
+		}
+	}
+	blockquote {
+		font-size:   2rem;
+		font-weight: 200;
+		font-style:  italic;
+	}
+	img {
+		
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.typeset-project {
+		blockquote {
+			font-size:   1.5rem;
+		}
+	}
+}

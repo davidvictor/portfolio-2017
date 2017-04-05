@@ -42,15 +42,23 @@ const LogoGrid = () => {
 			zoom:  `${assetUrl}/archive/moodsmith@2x.jpg`,
 		}
 	];
+	const defaultStyles = {
+		overlay: {
+			backgroundColor: '#111',
+		}
+	};
 	return (
 		<Flex justify="center" wrap pt={0}>
 			{photos.map((photo, idx) =>
-				<Box key={idx} my={2} sm={12} md={12} lg={12}>
+				<Box key={idx} my={0} sm={12} md={12} lg={12}>
 					<ImageZoom
+						shouldPreload
+						zoomMargin={0}
+						defaultStyles={defaultStyles}
 						image={{
 							src:   photo.src,
 							alt:   'Archive',
-							style: {width: '60vw', display: 'block', margin: '0 auto'}
+							style: {width: '100%', display: 'block', margin: '0 auto'}
 						}}
 						zoomImage={{
 							src: photo.zoom,

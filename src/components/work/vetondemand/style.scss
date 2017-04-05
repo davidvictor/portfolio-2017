@@ -1,7 +1,66 @@
 .root {
-
+	
 }
 
-.section {
-	padding: 0 32px;
+.logos {
+	margin:    0 auto;
+	max-width: 600px;
+	.logoH {
+		max-width: 200px;
+	}
+	.logoV {
+		max-width: 150px;
+	}
+}
+
+.type {
+	margin:    0 auto;
+	max-width: 1200px;
+	img {
+		width: 100%;
+	}
+	.type1 {
+		max-width: 420px;
+	}
+	.type2 {
+		max-width: 420px;
+	}
+}
+
+.photos {
+	margin:    0 auto;
+	max-width: 1200px;
+	img {
+		max-height: 230px;
+	}
+}
+
+.insight {
+	margin:    0 auto;
+	max-width: 1200px;
+}
+
+@media only screen and (max-width: 960px) {
+	.photos {
+		width: 90%;
+		img {
+			max-height: 210px;
+		}
+	}
+	.logos {
+		.logoH {
+			max-width: 150px;
+		}
+		.logoV {
+			max-width: 110px;
+		}
+	}
+	.type {
+		.type1 {
+			min-width: 200px;
+		}
+		.type2 {
+			min-width: 200px;
+		}
+	}
 }
