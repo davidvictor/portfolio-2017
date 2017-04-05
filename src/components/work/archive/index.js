@@ -24,7 +24,7 @@ const LogoGrid = () => {
 			zoom:  `${assetUrl}/archive/feast@2x.jpg`,
 		}, {
 			src:  `${assetUrl}/archive/gro.jpg`,
-			zoom:  `${assetUrl}/archivegro@2x.jpg`,
+			zoom:  `${assetUrl}/archive/gro@2x.jpg`,
 		}, {
 			src:  `${assetUrl}/archive/flexawn.jpg`,
 			zoom:  `${assetUrl}/archive/flexawn@2x.jpg`,

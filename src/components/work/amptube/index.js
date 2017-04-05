@@ -17,7 +17,7 @@ const Amptube = () => {
 				<Deets title="Amptube" url="//amptu.be"/>
 			</Hero>
 			
-			<About description="Amptube is." roles="COFOUNDER / DESIGN / UI+UX / FRONTEND"/>
+			<About description="Amptube is a discovery tool that allows up and coming creators the opportunity to earn featured placement on an established creator’s page by sharing videos with their social networks." roles="COFOUNDER / DESIGN / UI+UX / FRONTEND"/>
 		
 		</div>
 	);

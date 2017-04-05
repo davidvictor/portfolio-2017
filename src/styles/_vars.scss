@@ -1,6 +1,6 @@
 @import "helpers/index";
 $sidebarWidth: 18rem;
-$assetUrl: 'http://assets.davidvictor.me.s3-website-us-west-1.amazonaws.com';
+$assetUrl: '//d1x0bq6kwb2k3o.cloudfront.net';
 //$assetUrl: '';
 
 $faces: (
@@ -32,18 +32,6 @@ $faces: (
 						family: "brandon",
 						url: "#{$assetUrl}/fonts/brandon-text/BrandonText-Thin",
 						weight: 100,
-						style: normal
-					),
-					"proximaL": (
-						family: "proxima",
-						url: "#{$assetUrl}/fonts/proxima-nova/ProximaNova-Regular",
-						weight: 400,
-						style: normal
-					),
-					"proximaB": (
-						family: "proxima",
-						url: "#{$assetUrl}/fonts/proxima-nova/ProximaNova-Semibold",
-						weight: 500,
 						style: normal
 					),
 					"gothamL": (

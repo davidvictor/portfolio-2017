@@ -195,7 +195,7 @@ const ESC = () => {
 				<Deets title="ESC Lab Sciences" url="//esclabsciences.com"/>
 			</Hero>
 			
-			<About description="ESC Lab Sciences is" roles="DESIGN / UI+UX / FRONTEND"/>
+			<About description="ESC Lab Sciences is the largest laboratory facility dedicated to environmental testing and certified to support your work nationwide. One laboratory, one phone call, one point of contact. ESC holds nation-wide certifications and has the highest capacity of any environmental lab for expedited and accurate results." roles="DESIGN / UI+UX / FRONTEND"/>
 			
 			<Portal/>
 			<Website/>

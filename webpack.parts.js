@@ -29,7 +29,6 @@ const extractGlobalStyle = new ExtractTextPlugin({
 
 const gitTag = gitRevisionPlugin.commithash().slice(0, 5);
 
-//console.log(gitTag);
 
 exports.buildHtml = function(local) {
 	const index = local ? 'src/template/index-local.html' : 'src/template/index.html';
@@ -398,7 +397,7 @@ exports.uploadS3 = function() {
 	//}
 	return {
 		output:  {
-			publicPath: `//beta.davidvictor.me/`,
+			publicPath: `//d1x0bq6kwb2k3o.cloudfront.net/production/${gitTag}`,
 		},
 		plugins: [
 			new CompressionPlugin({
@@ -409,15 +408,15 @@ exports.uploadS3 = function() {
 				minRatio:  0.8
 			}),
 			new S3Plugin({
-				//exclude:         /.*\.html$/,
-				basePath:        ``,
+				include: /.*\.(css|js)/,
+				basePath:        `production/${gitTag}`,
 				s3Options:       {
 					accessKeyId:     'AKIAIIKHGJNPGLCD43JQ',
 					secretAccessKey: '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',
 					region:          'us-west-1'
 				},
 				s3UploadOptions: {
-					Bucket: 'beta.davidvictor.me',
+					Bucket: 'assets.davidvictor.me',
 					/**
 					 * @return {string}
 					 */
@@ -433,6 +432,30 @@ exports.uploadS3 = function() {
 							return 'application/javascript';
 						} else if (/\.css/.test(fileName)) {
 							return 'text/css';
+						} else if (/\.html/.test(fileName)) {
+							return 'text/html';
+						} else {
+							return 'text/plain';
+						}
+					}
+				},
+			}),
+			new S3Plugin({
+				include:         /.*\.html$/,
+				basePath:        ``,
+				s3Options:       {
+					accessKeyId:     'AKIAIIKHGJNPGLCD43JQ',
+					secretAccessKey: '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',
+					region:          'us-west-1'
+				},
+				s3UploadOptions: {
+					Bucket: 'beta.davidvictor.me',
+					/**
+					 * @return {string}
+					 */
+					ContentType(fileName) {
+						if (/\.html/.test(fileName)) {
+							return 'text/html';
 						} else {
 							return 'text/plain';
 						}

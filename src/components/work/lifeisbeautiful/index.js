@@ -510,7 +510,7 @@ const LifeisBeautiful = () => {
 				<Deets title="Life is Beautiful" url='//lifeisbeautiful.com'/>
 			</Hero>
 			
-			<About description="Life is Beautiful festival is" roles="CREATIVE DIRECTION / DESIGN / FRONTEND"/>
+			<About description="Life is Beautiful is an inspirational company dedicated to helping people conquer their fears and chase their dreams. Its signature project, the Life is Beautiful Festival, was founded in 2013 and launched in October of that same year as a highly successful lifestyle event featuring marquee musicians, chefs, artists and speakers. Held in the heart of Downtown Las Vegas, Life is Beautiful Festival attracted more than 60,000 patrons in its first year, and is now branching out to an international online forum inspiring social change." roles="CREATIVE DIRECTION / DESIGN / FRONTEND"/>
 			
 			<Brand/>
 			<Poster/>

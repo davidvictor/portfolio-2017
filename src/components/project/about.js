@@ -9,7 +9,7 @@ const About = ({description, roles}, context) => {
 		<div className={classes}>
 			<Flex justify="center" wrap={false}>
 				<Box sm={12} md={9} lg={6} px={2}>
-					<label>PRODUCT</label>
+					<label>PROJECT</label>
 					<p className={style.description}>{description}</p>
 					<label>ROLE</label>
 					<p className={style.roles}>{roles}</p>
