@@ -7,7 +7,7 @@ const TransferWebpackPlugin = require('transfer-webpack-plugin');
 const parts = require('./webpack.parts');
 
 const PATHS = {
-	app:   path.join(__dirname, 'src'),
+	src:   path.join(__dirname, 'src'),
 	build: path.join(__dirname, 'build'),
 };
 

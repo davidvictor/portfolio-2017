@@ -13,6 +13,7 @@ import PageShit from './pageShit';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
+import '../../styles/global.scss';
 
 import {scale, colors, fontSizes} from 'config';
 

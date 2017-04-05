@@ -108,7 +108,6 @@ exports.loadCSS = function() {
 						],
 					}),
 					include: [
-						/app\/styles\/global\.css/,
 						/node_modules/,
 					]
 				},
@@ -149,7 +148,7 @@ exports.loadCSS = function() {
 						],
 					}),
 					exclude: [
-						/app\/styles\/global\.scss/,
+						/src\/styles\/global\.scss/,
 						/node_modules/,
 					]
 				},
@@ -183,7 +182,7 @@ exports.loadCSS = function() {
 						/node_modules/,
 					],
 					exclude: [
-						/app\/styles\/global\.scss/,
+						/src\/styles\/global\.scss/,
 					],
 				},
 				{
@@ -213,7 +212,7 @@ exports.loadCSS = function() {
 						],
 					}),
 					include: [
-						/app\/styles\/global\.scss/,
+						/src\/styles\/global\.scss/,
 					]
 				},
 			],
