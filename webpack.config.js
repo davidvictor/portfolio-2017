@@ -68,7 +68,7 @@ const productionConfig = merge([
 	parts.setFreeVariable('process.env.NODE_ENV', 'production'),
 	parts.clean(PATHS.build),
 	parts.assetBanner(),
-	//parts.uploadS3(),
+	parts.uploadS3(),
 ]);
 
 const localConfig = merge([
@@ -78,6 +78,9 @@ const localConfig = merge([
 			new TransferWebpackPlugin([{
 				from: 'public/images',
 				to:   'images'
+			},{
+				from: 'public/fonts',
+				to:   'fonts'
 			}], path.resolve(__dirname, './')),
 		]
 	},

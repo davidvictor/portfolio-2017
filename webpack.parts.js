@@ -404,12 +404,12 @@ exports.uploadS3 = function() {
 			new CompressionPlugin({
 				asset:     "[path].gz[query]",
 				algorithm: "gzip",
-				test:      /\.js$|\.css$|\.html$/,
+				test:      /\.js$|\.css$/,
 				threshold: 10240,
 				minRatio:  0.8
 			}),
 			new S3Plugin({
-				exclude:         /.*\.html$/,
+				//exclude:         /.*\.html$/,
 				basePath:        ``,
 				s3Options:       {
 					accessKeyId:     'AKIAIIKHGJNPGLCD43JQ',

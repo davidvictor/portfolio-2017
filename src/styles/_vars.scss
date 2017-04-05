@@ -1,1 +1,56 @@
+@import "helpers/index";
 $sidebarWidth: 18rem;
+$assetUrl: 'http://assets.davidvictor.me.s3-website-us-west-1.amazonaws.com';
+$assetUrl: '';
+
+$faces: (
+					"brandonB": (
+						family: "brandon",
+						url: "#{$assetUrl}/fonts/brandon-text/BrandonText-Bold",
+						weight: 700,
+						style: normal
+					),
+					"brandonM": (
+						family: "brandon",
+						url: "#{$assetUrl}/fonts/brandon-text/BrandonText-Medium",
+						weight: 500,
+						style: normal
+					),
+					"brandonR": (
+						family: "brandon",
+						url: "#{$assetUrl}/fonts/brandon-text/BrandonText-Regular",
+						weight: 300,
+						style: normal
+					),
+					"brandonT": (
+						family: "brandon",
+						url: "#{$assetUrl}/fonts/brandon-text/BrandonText-Thin",
+						weight: 100,
+						style: normal
+					),
+					"proximaL": (
+						family: "proxima",
+						url: "#{$assetUrl}/fonts/proxima-nova/ProximaNova-Regular",
+						weight: 400,
+						style: normal
+					),
+					"proximaB": (
+						family: "proxima",
+						url: "#{$assetUrl}/fonts/proxima-nova/ProximaNova-Semibold",
+						weight: 500,
+						style: normal
+					),
+					"gothamL": (
+						family: "gotham",
+						url: "#{$assetUrl}/fonts/gotham/GothamRounded-Light",
+						weight: 300,
+						style: normal
+					),
+					"gothamM": (
+						family: "gotham",
+						url: "#{$assetUrl}/fonts/gotham/GothamRounded-Bold",
+						weight: 700,
+						style: normal
+					),
+				);
+$font-formats: eot woff ttf;

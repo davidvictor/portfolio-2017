@@ -191,7 +191,7 @@ const ESC = () => {
 			<Hero
 				bg={`${assetUrl}/esc/hero.jpg`}
 				logo={`${assetUrl}/esc/logo-color.svg`}
-				logoWidth="200px">
+				logoWidth="240px">
 				<Deets title="ESC Lab Sciences" url="//esclabsciences.com"/>
 			</Hero>
 			
