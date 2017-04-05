@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ContactButton from '../contact';
 import {ButtonCircle} from 'rebass';
+import Headroom from 'react-headroom';
 import {Link} from 'react-router-dom';
 import BodyClass from 'react-body-classname';
 import Menu from '../menu';
@@ -88,12 +89,16 @@ const Sidebar = withActive(({active, on, off, toggle}) => {
 	const buttonClasses = classNames(style.mobileButton, {
 		[style.buttonActive]: !active,
 	});
-	const bodyClasses = classNames({
+	const bodyClasses   = classNames({
 		[style.noverflow]: active,
 	});
 	return (
 		<div className={classes}>
-			<button onClick={toggle} className={buttonClasses}>Menu</button>
+			<Headroom disableInlineStyles>
+				<div className={style.menuToggle}>
+					<button onClick={toggle} className={buttonClasses}>{!active ? 'menu' : 'close'}</button>
+				</div>
+			</Headroom>
 			<Flex flexColumn wrap={false} flex className={style.inner} px={3}>
 				<Box>
 					<Header off={off}/>
