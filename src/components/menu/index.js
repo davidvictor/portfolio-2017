@@ -4,28 +4,52 @@ import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
 
-class Menu extends Component {
-	render() {
-		const classes = classNames("menu", style.root);
-		return (
-			<Box px={1} className={classes}>
-				<Flex justify='flex-start' wrap={false} flexColumn>
-					<Box py={1}>
-						<NavLink to="/work/amptube" activeClassName={style.selected}>Amptube</NavLink>
-					</Box>
-					<Box py={1}>
-						<NavLink to="/work/vetondemand" activeClassName={style.selected}>VetOnDemand</NavLink>
-					</Box>
-					<Box py={1}>
-						<NavLink to="/work/lifeisbeautiful" activeClassName={style.selected}>Life is Beautiful</NavLink>
-					</Box>
-					<Box py={1}>
-						<NavLink to="/work/archive" activeClassName={style.selected}>Archive</NavLink>
-					</Box>
-				</Flex>
-			</Box>
-		);
-	}
-}
+const Menu = ({off}) => {
+	const classes      = classNames("menu", style.root);
+	const handleToggle = () => {
+		off();
+	};
+	return (
+		<Box px={1} className={classes}>
+			<Flex justify='flex-start' wrap={false} flexColumn>
+				<Box>
+					<NavLink to="/work/amptube"
+					         onClick={() => handleToggle()}
+					         activeClassName={style.selected}>
+						Amptube
+					</NavLink>
+				</Box>
+				<Box>
+					<NavLink to="/work/vetondemand"
+					         onClick={() => handleToggle()}
+					         activeClassName={style.selected}>
+						VetOnDemand
+					</NavLink>
+				</Box>
+				<Box>
+					<NavLink to="/work/lifeisbeautiful"
+					         onClick={() => handleToggle()}
+					         activeClassName={style.selected}>
+						Life is Beautiful
+					</NavLink>
+				</Box>
+				<Box>
+					<NavLink to="/work/esc"
+					         onClick={() => handleToggle()}
+					         activeClassName={style.selected}>
+						ESC Lab Sciences
+					</NavLink>
+				</Box>
+				<Box>
+					<NavLink to="/work/archive"
+					         onClick={() => handleToggle()}
+					         activeClassName={style.selected}>
+						Archive
+					</NavLink>
+				</Box>
+			</Flex>
+		</Box>
+	);
+};
 
 export default Menu;

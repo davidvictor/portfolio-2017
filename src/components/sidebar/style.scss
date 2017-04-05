@@ -1,21 +1,27 @@
-.root {
-	width:  18rem;
-	height: 100vh;
-}
+//.root {
+//	width:    18rem;
+//	height:   100vh;
+//	position: fixed;
+//}
 
 @media only screen and (max-width: 960px) {
+	body {
+		&.noverflow {
+			overflow: hidden;
+		}
+	}
 	.root {
-		z-index: 10;
+		z-index:  10;
 		position: fixed;
 		&.active {
-			width:  100vw;
 			.inner {
-				transform: translate3d(0,0,0);
+				width:   100vw;
+				transform: translate3d(0, 0, 0);
 			}
 		}
 	}
 	.inner {
-		transform: translate3d(-100%,0,0);
+		transform: translate3d(-100%, 0, 0);
 	}
 	.logoImg {
 		max-width: 20rem;
@@ -23,13 +29,28 @@
 }
 
 .mobileButton {
-	&.buttonActive {
-		
+	display: none;
+	
+}
+
+@media only screen and (max-width: 960px) {
+	.mobileButton {
+		z-index: 12;
+		position: relative;
+		display: inline-block;
+		&.buttonActive {
+			
+		}
 	}
+	
 }
 
 .inner {
-	height: 100%;
+	width:    18rem;
+	height:   100vh;
+	position: fixed;
+	z-index:  11;
+	top: 0;
 	background-color: white;
 }
 
@@ -39,6 +60,14 @@
 
 .footer {
 	margin: 0 0 24px 0;
+}
+
+.icon {
+	svg {
+		display: block;
+		height:  auto;
+		width:   18px;
+	}
 }
 
 .logoLink {
@@ -55,28 +84,28 @@
 }
 
 .modal {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate3d(-50%,-50%,0);
+	position:                   absolute;
+	top:                        50%;
+	left:                       50%;
+	transform:                  translate3d(-50%, -50%, 0);
 	//width: calc(100vw - #{1rem * 8});
 	//max-width: 600px;
-	overflow-y: auto;
-	overflow-x: hidden;
-	outline: none;
-	padding: 1rem * 2;
+	overflow-y:                 auto;
+	overflow-x:                 hidden;
+	outline:                    none;
+	padding:                    1rem * 2;
 	//background: white;
 	-webkit-overflow-scrolling: touch;
 }
 
 .modalOverlay {
-	position: fixed;
-	z-index:  1000;
-	top:      0;
-	left:     0;
-	right:    0;
-	bottom:   0;
-	background-color: transparentize(white,0.03);
+	position:         fixed;
+	z-index:          1000;
+	top:              0;
+	left:             0;
+	right:            0;
+	bottom:           0;
+	background-color: transparentize(white, 0.03);
 }
 
 .emailme {
@@ -85,9 +114,9 @@
 		height: 100%;
 	}
 	a {
-		font-size: 5vw;
+		font-size:      5vw;
 		letter-spacing: 0.2rem;
-		font-weight: 200;
+		font-weight:    200;
 		span {
 			color: rgb(165, 127, 95);
 		}

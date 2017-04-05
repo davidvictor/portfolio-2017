@@ -1,17 +1,24 @@
 import React, {Component, PropTypes} from 'react';
 import {Flex, Box} from 'reflexbox';
+import {Button} from 'rebass';
 import classNames from 'classnames';
 import style from './style.scss';
 
-const Deets = ({title, date}) => {
+const Deets = ({title, url},context) => {
 	const classes = classNames("deets", style.deets);
+	const openLink = (url) => {
+		if (url) {
+			const win = window.open(url, '_blank');
+			win.focus();
+		}
+	};
 	return (
 		<div className={classes}>
 			<Flex wrap={false}>
 				<Box pr={2} flex>
 					<Flex justify='center' flexColumn >
 						<Box>
-							<span className={style.label}>Project</span>
+							<label className={style.label}>Project</label>
 						</Box>
 						<Box>
 							<h1>{title}</h1>
@@ -21,13 +28,14 @@ const Deets = ({title, date}) => {
 				<Box flexAuto flex>
 				
 				</Box>
-				<Box pl={2} pr={4} flex>
+				<Box pl={2} pr={2} flex>
 					<Flex justify='center' flexColumn>
 						<Box>
-							<span className={style.label}>Stuff</span>
-						</Box>
-						<Box>
-							<h2>Branding | UI/UX | FrontEnd</h2>
+							{url ? <Button backgroundColor='transparent'
+							        color={context.rebass.colors.primary}
+							        onClick={()=>openLink(url)}>
+								VISIT
+							</Button> : false}
 						</Box>
 					</Flex>
 				</Box>
@@ -39,6 +47,10 @@ const Deets = ({title, date}) => {
 
 Deets.propTypes = {
 	roles: PropTypes.arrayOf(PropTypes.oneOf(['branding', 'creator'])),
+};
+
+Deets.contextTypes = {
+	rebass: React.PropTypes.object
 };
 
 export default Deets;

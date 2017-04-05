@@ -99,19 +99,19 @@ exports.loadCSS = function() {
 	return {
 		module:  {
 			rules: [
-				//{
-				//	test:    /\.css$/,
-				//	use:     extractGlobalStyle.extract({
-				//		fallback: 'style-loader',
-				//		loader:   [
-				//			'css-loader',
-				//		],
-				//	}),
-				//	include: [
-				//		/app\/styles\/global\.css/,
-				//		/node_modules/,
-				//	]
-				//},
+				{
+					test:    /\.css$/,
+					use:     extractGlobalStyle.extract({
+						fallback: 'style-loader',
+						loader:   [
+							'css-loader',
+						],
+					}),
+					include: [
+						/app\/styles\/global\.css/,
+						/node_modules/,
+					]
+				},
 				{
 					test:    /\.scss$/,
 					loader:  extractStyle.extract({
@@ -392,14 +392,14 @@ exports.useCDN = function() {
 	}
 };
 
-exports.uploadS3 = function(env) {
-	if (!env) {
-		console.log('NO s3 upload env specified');
-		return
-	}
+exports.uploadS3 = function() {
+	//if (!env) {
+	//	console.log('NO s3 upload env specified');
+	//	return
+	//}
 	return {
 		output:  {
-			publicPath: `//d3ro2dw9oamozn.cloudfront.net/${env}/${gitTag}`,
+			publicPath: `//beta.davidvictor.me/`,
 		},
 		plugins: [
 			new CompressionPlugin({
@@ -411,14 +411,14 @@ exports.uploadS3 = function(env) {
 			}),
 			new S3Plugin({
 				exclude:         /.*\.html$/,
-				basePath:        `${env}/${gitTag}`,
+				basePath:        ``,
 				s3Options:       {
-					//accessKeyId:     'AKIAJQ5BBXBX4GNWNOBQ',
-					//secretAccessKey: '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',
-					region:          'us-east-1'
+					accessKeyId:     'AKIAIIKHGJNPGLCD43JQ',
+					secretAccessKey: '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',
+					region:          'us-west-1'
 				},
 				s3UploadOptions: {
-					Bucket: 'assets.amptu.be',
+					Bucket: 'beta.davidvictor.me',
 					/**
 					 * @return {string}
 					 */
@@ -440,11 +440,6 @@ exports.uploadS3 = function(env) {
 					}
 				},
 			}),
-			//new webpack.DefinePlugin({
-			//	'process.env.NODE_ENV': JSON.stringify('production'),
-			//	//'process.env.AWS_ACCESS_KEY_ID':     JSON.stringify('AKIAJQ5BBXBX4GNWNOBQ'),
-			//	//'process.env.AWS_SECRET_ACCESS_KEY': JSON.stringify('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')
-			//})
 		]
 	}
 };

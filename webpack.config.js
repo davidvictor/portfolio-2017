@@ -41,15 +41,10 @@ const commonConfig = merge([
 		plugins: [
 			new webpack.optimize.OccurrenceOrderPlugin(true),
 			new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-			new TransferWebpackPlugin([{
-				from: 'public/images',
-				to:   'images'
-			}], path.resolve(__dirname, './')),
 		],
 	},
 	parts.loadCSS(),
 	parts.loadJavaScript(),
-	parts.loadGraphQl(),
 ]);
 
 const productionConfig = merge([
@@ -73,35 +68,18 @@ const productionConfig = merge([
 	parts.setFreeVariable('process.env.NODE_ENV', 'production'),
 	parts.clean(PATHS.build),
 	parts.assetBanner(),
-	parts.uploadS3('aphrodite'),
-]);
-
-const developmentConfig = merge([
-	{
-		devtool: 'source-map',
-		output:  {
-			filename:      '[name].[hash:8].js',
-			chunkFilename: '[name].[hash:8].js',
-		},
-	},
-	parts.buildHtml(),
-	parts.extractBundles([{
-		name:      'vendor',
-		minChunks: ({userRequest}) => (
-			userRequest &&
-			userRequest.indexOf('node_modules') >= 0 &&
-			userRequest.match(/\.js$/)
-		)
-	}]),
-	parts.setFreeVariable('process.env.NODE_ENV', 'development'),
-	parts.clean(PATHS.build),
-	parts.assetBanner(),
-	parts.uploadS3('development'),
+	//parts.uploadS3(),
 ]);
 
 const localConfig = merge([
 	{
 		devtool: 'eval-source-map',
+		plugins: [
+			new TransferWebpackPlugin([{
+				from: 'public/images',
+				to:   'images'
+			}], path.resolve(__dirname, './')),
+		]
 	},
 	parts.buildHtml(true),
 	parts.devServer(),
@@ -135,12 +113,7 @@ const testConfig = merge([
 module.exports = function(env) {
 	process.env.BABEL_ENV = env;
 	if (env === 'production') {
-		return;
-		//return merge(commonConfig, productionConfig);
-	}
-	if (env === 'development') {
-		return;
-		//return merge(commonConfig, developmentConfig);
+		return merge(commonConfig, productionConfig);
 	}
 	if (env === 'local') {
 		return merge(commonConfig, localConfig);

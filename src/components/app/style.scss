@@ -1,13 +1,14 @@
 .root {
 	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
 }
 
 .content {
-	height: 100vh;
-	width: 100%;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	-webkit-overflow-scrolling: touch;
+	margin-left: 18rem;
+	width:       100vw;
+}
+
+@media only screen and (max-width: 960px) {
+	.content {
+		margin-left: 0;
+	}
 }

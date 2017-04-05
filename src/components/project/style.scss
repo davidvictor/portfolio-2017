@@ -1,4 +1,4 @@
-$height: 9;
+$height: 72px;
 
 .root {
 	
@@ -9,46 +9,55 @@ $height: 9;
 	img {
 		position:  absolute;
 		width:     20%;
-		max-width: 80px;
-		top:       calc(50% + #{$height * .5vh});
+		top:       50%;
 		left:      50%;
 		transform: translate(-50%, -50%);
 	}
 }
 
 .cover {
-	height:          100vh - $height;
-	width:           100%;
-	min-height:      300px;
-	min-width:       260px;
-	background-size: cover;
+	height:              calc(100vh - #{$height});
+	width:               100%;
+	min-height:          300px;
+	min-width:           260px;
+	background-size:     cover;
+	background-position: center center;
+	background-repeat:   no-repeat;
+}
+
+.noCover {
+	.cover {
+		display: none;
+	}
 }
 
 .fold {
-	height: 1vh * $height;
+	height: $height;
 }
 
 .deets {
-	height: 1vh * $height;
+	height: $height;
 	> div {
-		height: 1vh * $height;
+		height: $height;
 	}
 	.label {
 		display:        inline-block;
-		font-size:      .7rem;
+		font-size:      10px;
 		color:          lighten(black, 60%);
 		text-transform: uppercase;
 		letter-spacing: .10rem;
-		//margin-bottom: .5rem;
+	}
+	h1, h2, h3, h4, h5, h6, label {
+		line-height: 1;
 	}
 	h1 {
-		font-size: 1.4rem;
+		font-size: 1.3rem;
 		margin:    0;
 	}
 	h2 {
-		font-size: 1.0rem;
+		font-size:      1.0rem;
 		text-transform: uppercase;
-		margin:    0;
+		margin:         0;
 	}
 }
 
@@ -57,4 +66,28 @@ $height: 9;
 		padding-left: 64px;
 	}
 	
+}
+
+.about {
+	margin: 48px 0;
+	label {
+		display:        inline-block;
+		font-size:      11px;
+		color:          lighten(black, 40%);
+		text-transform: uppercase;
+		letter-spacing: .075rem;
+	}
+	.description,
+	.roles {
+		line-height: 1.5;
+	}
+	.description {
+		font-size:   13px;
+		font-weight: 500;
+		margin-bottom: 24px;
+	}
+	.roles {
+		font-size: 13px;
+		letter-spacing: .05rem;
+	}
 }

@@ -9,18 +9,44 @@ import VOD from '../work/vetondemand';
 import LIB from '../work/lifeisbeautiful';
 import ESC from '../work/esc';
 import Archive from '../work/archive';
-
+import PageShit from './pageShit';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
+
+import {scale, colors, fontSizes} from 'config';
 
 class App extends Component {
 	
 	constructor(props) {
 		super(props);
-		this.state = {
-			//authenticated: auth.loggedIn();
-		};
+		this.state = {};
+	}
+	
+	static childContextTypes = {
+		reflexbox: React.PropTypes.object,
+		rebass:    React.PropTypes.object,
+	};
+	
+	getChildContext() {
+		return {
+			reflexbox: {
+				breakpoints: {
+					sm: '(min-width: 30em)',
+					md: '(min-width: 48em)',
+					lg: '(min-width: 60em)'
+				}
+			},
+			rebass:    {
+				colors:    colors,
+				scale:     scale,
+				fontSizes: fontSizes,
+				Button:    {
+					fontSize:      fontSizes[6],
+					letterSpacing: '0.02rem',
+				}
+			}
+		}
 	}
 	
 	render() {
@@ -32,7 +58,7 @@ class App extends Component {
 					<Box>
 						<Sidebar/>
 					</Box>
-					<Box flexAuto className={style.content}>
+					<Box flexAuto className={style.content} id="content">
 						<Route exact path="/" component={Home}/>
 						<Route exact path="/work/amptube" component={Amptube}/>
 						<Route exact path="/work/vetondemand" component={VOD}/>
@@ -41,6 +67,7 @@ class App extends Component {
 						<Route exact path="/work/archive" component={Archive}/>
 					</Box>
 				</Flex>
+				<PageShit/>
 			</div>
 		);
 	}

@@ -15,6 +15,16 @@
 	margin: 0 0 24px 0;
 }
 
+.icon {
+	svg {
+		display: block;
+		height: auto;
+		width: 16px;
+		transform: translateY(2px);
+	}
+}
+
+
 .logoLink {
 	display: block;
 }
