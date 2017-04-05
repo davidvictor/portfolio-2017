@@ -13,6 +13,8 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
+const {accessKeyId, secretAccessKey, region} = require('./config/aws');
+
 const gitRevisionPlugin = new GitRevisionPlugin({
 	lightweightTags: true,
 });
@@ -411,9 +413,9 @@ exports.uploadS3 = function() {
 				include: /.*\.(css|js)/,
 				basePath:        `production/${gitTag}`,
 				s3Options:       {
-					accessKeyId:     'AKIAIIKHGJNPGLCD43JQ',
-					secretAccessKey: '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',
-					region:          'us-west-1'
+					accessKeyId:     accessKeyId,
+					secretAccessKey: secretAccessKey,
+					region:          region
 				},
 				s3UploadOptions: {
 					Bucket: 'assets.davidvictor.me',
@@ -444,9 +446,9 @@ exports.uploadS3 = function() {
 				include:         /.*\.html$/,
 				basePath:        ``,
 				s3Options:       {
-					accessKeyId:     'AKIAIIKHGJNPGLCD43JQ',
-					secretAccessKey: '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',
-					region:          'us-west-1'
+					accessKeyId:     accessKeyId,
+					secretAccessKey: secretAccessKey,
+					region:          region
 				},
 				s3UploadOptions: {
 					Bucket: 'beta.davidvictor.me',
