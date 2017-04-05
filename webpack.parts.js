@@ -31,7 +31,6 @@ const extractGlobalStyle = new ExtractTextPlugin({
 
 const gitTag = gitRevisionPlugin.commithash().slice(0, 5);
 
-
 exports.buildHtml = function(local) {
 	const index = local ? 'src/template/index-local.html' : 'src/template/index.html';
 	return {

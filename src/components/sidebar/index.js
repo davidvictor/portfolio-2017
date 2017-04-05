@@ -90,7 +90,7 @@ const Sidebar = withActive(({active, on, off, toggle}) => {
 		[style.buttonActive]: !active,
 	});
 	const bodyClasses   = classNames({
-		[style.noverflow]: active,
+		'noverflow': active,
 	});
 	return (
 		<div className={classes}>
