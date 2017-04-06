@@ -19,7 +19,7 @@ const Deets = ({title, url}, context) => {
 			<div className={classes}>
 				
 				<Flex wrap={false}>
-					<Box pr={2} flex>
+					<Box px={2} flex>
 						<Flex justify='center' flexColumn>
 							<Box>
 								<label className={style.label}>Project</label>

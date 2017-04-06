@@ -449,12 +449,20 @@ const Photos = () => {
 		zoom:  `${assetUrl}/lifeisbeautiful/photos/lib-10@2x.jpg`,
 		width: '240px',
 	}];
+	const defaultStyles = {
+		overlay: {
+			backgroundColor: '#111',
+		}
+	};
 	return (
 		<div>
 			<Flex justify="center" wrap pt={2} pb={2}>
 				{photos.map((photo, idx) =>
 					<Box key={idx} p={1}>
 						<ImageZoom
+							shouldPreload
+							zoomMargin={0}
+							defaultStyles={defaultStyles}
 							image={{
 								src:   photo.src,
 								alt:   'Festival Photo',
@@ -473,11 +481,19 @@ const Photos = () => {
 };
 
 const PlanetHollywood = () => {
+	const defaultStyles = {
+		overlay: {
+			backgroundColor: '#111',
+		}
+	};
 	return (
 		<div>
 			<Flex justify="center" mt={6} mb={3}>
 				<Box col={12}>
 					<ImageZoom
+						shouldPreload
+						zoomMargin={0}
+						defaultStyles={defaultStyles}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/planet-hollywood-crop.jpg`,
 							alt:   'Vegas Strip Takeover',

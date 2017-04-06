@@ -40,6 +40,7 @@ $height: 72px;
 .deets {
 	background-color: white;
 	height:           $height;
+	border-bottom: 1px solid $border-color;
 	> div {
 		height: $height;
 	}
@@ -67,7 +68,7 @@ $height: 72px;
 @media only screen and (max-width: 960px) {
 	.deets {
 		padding-left:  24px;
-		border-bottom: 1px solid $border-color;
+		
 	}
 }
 
