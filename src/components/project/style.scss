@@ -3,35 +3,54 @@
 $height: 72px;
 $heightMobile: 60px;
 
+$peekSize: 40vh;
+
 .root {
-	
+	position: relative;
+}
+
+.content {
+	position:   relative;
+	width:      100%;
+	background: white;
+	margin-top: 4px;
+	transition: transform 300ms ease-in;
+	&.visible {
+		//transform: translate3d(0, -$peekSize, 0);
+	}
 }
 
 .hero {
 	position: relative;
-	img {
-		position:  absolute;
-		width:     30%;
-		top:       50%;
-		left:      50%;
-		transform: translate(-50%, -50%);
-	}
 }
 
 .cover {
-	height:                calc(100vh);
+	position:              relative;
+	height:                60vh;
+	min-height:            360px;
 	width:                 100%;
-	min-height:            300px;
 	min-width:             260px;
 	background-size:       cover;
-	//background-position: center center;
+	background-position:   center center;
 	background-repeat:     no-repeat;
 	background-attachment: fixed;
+	img {
+		position:   absolute;
+		width:      30%;
+		top:        50%;
+		left:       50%;
+		transform:  translate3d(-50%, calc(-50% + #{$height/2}), 0);
+		transition: transform 300ms ease-in;
+	}
 }
 
-.noCover {
-	.cover {
-		display: none;
+.hero {
+	&.visible {
+		.cover {
+			img {
+				//transform: translate3d(-50%, calc(-50% + #{-$peekSize/2}), 0);
+			}
+		}
 	}
 }
 
@@ -58,23 +77,41 @@ $heightMobile: 60px;
 		letter-spacing: .10rem;
 	}
 	h1, h2, h3, h4, h5, h6, label {
-		line-height: 1.2rem;
+		line-height:    1.2rem;
 		letter-spacing: 0.02rem;
 	}
 	h1 {
 		font-size: 1.2rem;
 		margin:    0;
+		text-transform: uppercase;
+		letter-spacing: 0.03rem;
 	}
 	h2 {
 		font-size:      0.8rem;
 		text-transform: uppercase;
 		margin:         0;
-		line-height: 1.3rem;
+		line-height:    1.3rem;
+	}
+	button {
+		text-transform: uppercase;
+	}
+	&.isLive {
+		button {
+			//color: white !important;
+			//background-color: red !important;
+		}
 	}
 }
 
 .about {
-	margin: 48px 0;
+	position: relative;
+	width:    100%;
+	padding:  24px 0 48px;
+	> div {
+		margin:    0 auto;
+		width:     94%;
+		max-width: 680px;
+	}
 	label {
 		display:        block;
 		font-size:      11px;
@@ -83,18 +120,18 @@ $heightMobile: 60px;
 		letter-spacing: .075rem;
 	}
 	.description,
-	.roles {
-		line-height: 1.6;
+	.contribution {
+		line-height:   1.6;
+		margin-bottom: 24px;
+		margin-top:    18px;
 	}
 	.description {
-		font-size:     16px;
-		font-weight:   500;
-		margin-bottom: 24px;
+		font-size:   16px;
+		font-weight: 300;
 	}
-	.roles {
-		font-size:      16px;
-		font-weight:    500;
-		letter-spacing: .05rem;
+	.contribution {
+		font-size:   16px;
+		font-weight: 300;
 	}
 }
 
@@ -123,7 +160,10 @@ $heightMobile: 60px;
 
 @media only screen and (max-width: 960px) {
 	.cover {
-		height: calc(100vh - #{$heightMobile * 2});
+		//height: calc(100vh - #{$heightMobile * 2});
+		img {
+			transform:  translate3d(-50%, calc(-50% + #{$heightMobile/2}), 0);
+		}
 	}
 	.fold {
 		height: $heightMobile;
@@ -132,6 +172,89 @@ $heightMobile: 60px;
 		height: $heightMobile;
 		> div {
 			height: $heightMobile;
+		}
+	}
+}
+
+.roles {
+	margin-bottom: 18px;
+	margin-top:    12px;
+}
+
+.role {
+	padding: 3px 6px 3px 0;
+	button {
+		text-transform: uppercase;
+		transition:     color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+		box-shadow:     0 0 0 1px $gold inset !important;
+		&:hover,
+		&:focus {
+			color:            white !important;
+			background-color: $gold !important;
+			box-shadow:       0 0 0 1px $gold inset !important;
+		}
+	}
+}
+
+.roleButton {
+	
+}
+
+.modal {
+	position:                   absolute;
+	top:                        50%;
+	left:                       50%;
+	transform:                  translate3d(-50%, -50%, 0);
+	overflow-y:                 auto;
+	overflow-x:                 hidden;
+	outline:                    none;
+	padding:                    1rem * 2;
+	//height:                     100%;
+	max-height:                 100vh;
+	width:                      90%;
+	max-width:                  600px;
+	-webkit-overflow-scrolling: touch;
+}
+
+.modalOverlay {
+	position:         fixed;
+	z-index:          1000;
+	top:              0;
+	left:             0;
+	right:            0;
+	bottom:           0;
+	background-color: transparentize(white, 0);
+}
+
+.modalContent {
+	img {
+		display:    block;
+		margin:     0 auto;
+		width:      100%;
+		max-width:  160px;
+		max-height: 160px;
+	}
+	h1 {
+		text-align:     center;
+		text-transform: uppercase;
+	}
+	p {
+		font-size:   0.9rem;
+		font-weight: 300;
+		line-height: 1.6;
+		color:       lighten($black, 20%);
+	}
+	button {
+		margin:              36px auto 36px auto !important;
+		background-image:    url("#{$assetUrl}/base/close-thick.svg");
+		background-size:     136px;
+		background-position: center center;
+		background-repeat:   no-repeat;
+		opacity:             0.2;
+		transition:          opacity 200ms ease;
+		&:hover,
+		&:focus {
+			opacity: 1;
 		}
 	}
 }

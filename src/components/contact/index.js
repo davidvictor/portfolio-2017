@@ -35,6 +35,7 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 			<ButtonCircle
 				backgroundColor="transparent"
 				color="white"
+				size={36}
 				onClick={toggle}
 				style={{display: 'block'}}>
 				<Email className={style.icon} color="#a57f5f"/>

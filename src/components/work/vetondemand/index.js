@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {Flex, Box} from 'reflexbox';
+import Project from '../../project';
 import Hero from '../../project/hero';
-import Deets from '../../project/deets';
-import About from '../../project/about';
 import Heading from '../../project/heading';
 import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
@@ -317,14 +316,16 @@ const VetOnDemand = () => {
 	const classes = classNames("vetondemand", style.root);
 	return (
 		<div className={classes}>
-			<Hero
+			<Project
+				live
+				title="Vet On Demand"
+				url='http://vetondemand.com'
+				roles={['STRATEGY','BRANDING','INTERFACE','EXPERIENCE','CODE']}
+				description="Vet On Demand is the first mobile application to provide personalized, real time access to veterinary advice and recommendations through the power of live video conferencing."
+				contribution="Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy."
 				bg={`${assetUrl}/vetondemand/hero-2.png`}
-				logo={`${assetUrl}/vetondemand/logo-h-white.svg`}
-				logoWidth="300px">
-				<Deets title="Vet On Demand" url='http://vetondemand.com' roles="COFOUNDER / STRATEGY / DESIGN / UI+UX / FRONTEND"/>
-			</Hero>
+				logo={{src:`${assetUrl}/vetondemand/logo-h-white.svg`,width:'300px'}}>
 			
-			<About description="Vet On Demand is the first mobile application to provide personalized, real time access to veterinary advice and recommendations through the power of live video conferencing." roles="COFOUNDER / STRATEGY / DESIGN / UI+UX / FRONTEND"/>
 			
 			<Heading title="Research"
 			         subtitle="Becoming a Dog Whisperer"
@@ -364,6 +365,7 @@ const VetOnDemand = () => {
 			
 			<Web/>
 		
+			</Project>
 		</div>
 	);
 };

@@ -39,12 +39,22 @@ class App extends Component {
 				}
 			},
 			rebass:    {
-				colors:    colors,
-				scale:     scale,
-				fontSizes: fontSizes,
-				ButtonOutline:    {
-					fontSize:      fontSizes[7],
+				colors:        colors,
+				scale:         scale,
+				fontSizes:     fontSizes,
+				Button: {
+					fontSize:      fontSizes[10],
+					fontWeight:    '500',
 					letterSpacing: '0.02rem',
+				},
+				ButtonOutline: {
+					fontSize:      fontSizes[10],
+					fontWeight:    '500',
+					letterSpacing: '0.02rem',
+				},
+				Close: {
+					fontSize:      '6rem',
+					fontWeight:    '100',
 				}
 			}
 		}

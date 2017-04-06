@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Flex, Box} from 'reflexbox';
-import Hero from '../../project/hero';
-import Deets from '../../project/deets';
-import About from '../../project/about';
+import Project from '../../project';
 import ImageZoom from 'react-medium-image-zoom';
 import {DefaultPlayer as Video} from 'react-html5video';
 import 'react-html5video/dist/styles.css';
@@ -155,7 +153,7 @@ const Guide = () => {
 						}}
 					/>
 				</Box>
-				<Box flex px={2} >
+				<Box flex px={2}>
 					<Flex justify="space-between" align="center" flex flexColumn>
 						<Box my={2}>
 							<ImageZoom
@@ -243,7 +241,9 @@ const Animation = () => {
 		<div style={{maxWidth: '420px', width: '100%', margin: '0 auto'}}>
 			<Flex justify="center" py={3} wrap={false}>
 				<Box px={2}>
-					<video className={style.bullnose} autoPlay loop muted playsInline poster={`${assetUrl}/lifeisbeautiful/video/bullnose.jpg`}><source src={`${assetUrl}/lifeisbeautiful/video/bullnose.mp4`} type="video/mp4"/></video>
+					<video className={style.bullnose} autoPlay loop muted playsInline poster={`${assetUrl}/lifeisbeautiful/video/bullnose.jpg`}>
+						<source src={`${assetUrl}/lifeisbeautiful/video/bullnose.mp4`} type="video/mp4"/>
+					</video>
 				</Box>
 			</Flex>
 		</div>
@@ -408,7 +408,7 @@ const Love = () => {
 };
 
 const Photos = () => {
-	const photos = [{
+	const photos        = [{
 		src:   `${assetUrl}/lifeisbeautiful/photos/lib-1.jpg`,
 		zoom:  `${assetUrl}/lifeisbeautiful/photos/lib-1@2x.jpg`,
 		width: '240px',
@@ -516,27 +516,27 @@ const LifeisBeautiful = () => {
 	return (
 		<div className={classes}>
 			
-			<Hero
+			<Project
+				title="Life is Beautiful"
+				url='https://lifeisbeautiful.com'
+				description="Life is Beautiful is an inspirational company dedicated to helping people conquer their fears and chase their dreams. Its signature project, the Life is Beautiful Festival, was founded in 2013 and launched in October of that same year as a highly successful lifestyle event featuring marquee musicians, chefs, artists and speakers. Held in the heart of Downtown Las Vegas, Life is Beautiful Festival attracted more than 60,000 patrons in its first year, and is now branching out to an international online forum inspiring social change."
+				contribution="Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy."
 				bg={`${assetUrl}/lifeisbeautiful/hero-tilt.jpg`}
-				logo={`${assetUrl}/lifeisbeautiful/logo-heart-white.png`}
-				logoWidth="180px">
-				<Deets title="Life is Beautiful" url='//lifeisbeautiful.com' roles="CREATIVE DIRECTION / DESIGN / FRONTEND"/>
-			</Hero>
-			
-			<About description="Life is Beautiful is an inspirational company dedicated to helping people conquer their fears and chase their dreams. Its signature project, the Life is Beautiful Festival, was founded in 2013 and launched in October of that same year as a highly successful lifestyle event featuring marquee musicians, chefs, artists and speakers. Held in the heart of Downtown Las Vegas, Life is Beautiful Festival attracted more than 60,000 patrons in its first year, and is now branching out to an international online forum inspiring social change." />
-			
-			<Brand/>
-			<Poster/>
-			<Web/>
-			<App/>
-			<PlanetHollywood/>
-			<Animation/>
-			<Tickets/>
-			<Guide/>
-			<VIP/>
-			<Culinary/>
-			<Photos/>
-			<Love/>
+				logo={{src: `${assetUrl}/lifeisbeautiful/logo-heart-white.png`, width: "180px"}}>
+				
+				<Brand/>
+				<Poster/>
+				<Web/>
+				<App/>
+				<PlanetHollywood/>
+				<Animation/>
+				<Tickets/>
+				<Guide/>
+				<VIP/>
+				<Culinary/>
+				<Photos/>
+				<Love/>
+			</Project>
 		</div>
 	);
 	

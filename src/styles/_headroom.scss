@@ -25,6 +25,9 @@
 	@media only screen and (min-width: 960px) {
 		.headroom--scrolled {
 			left: $sidebarWidth;
+			&.headroom--unfixed {
+				left: 0;
+			}
 		}
 		.headroom--pinned {
 			left: $sidebarWidth;

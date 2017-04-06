@@ -109,14 +109,14 @@ $toggleHeight: 60px;
 		letter-spacing: 0.2rem;
 		font-weight:    200;
 		span {
-			color: rgb(165, 127, 95);
+			color: $gold;
 		}
 	}
 }
 
 .iconButtonWrap {
 	+ * {
-		margin-left: 8px;
+		margin-left: 4px;
 	}
 }
 

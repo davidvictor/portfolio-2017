@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Flex, Box} from 'reflexbox';
-import Hero from '../../project/hero';
-import Deets from '../../project/deets';
-import About from '../../project/about';
+import Project from '../../project';
 import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
 import style from './style.scss';
@@ -162,7 +160,7 @@ const ERS = () => {
 						}}
 						zoomImage={{
 							src: `${assetUrl}/esc/ers-logo-light@2x.jpg`,
-							alt:   'ERS Logo',
+							alt: 'ERS Logo',
 						}}
 					/>
 				</Box>
@@ -175,7 +173,7 @@ const ERS = () => {
 						}}
 						zoomImage={{
 							src: `${assetUrl}/esc/ers-logo-dark@2x.jpg`,
-							alt:   'ERS Logo',
+							alt: 'ERS Logo',
 						}}
 					/>
 				</Box>
@@ -188,20 +186,21 @@ const ESC = () => {
 	const classes = classNames("esc", style.root);
 	return (
 		<div className={classes}>
-			<Hero
+			<Project
+				live
+				title="ESC Lab Sciences"
+				url="//esclabsciences.com"
+				description="ESC Lab Sciences is the largest laboratory facility dedicated to environmental testing and certified to support your work nationwide. One laboratory, one phone call, one point of contact. ESC holds nation-wide certifications and has the highest capacity of any environmental lab for expedited and accurate results."
+				contribution="Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy."
 				bg={`${assetUrl}/esc/hero.jpg`}
-				logo={`${assetUrl}/esc/logo-color.svg`}
-				logoWidth="240px">
-				<Deets title="ESC Lab Sciences" url="//esclabsciences.com" roles="DESIGN / UI+UX / FRONTEND"/>
-			</Hero>
-			
-			<About description="ESC Lab Sciences is the largest laboratory facility dedicated to environmental testing and certified to support your work nationwide. One laboratory, one phone call, one point of contact. ESC holds nation-wide certifications and has the highest capacity of any environmental lab for expedited and accurate results." />
-			
-			<Portal/>
-			<Website/>
-			<Report/>
-			<ERS/>
-			<Display/>
+				logo={{src: `${assetUrl}/esc/logo-color.svg`, width: "240px"}}>
+				
+				<Portal/>
+				<Website/>
+				<Report/>
+				<ERS/>
+				<Display/>
+			</Project>
 		</div>
 	);
 };

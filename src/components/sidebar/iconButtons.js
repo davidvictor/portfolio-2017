@@ -25,6 +25,7 @@ const IconButtons = ({off, left}) => {
 				<ButtonCircle
 					backgroundColor="transparent"
 					color="white"
+					size={36}
 					onClick={() => openLink('https://github.com/davidvictor')}>
 					<Github className={style.icon}/>
 				</ButtonCircle>
@@ -33,6 +34,7 @@ const IconButtons = ({off, left}) => {
 				<ButtonCircle
 					backgroundColor="transparent"
 					color="white"
+					size={36}
 					onClick={() => openLink('https://www.linkedin.com/in/dvictor')}>
 					<LinkedIn className={style.icon}/>
 				</ButtonCircle>

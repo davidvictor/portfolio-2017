@@ -17,7 +17,7 @@ const baseColors = {
 	midgray: '#888',
 	gold:    'rgb(165, 127, 95)',
 	blue:    '#08e',
-	red:     '#f52',
+	red:     'red',
 	orange:  '#f70',
 	green:   '#1c7'
 };
@@ -33,9 +33,9 @@ const colors = {
 	error:     baseColors.red
 };
 
-const scale = [0, 8, 16, 32, 64, 72];
+const scale = [0, 4, 8, 12, 24, 32, 64, 72];
 
-const fontSizes = [64, 48, 24, 18, 16, 14, 13, 12, 11, 10];
+const fontSizes = [64,48,36,24, 18, 16, 14, 13, 12, 11, 10];
 
 module.exports = {
 	siteUrl:   '//davidvictor.me',
