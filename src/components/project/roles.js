@@ -4,6 +4,7 @@ import {Flex, Box} from 'reflexbox';
 import {Button, ButtonOutline, Close} from 'rebass';
 import classNames from 'classnames';
 import style from './style.scss';
+import R from 'ramda';
 
 import {assetUrl} from 'config';
 
@@ -60,39 +61,52 @@ const Role = withActive(({label, active, on, off, toggle, children, context}) =>
 	);
 });
 
-const Roles = ({strategy, branding, design, ui, ux, code}, context) => {
+const Roles = ({roles}, context) => {
 	const classes = classNames("roles", style.roles);
-	const data    = [
+	
+	const roleData    = [
 		{
+			id:          'strategy',
 			name:        "Strategy",
 			icon:        `${assetUrl}/lionhouse/strategy.svg`,
 			description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
 		}, {
+			id:          'creative',
+			name:        "Creative Direction",
+			icon:        `${assetUrl}/lionhouse/content.svg`,
+			description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
+		}, {
+			id:          'branding',
 			name:        "Branding",
 			icon:        `${assetUrl}/lionhouse/content.svg`,
 			description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
 		}, {
+			id:          'design',
 			name:        "Design",
 			icon:        `${assetUrl}/lionhouse/design.svg`,
 			description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
 		}, {
+			id:          'ui',
 			name:        "UI",
 			icon:        `${assetUrl}/lionhouse/interface.svg`,
 			description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
 		}, {
+			id:          'ux',
 			name:        "UX",
 			icon:        `${assetUrl}/lionhouse/scope.svg`,
 			description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
 		}, {
+			id:          'code',
 			name:        "Code",
 			icon:        `${assetUrl}/lionhouse/develop.svg`,
 			description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
 		}
 	];
-	return (
+	const filteredRoles = R.filter(R.compose(R.flip(R.contains)(roles), R.prop('id')), roleData);
+	return roles ? (
 		<div className={classes}>
 			<Flex wrap align="center">
-				{data.map((role, idx) =>
+				{filteredRoles.map((role, idx) =>
 					<Box key={idx}>
 						<Role label={role.name} context={context}>
 							<img src={role.icon} alt={role.name}/>
@@ -103,7 +117,7 @@ const Roles = ({strategy, branding, design, ui, ux, code}, context) => {
 				)}
 			</Flex>
 		</div>
-	);
+	) : false;
 };
 
 Roles.propTypes = {

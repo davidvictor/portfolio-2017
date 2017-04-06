@@ -320,7 +320,7 @@ const VetOnDemand = () => {
 				live
 				title="Vet On Demand"
 				url='http://vetondemand.com'
-				roles={['STRATEGY','BRANDING','INTERFACE','EXPERIENCE','CODE']}
+				roles={['strategy','branding','ui','ux','code']}
 				description="Vet On Demand is the first mobile application to provide personalized, real time access to veterinary advice and recommendations through the power of live video conferencing."
 				contribution="Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy."
 				bg={`${assetUrl}/vetondemand/hero-2.png`}

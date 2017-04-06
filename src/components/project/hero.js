@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import Roles from './roles';
-import Headroom from 'react-headroom';
-import {Flex, Box} from 'reflexbox';
-import {Button, ButtonOutline} from 'rebass';
 import classNames from 'classnames';
 import style from './style.scss';
 

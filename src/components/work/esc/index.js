@@ -190,6 +190,7 @@ const ESC = () => {
 				live
 				title="ESC Lab Sciences"
 				url="//esclabsciences.com"
+				roles={['design','ui','ux','code']}
 				description="ESC Lab Sciences is the largest laboratory facility dedicated to environmental testing and certified to support your work nationwide. One laboratory, one phone call, one point of contact. ESC holds nation-wide certifications and has the highest capacity of any environmental lab for expedited and accurate results."
 				contribution="Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy."
 				bg={`${assetUrl}/esc/hero.jpg`}
