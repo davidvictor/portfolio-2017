@@ -1,37 +1,15 @@
-//.root {
-//	width:    18rem;
-//	height:   100vh;
-//	position: fixed;
-//}
+@import '../../styles/vars';
 
-@media only screen and (max-width: 960px) {
-	.root {
-		z-index:  10;
-		position: fixed;
-		&.active {
-			.inner {
-				width:     100vw;
-				transform: translate3d(0, 0, 0);
-			}
-		}
-	}
-	.inner {
-		transform: translate3d(-100%, 0, 0);
-	}
-	.logoImg {
-		max-width: 20rem;
-	}
-}
 
 $toggleHeight: 60px;
 
 .menuToggle {
-	z-index:          300;
+	//z-index:          300;
 	height:           $toggleHeight;
 	width:            100vw;
 	background-color: white;
-	//position:         fixed;
 	display:          none;
+	border-top: 1px solid $border-color;
 	//bottom:           0;
 	//left:             0;
 	
@@ -70,6 +48,21 @@ $toggleHeight: 60px;
 }
 
 @media only screen and (max-width: 960px) {
+	.root {
+		&.active {
+			.inner {
+				width:     100vw;
+				transform: translate3d(0, 0, 0);
+			}
+		}
+	}
+	.inner {
+		height: 100%;
+		transform: translate3d(-100%, 0, 0);
+	}
+	.logoImg {
+		max-width: 20rem;
+	}
 	.menuToggle {
 		display: block;
 	}
@@ -83,8 +76,6 @@ $toggleHeight: 60px;
 		margin: 0 0 24px + $toggleHeight 0;
 	}
 }
-
-
 
 .icon {
 	svg {

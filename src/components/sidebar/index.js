@@ -94,11 +94,6 @@ const Sidebar = withActive(({active, on, off, toggle}) => {
 	});
 	return (
 		<div className={classes}>
-			<Headroom disableInlineStyles>
-				<div className={style.menuToggle}>
-					<button onClick={toggle} className={buttonClasses}>{!active ? 'menu' : 'close'}</button>
-				</div>
-			</Headroom>
 			<Flex flexColumn wrap={false} flex className={style.inner} px={3}>
 				<Box>
 					<Header off={off}/>
@@ -110,6 +105,11 @@ const Sidebar = withActive(({active, on, off, toggle}) => {
 					<Footer off={off}/>
 				</Box>
 			</Flex>
+			<Headroom disableInlineStyles>
+				<div className={style.menuToggle}>
+					<button onClick={toggle} className={buttonClasses}>{!active ? 'menu' : 'close'}</button>
+				</div>
+			</Headroom>
 			<BodyClass className={bodyClasses}/>
 		</div>
 	);

@@ -1,3 +1,5 @@
+@import '../../styles/vars';
+
 $height: 72px;
 
 .root {
@@ -42,14 +44,14 @@ $height: 72px;
 		height: $height;
 	}
 	.label {
-		display:        inline-block;
+		display:        block;
 		font-size:      10px;
 		color:          lighten(black, 60%);
 		text-transform: uppercase;
 		letter-spacing: .10rem;
 	}
 	h1, h2, h3, h4, h5, h6, label {
-		line-height: 1;
+		line-height: 1.2;
 	}
 	h1 {
 		font-size: 1.2rem;
@@ -60,22 +62,19 @@ $height: 72px;
 		text-transform: uppercase;
 		margin:         0;
 	}
-	//button {
-	//	border: 1px solid #111;
-	//}
 }
 
 @media only screen and (max-width: 960px) {
 	.deets {
-		padding-left: 24px;
+		padding-left:  24px;
+		border-bottom: 1px solid $border-color;
 	}
-	
 }
 
 .about {
 	margin: 48px 0;
 	label {
-		display:        inline-block;
+		display:        block;
 		font-size:      11px;
 		color:          lighten(black, 60%);
 		text-transform: uppercase;
@@ -108,14 +107,14 @@ $height: 72px;
 		display: block;
 	}
 	.title {
-		margin: 0;
-		font-size: 1.3rem;
+		margin:         0;
+		font-size:      1.3rem;
 		text-transform: uppercase;
 		letter-spacing: .08rem;
 	}
 	.subtitle {
-		margin: 0;
+		margin:      0;
 		font-weight: 300;
-		color:          lighten(black, 60%);
+		color:       lighten(black, 60%);
 	}
 }

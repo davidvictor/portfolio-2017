@@ -59,7 +59,7 @@ class App extends Component {
 					<Box>
 						<Sidebar/>
 					</Box>
-					<Box flexAuto className={style.content} id="content">
+					<Box flexAuto className={style.content}>
 						<Route exact path="/" component={Home}/>
 						<Route exact path="/work/amptube" component={Amptube}/>
 						<Route exact path="/work/vetondemand" component={VOD}/>

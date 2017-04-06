@@ -24,6 +24,7 @@ class App extends Component {
 			<div className={classes}>
 				<div className={style.inner} style={{backgroundImage: bgImage}}>
 					<div className={style.about}>
+						<img src={`${assetUrl}/base/davidvictor.svg`} className={style.logo}/>
 						<p>
 							A&nbsp;
 							<a href="https://medium.com/fullstack-design-by-xpos-it/the-rise-of-the-full-stack-designer-and-the-tools-he-uses-3daf015eb3fc"

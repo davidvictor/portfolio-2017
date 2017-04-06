@@ -243,10 +243,7 @@ const Animation = () => {
 		<div style={{maxWidth: '420px', width: '100%', margin: '0 auto'}}>
 			<Flex justify="center" py={3} wrap={false}>
 				<Box px={2}>
-					<Video autoPlay loop muted playsinline
-					       poster={`${assetUrl}/lifeisbeautiful/video/bullnose.jpg`}>
-						<source src={`${assetUrl}/lifeisbeautiful/video/bullnose.mp4`} type="video/mp4"/>
-					</Video>
+					<video className={style.bullnose} autoPlay loop muted playsInline poster={`${assetUrl}/lifeisbeautiful/video/bullnose.jpg`}><source src={`${assetUrl}/lifeisbeautiful/video/bullnose.mp4`} type="video/mp4"/></video>
 				</Box>
 			</Flex>
 		</div>
