@@ -94,7 +94,7 @@ const Sidebar = withActive(({active, on, off, toggle}) => {
 	});
 	return (
 		<div className={classes}>
-			<Flex flexColumn wrap={false} flex className={style.inner} px={3}>
+			<Flex flexColumn wrap={false} flex className={style.inner} px={2}>
 				<Box>
 					<Header off={off}/>
 				</Box>

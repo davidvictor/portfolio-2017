@@ -1,21 +1,29 @@
 .root {
 	a {
-		display: inline-block;
-		padding: 8px 0;
-		color: black;
+		display:         inline-block;
+		padding:         8px 0;
+		color:           black;
 		text-decoration: none;
-		font-weight: 300;
-		letter-spacing: 0.06rem;
-		font-size: 14px;
-		transform: translateX(0);
-		transition: transform 200ms ease;
+		font-weight:     300;
+		letter-spacing:  0.06rem;
+		font-size:       14px;
+		transform:       translateX(0);
+		transition:      transform 200ms ease;
 		&.selected {
-			color: rgb(165, 127, 95);
+			color:     rgb(165, 127, 95);
 			transform: translateX(2px);
 		}
 		&:hover,
 		&:focus {
 			transform: translateX(2px);
+		}
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.root {
+		a {
+			font-size:       18px;
 		}
 	}
 }

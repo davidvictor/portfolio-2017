@@ -36,7 +36,7 @@ exports.buildHtml = function(local) {
 	return {
 		plugins: [
 			new HtmlWebpackPlugin({
-				title:    'David Victor 🕴 Product Innovator',
+				title:    'David Victor 🕴 Product Designer',
 				template: path.resolve(__dirname, index),
 				filename: 'index.html',
 			}),

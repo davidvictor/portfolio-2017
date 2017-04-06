@@ -1,0 +1,169 @@
+
+:root {
+	text-size-adjust: 100%; // iOS 8+
+}
+
+html {
+	// Changes the default tap highlight to be completely transparent in iOS.
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+// Credit: https://github.com/suitcss/base
+[tabindex="-1"]:focus {
+	outline: none !important;
+}
+
+img {
+	// By default, `<img>`s are `inline-block`. This assumes that, and vertically
+	// centers them. This won't apply should you reset them to `block` level.
+	vertical-align: middle;
+	// Note: `<img>`s are deliberately not made responsive by default.
+	// For the rationale behind this, see the comments on the `.img-fluid` class.
+}
+
+[role="button"] {
+	cursor: pointer;
+}
+
+
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+	touch-action: manipulation;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle;
+}
+
+//
+// Tables
+//
+
+table {
+	// Reset for nesting within parents with `background-color`.
+	background-color: transparent;
+}
+
+form {
+	&:focus {
+		outline: none;
+	}
+}
+
+textarea {
+	// Textareas should really only resize vertically so they don't break their (horizontal) containers.
+	resize: vertical;
+}
+
+// Always hide an element with the `hidden` HTML attribute (from PureCSS).
+[hidden] {
+	display: none !important;
+}
+
+
+body {
+	-ms-overflow-style: -ms-autohiding-scrollbar; // IE11+
+	overflow-y:         scroll; // All browsers without overlaying scrollbars
+}
+
+audio:not([controls]) {
+	display: none; // Chrome 40+, iOS 8+, Safari 8+
+}
+
+details {
+	display: block; // Firefox 35+, Internet Explorer 11+, Windows Phone 8.1+
+}
+
+
+main {
+	display: block; // Android 4.3-, Internet Explorer 11+, Windows Phone 8.1+
+}
+
+summary {
+	display: block; // Firefox 35+, Internet Explorer 11+, Windows Phone 8.1+
+}
+
+pre {
+	overflow: auto; // Internet Explorer 11+
+}
+
+progress {
+	display: inline-block; // Internet Explorer 11+, Windows Phone 8.1+
+}
+
+small {
+	font-size: 80%; // All browsers
+}
+
+template {
+	display: none; // Android 4.3-, Internet Explorer 11+, iOS 7-, Safari 7-, Windows Phone 8.1+
+}
+
+textarea {
+	overflow: auto; // Internet Explorer 11+
+}
+
+[hidden] {
+	display: none; // Internet Explorer 10-
+}
+
+[unselectable] {
+	user-select: none; // Android 4.4+, Chrome 40+, Firefox 36+, iOS 8+, Safari 8+
+}
+
+
+body {
+	-webkit-touch-callout: none;
+	* {
+		-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	}
+}
+
+select {
+	-moz-appearance:    none; // Firefox 36+
+	-webkit-appearance: none; // Chrome 41+
+	
+	&::-ms-expand {
+		display: none; // Internet Explorer 11+
+	}
+	
+	&::-ms-value {
+		color: currentColor; // Internet Explorer 11+
+	}
+}
+
+::-ms-reveal,
+::-ms-clear {
+	display: none !important;
+}
+
+// remove table spacing
+
+table {
+	border-collapse: collapse;
+	border-spacing:  0;
+}
+
+
+@media screen {
+	[hidden~="screen"] {
+		display: inherit;
+	}
+	
+	[hidden~="screen"]:not(:active):not(:focus):not(:target) {
+		clip:     rect(0 0 0 0) !important;
+		position: absolute !important;
+	}
+}

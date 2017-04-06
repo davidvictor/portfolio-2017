@@ -36,7 +36,8 @@
 
 .logo {
 	display: none;
-	width: 260px;
+	width: 100%;
+	max-width: 20rem;
 }
 
 @media only screen and (max-width: 960px) {
@@ -53,18 +54,20 @@
 @media only screen and (max-width: 800px) {
 	.inner {
 		&:after {
-			background-color: transparentize(white,.1);
+			background-color: transparentize(white,0);
 		}
+	}
+	.logo {
+		
 	}
 	.about {
 		width:    100%;
-		top:      10%;
+		top:      8px;
 		left:     0;
-		padding: 24px;
+		padding: 16px;
 		p {
 			padding: 0 4px;
 			font-size:   1.1rem;
-			line-height: 1.8;
 		}
 	}
 }
