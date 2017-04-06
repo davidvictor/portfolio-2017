@@ -1,6 +1,7 @@
 @import '../../styles/vars';
 
 $height: 72px;
+$heightMobile: 60px;
 
 .root {
 	
@@ -18,13 +19,14 @@ $height: 72px;
 }
 
 .cover {
-	height:              calc(100vh - #{$height});
-	width:               100%;
-	min-height:          300px;
-	min-width:           260px;
-	background-size:     cover;
-	background-position: center center;
-	background-repeat:   no-repeat;
+	height:                calc(100vh);
+	width:                 100%;
+	min-height:            300px;
+	min-width:             260px;
+	background-size:       cover;
+	//background-position: center center;
+	background-repeat:     no-repeat;
+	background-attachment: fixed;
 }
 
 .noCover {
@@ -34,13 +36,17 @@ $height: 72px;
 }
 
 .fold {
-	height: $height;
+	position: absolute;
+	top:      0;
+	left:     0;
+	width:    100%;
+	height:   $height;
 }
 
 .deets {
 	background-color: white;
 	height:           $height;
-	border-bottom: 1px solid $border-color;
+	border-bottom:    1px solid $border-color;
 	> div {
 		height: $height;
 	}
@@ -52,23 +58,18 @@ $height: 72px;
 		letter-spacing: .10rem;
 	}
 	h1, h2, h3, h4, h5, h6, label {
-		line-height: 1.2;
+		line-height: 1.2rem;
+		letter-spacing: 0.02rem;
 	}
 	h1 {
 		font-size: 1.2rem;
 		margin:    0;
 	}
 	h2 {
-		font-size:      1.0rem;
+		font-size:      0.8rem;
 		text-transform: uppercase;
 		margin:         0;
-	}
-}
-
-@media only screen and (max-width: 960px) {
-	.deets {
-		padding-left:  24px;
-		
+		line-height: 1.3rem;
 	}
 }
 
@@ -86,13 +87,13 @@ $height: 72px;
 		line-height: 1.6;
 	}
 	.description {
-		font-size:     13px;
-		font-weight:   300;
+		font-size:     16px;
+		font-weight:   500;
 		margin-bottom: 24px;
 	}
 	.roles {
-		font-size:      13px;
-		font-weight:    300;
+		font-size:      16px;
+		font-weight:    500;
 		letter-spacing: .05rem;
 	}
 }
@@ -117,5 +118,20 @@ $height: 72px;
 		margin:      0;
 		font-weight: 300;
 		color:       lighten(black, 60%);
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.cover {
+		height: calc(100vh - #{$heightMobile * 2});
+	}
+	.fold {
+		height: $heightMobile;
+	}
+	.deets {
+		height: $heightMobile;
+		> div {
+			height: $heightMobile;
+		}
 	}
 }

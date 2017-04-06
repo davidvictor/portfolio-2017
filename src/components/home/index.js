@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Flex, Box} from 'reflexbox';
+import IconButtons from '../sidebar/iconButtons';
 import classNames from 'classnames';
 import style from './style.scss';
 
@@ -14,7 +15,13 @@ class App extends Component {
 	
 	render() {
 		const classes = classNames("home", style.root);
-		const bgImage = 'url(' + assetUrl + '/base/lionhouse-poster.jpg)';
+		let bgImage;
+		if (window.matchMedia("(max-width: 640px)").matches) {
+			//bgImage = 'url(' + assetUrl + '/base/palms-i-sm.jpg)';
+			bgImage = 'url(' + assetUrl + '/base/lionhouse-poster.jpg)';
+		} else {
+			bgImage = 'url(' + assetUrl + '/base/lionhouse-poster.jpg)';
+		}
 		const handleClick = (type) => {
 			mixpanel.track('Clicked Home Link', {
 				type: type
@@ -37,6 +44,9 @@ class App extends Component {
 							   target="_blank"
 							   onClick={()=>handleClick('Holistic Approach')}><span>holistic&nbsp;approach</span></a> to&nbsp;product&nbsp;design.
 						</p>
+						<div className={style.iconButtonWrap}>
+							<IconButtons left/>
+						</div>
 					</div>
 				</div>
 			</div>

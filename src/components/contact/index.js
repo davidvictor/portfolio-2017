@@ -33,9 +33,10 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 	return (
 		<div className={classes}>
 			<ButtonCircle
-				backgroundColor="white"
+				backgroundColor="transparent"
 				color="white"
-				onClick={toggle}>
+				onClick={toggle}
+				style={{display: 'block'}}>
 				<Email className={style.icon} color="#a57f5f"/>
 			</ButtonCircle>
 			<ReactModal

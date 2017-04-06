@@ -19,8 +19,7 @@
 	svg {
 		display: block;
 		height: auto;
-		width: 16px;
-		transform: translateY(2px);
+		width: 24px;
 	}
 }
 
@@ -32,10 +31,6 @@
 .logoImg {
 	width:  100%;
 	margin: 0 0 12px 0;
-}
-
-.geo {
-	width: 42px;
 }
 
 .modal {
@@ -74,6 +69,18 @@
 		font-weight: 200;
 		span {
 			color: rgb(165, 127, 95);
+		}
+	}
+}
+
+
+@media only screen and (max-width: 960px) {
+	
+	.icon {
+		svg {
+			display: block;
+			height: auto;
+			width: 30px;
 		}
 	}
 }

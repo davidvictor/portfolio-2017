@@ -142,7 +142,7 @@ const Guide = () => {
 	return (
 		<div>
 			<Flex justify="center" py={4} px={2} wrap>
-				<Box >
+				<Box mt={2}>
 					<ImageZoom
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/map.jpg`,
@@ -155,9 +155,9 @@ const Guide = () => {
 						}}
 					/>
 				</Box>
-				<Box flex px={2}>
+				<Box flex px={2} >
 					<Flex justify="space-between" align="center" flex flexColumn>
-						<Box>
+						<Box my={2}>
 							<ImageZoom
 								image={{
 									src:   `${assetUrl}/lifeisbeautiful/schedule.jpg`,
@@ -194,12 +194,12 @@ const VIP = () => {
 	return (
 		<div>
 			<Flex justify="center" py={4} wrap>
-				<Box sm={12} md={3} lg={3} px={2}>
+				<Box sm={12} md={3} lg={3} px={2} style={{textAlign: 'center'}}>
 					<ImageZoom
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/vip1.png`,
 							alt:   'VIP Artwork',
-							style: {width: '100%'}
+							style: {width: '100%', maxWidth: '280px'}
 						}}
 						zoomImage={{
 							src: `${assetUrl}/lifeisbeautiful/vip1@2x.png`,
@@ -207,12 +207,12 @@ const VIP = () => {
 						}}
 					/>
 				</Box>
-				<Box sm={12} md={3} lg={3} px={2}>
+				<Box sm={12} md={3} lg={3} px={2} style={{textAlign: 'center'}}>
 					<ImageZoom
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/vip2.png`,
 							alt:   'VIP Artwork',
-							style: {width: '100%'}
+							style: {width: '100%', maxWidth: '280px'}
 						}}
 						zoomImage={{
 							src: `${assetUrl}/lifeisbeautiful/vip2@2x.png`,
@@ -220,12 +220,12 @@ const VIP = () => {
 						}}
 					/>
 				</Box>
-				<Box sm={12} md={3} lg={3} px={2}>
+				<Box sm={12} md={3} lg={3} px={2} style={{textAlign: 'center'}}>
 					<ImageZoom
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/vip3.png`,
 							alt:   'VIP Artwork',
-							style: {width: '100%'}
+							style: {width: '100%', maxWidth: '280px'}
 						}}
 						zoomImage={{
 							src: `${assetUrl}/lifeisbeautiful/vip3@2x.png`,
@@ -267,7 +267,7 @@ const Tickets = () => {
 						}}
 					/>
 				</Box>
-				<Box pr={1}>
+				<Box pr={1} mb={2}>
 					<ImageZoom
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/ticket-animate.gif`,
@@ -285,7 +285,7 @@ const Tickets = () => {
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/wristbands.png`,
 							alt:   'Wristbands',
-							style: {width: 'auto', height: '420px'}
+							style: {width: 'auto', maxHeight: '420px'}
 						}}
 						zoomImage={{
 							src: `${assetUrl}/lifeisbeautiful/wristbands@2x.png`,
@@ -389,12 +389,12 @@ const Love = () => {
 	return (
 		<div>
 			<Flex justify="center" pt={0}>
-				<Box col={5}>
+				<Box sm={10} md={9} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/equal-love.png`,
 							alt:   'Equal Love Promo Logo',
-							style: {width: 'auto'}
+							style: {width: '100%', maxWidth: '420px'}
 						}}
 						zoomImage={{
 							src: `${assetUrl}/lifeisbeautiful/equal-love@2x.png`,
@@ -520,10 +520,10 @@ const LifeisBeautiful = () => {
 				bg={`${assetUrl}/lifeisbeautiful/hero-tilt.jpg`}
 				logo={`${assetUrl}/lifeisbeautiful/logo-heart-white.png`}
 				logoWidth="180px">
-				<Deets title="Life is Beautiful" url='//lifeisbeautiful.com'/>
+				<Deets title="Life is Beautiful" url='//lifeisbeautiful.com' roles="CREATIVE DIRECTION / DESIGN / FRONTEND"/>
 			</Hero>
 			
-			<About description="Life is Beautiful is an inspirational company dedicated to helping people conquer their fears and chase their dreams. Its signature project, the Life is Beautiful Festival, was founded in 2013 and launched in October of that same year as a highly successful lifestyle event featuring marquee musicians, chefs, artists and speakers. Held in the heart of Downtown Las Vegas, Life is Beautiful Festival attracted more than 60,000 patrons in its first year, and is now branching out to an international online forum inspiring social change." roles="CREATIVE DIRECTION / DESIGN / FRONTEND"/>
+			<About description="Life is Beautiful is an inspirational company dedicated to helping people conquer their fears and chase their dreams. Its signature project, the Life is Beautiful Festival, was founded in 2013 and launched in October of that same year as a highly successful lifestyle event featuring marquee musicians, chefs, artists and speakers. Held in the heart of Downtown Las Vegas, Life is Beautiful Festival attracted more than 60,000 patrons in its first year, and is now branching out to an international online forum inspiring social change." />
 			
 			<Brand/>
 			<Poster/>

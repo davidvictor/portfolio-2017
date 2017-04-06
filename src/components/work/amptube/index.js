@@ -14,11 +14,10 @@ const Amptube = () => {
 			<Hero
 				bg={`${assetUrl}/amptube/hero.png`}
 				logo={`${assetUrl}/amptube/mark.svg`}>
-				<Deets title="Amptube" url="//amptu.be"/>
+				<Deets title="Amptube" url="//amptu.be" roles="COFOUNDER / DESIGN / UI+UX / FRONTEND"/>
 			</Hero>
 			
-			<About description="Amptube is a discovery tool that allows up and coming creators the opportunity to earn featured placement on an established creator’s page by sharing videos with their social networks." roles="COFOUNDER / DESIGN / UI+UX / FRONTEND"/>
-		
+			<About description="Amptube is a discovery tool that allows up and coming creators the opportunity to earn featured placement on an established creator’s page by sharing videos with their social networks." />
 		</div>
 	);
 };

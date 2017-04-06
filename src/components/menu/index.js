@@ -44,7 +44,7 @@ const Menu = ({off}) => {
 					<NavLink to="/work/archive"
 					         onClick={() => handleToggle()}
 					         activeClassName={style.selected}>
-						Archive
+						Additional Work
 					</NavLink>
 				</Box>
 			</Flex>

@@ -59,7 +59,7 @@ const Palette = () => {
 			<Flex justify="center" my={4}>
 				{colors.map((color, idx) =>
 					<Box key={idx}>
-						<div className={`color-card ${color.name}`}>
+						<div className={`color-card ${color.name} ${style.colorCard}`}>
 							<div className="color-preview "></div>
 							<div className="color-shades"></div>
 						</div>
@@ -197,29 +197,29 @@ const Insight = () => {
 		</div>
 	)
 };
- 
+
 const Mobile = () => {
 	const classes = classNames(style.mobile, 'typeset-project');
 	const ios     = [{
 		src:  `${assetUrl}/vetondemand/renders-v2/sm/receipt-gold-left.png`,
 		zoom: `${assetUrl}/vetondemand/renders-v2/med/receipt-gold-left.png`,
-	},{
+	}, {
 		src:  `${assetUrl}/vetondemand/renders-v2/sm/home-gold-left.png`,
 		zoom: `${assetUrl}/vetondemand/renders-v2/med/home-gold-left.png`,
-	},{
+	}, {
 		src:  `${assetUrl}/vetondemand/renders-v2/sm/signup-gold-right.png`,
 		zoom: `${assetUrl}/vetondemand/renders-v2/med/signup-gold-right.png`,
-	},{
+	}, {
 		src:  `${assetUrl}/vetondemand/renders-v2/sm/profile-vet-gold-right.png`,
 		zoom: `${assetUrl}/vetondemand/renders-v2/med/profile-vet-gold-right.png`,
 	}];
-	const android     = [{
+	const android = [{
 		src:  `${assetUrl}/vetondemand/renders-android/sm/android-angle.png`,
 		zoom: `${assetUrl}/vetondemand/renders-android/android-angle.png`,
-	},{
+	}, {
 		src:  `${assetUrl}/vetondemand/renders-android/sm/android-front.png`,
 		zoom: `${assetUrl}/vetondemand/renders-android/android-front.png`,
-	},{
+	}, {
 		src:  `${assetUrl}/vetondemand/renders-android/sm/android-angle-right.png`,
 		zoom: `${assetUrl}/vetondemand/renders-android/android-angle-right.png`,
 	}];
@@ -230,7 +230,7 @@ const Mobile = () => {
 					<h3>iOS</h3>
 					<Flex justify='space-around' wrap>
 						{ios.map((phone, idx) =>
-							<Box p={2} key={idx}>
+							<Box py={2} px={3} key={idx}>
 								<ImageZoom
 									shouldPreload
 									image={{
@@ -280,7 +280,7 @@ const Web = () => {
 	return (
 		<div className={classes}>
 			<Flex justify="center" mb={6} mt={4} wrap>
-				<Box p={2} sm={12} lg={6} style={{textAlign:'center'}}>
+				<Box p={2} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
 						shouldPreload
 						image={{
@@ -294,7 +294,7 @@ const Web = () => {
 						}}
 					/>
 				</Box>
-				<Box p={2} sm={12} lg={6} style={{textAlign:'center'}}>
+				<Box p={2} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
 						shouldPreload
 						image={{
@@ -318,12 +318,13 @@ const VetOnDemand = () => {
 	return (
 		<div className={classes}>
 			<Hero
-				bg={`${assetUrl}/vetondemand/hero.jpg`}
-				logo={`${assetUrl}/vetondemand/logo-mark-white.svg`}>
-				<Deets title="Vet On Demand" url='http://vetondemand.com'/>
+				bg={`${assetUrl}/vetondemand/hero-2.png`}
+				logo={`${assetUrl}/vetondemand/logo-h-white.svg`}
+				logoWidth="300px">
+				<Deets title="Vet On Demand" url='http://vetondemand.com' roles="COFOUNDER / STRATEGY / DESIGN / UI+UX / FRONTEND"/>
 			</Hero>
 			
-			<About description="Vet On Demand is the first mobile application to provide personalized, real time access to veterinary advice and recommendations through the power of live video conferencing." roles="COFOUNDER / DESIGN / UI+UX / FRONTEND"/>
+			<About description="Vet On Demand is the first mobile application to provide personalized, real time access to veterinary advice and recommendations through the power of live video conferencing." roles="COFOUNDER / STRATEGY / DESIGN / UI+UX / FRONTEND"/>
 			
 			<Heading title="Research"
 			         subtitle="Becoming a Dog Whisperer"

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import ContactButton from '../contact';
-import {ButtonCircle} from 'rebass';
+import IconButtons from './iconButtons';
 import Headroom from 'react-headroom';
 import {Link} from 'react-router-dom';
 import BodyClass from 'react-body-classname';
@@ -10,8 +9,6 @@ import classNames from 'classnames';
 import style from './style.scss';
 
 import {assetUrl} from 'config';
-
-import {Github, LinkedIn} from '../icon';
 
 import {compose, withState, withHandlers} from 'recompose';
 
@@ -42,40 +39,18 @@ const Header = ({off}) => {
 	)
 };
 
+
+
 const Footer = ({off}) => {
 	const classes  = classNames("footer", style.footer);
-	const openLink = (url) => {
-		if (url) {
-			off();
-			const win = window.open(url, '_blank');
-			win.focus();
-		}
-	};
-	
 	return (
 		<div className={classes}>
 			<Flex justify='flex-start' align='center' wrap={false}>
-				<Box flexAuto>
+				<Box >
 					<img src={`${assetUrl}/geo/geo-29.svg`} className={style.geo}/>
 				</Box>
-				<Box pr={1}>
-					<ButtonCircle
-						backgroundColor="white"
-						color="white"
-						onClick={() => openLink('https://www.linkedin.com/in/dvictor')}>
-						<LinkedIn className={style.icon}/>
-					</ButtonCircle>
-				</Box>
-				<Box pr={1}>
-					<ButtonCircle
-						backgroundColor="white"
-						color="white"
-						onClick={() => openLink('https://github.com/davidvictor')}>
-						<Github className={style.icon}/>
-					</ButtonCircle>
-				</Box>
-				<Box>
-					<ContactButton/>
+				<Box flexAuto>
+					<IconButtons off={off}/>
 				</Box>
 			</Flex>
 		</div>

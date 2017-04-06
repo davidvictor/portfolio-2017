@@ -40,6 +40,17 @@
 	max-width: 1200px;
 }
 
+$ccWidth: 180px;
+
+.colorCard {
+	max-width: $ccWidth;
+	width: 20vw;
+	[class*='shades'] {
+		max-height: $ccWidth / 5;
+		height: 20vw / 5;
+	}
+}
+
 @media only screen and (max-width: 960px) {
 	.photos {
 		width: 90%;

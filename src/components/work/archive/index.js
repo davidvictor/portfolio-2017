@@ -11,6 +11,43 @@ import {assetUrl} from 'config';
 const LogoGrid = () => {
 	const photos = [
 		{
+			src:  `${assetUrl}/archive/nrc.jpg`,
+			zoom:  `${assetUrl}/archive/nrc@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/huntridge2.jpg`,
+			zoom:  `${assetUrl}/archive/huntridge2@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/huntridge1.jpg`,
+			zoom:  `${assetUrl}/archive/huntridge1@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/funky-umbrella3.jpg`,
+			zoom:  `${assetUrl}/archive/funky-umbrella3@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/funky-umbrella2.jpg`,
+			zoom:  `${assetUrl}/archive/funky-umbrella2@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/funky-umbrella1.jpg`,
+			zoom:  `${assetUrl}/archive/funky-umbrella1@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/fishdicks.jpg`,
+			zoom:  `${assetUrl}/archive/fishdicks@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/council.jpg`,
+			zoom:  `${assetUrl}/archive/council@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/headjamz.jpg`,
+			zoom:  `${assetUrl}/archive/headjamz@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/skydogcon3.jpg`,
+			zoom:  `${assetUrl}/archive/skydogcon3@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/swag-city1.jpg`,
+			zoom:  `${assetUrl}/archive/swag-city1@2x.jpg`,
+		},{
+			src:  `${assetUrl}/archive/swag-city2.jpg`,
+			zoom:  `${assetUrl}/archive/swag-city2@2x.jpg`,
+		},
+		{
 			src:  `${assetUrl}/archive/cherub.jpg`,
 			zoom:  `${assetUrl}/archive/cherub@2x.jpg`,
 		}, {

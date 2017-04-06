@@ -26,6 +26,11 @@ $toggleHeight: 60px;
 		font-weight:      700;
 		text-transform:   uppercase;
 		letter-spacing:   0.02rem;
+		text-indent: -9999em;
+		background-image: url("#{$assetUrl}/base/opened-thick.svg");
+		background-size: 108px;
+		background-position: center center;
+		background-repeat: no-repeat;
 	}
 }
 
@@ -47,42 +52,11 @@ $toggleHeight: 60px;
 	margin: 0 0 24px 0;
 }
 
-@media only screen and (max-width: 960px) {
-	.root {
-		&.active {
-			.inner {
-				width:     100vw;
-				transform: translate3d(0, 0, 0);
-			}
-		}
-	}
-	.inner {
-		height:    100%;
-		transform: translate3d(-100%, 0, 0);
-	}
-	.logoImg {
-		width:     100%;
-		max-width: 20rem;
-	}
-	.menuToggle {
-		display: block;
-	}
-	.mobileButton {
-		
-		&.buttonActive {
-			
-		}
-	}
-	.footer {
-		margin: 0 0 24px + $toggleHeight 0;
-	}
-}
-
 .icon {
 	svg {
 		display: block;
 		height:  auto;
-		width:   18px;
+		width:   24px;
 	}
 }
 
@@ -92,11 +66,12 @@ $toggleHeight: 60px;
 
 .logoImg {
 	width:  94%;
+	max-width: 14rem;
 	margin: 0 0 12px 0;
 }
 
 .geo {
-	width: 42px;
+	width: 36px;
 }
 
 .modal {
@@ -136,5 +111,57 @@ $toggleHeight: 60px;
 		span {
 			color: rgb(165, 127, 95);
 		}
+	}
+}
+
+.iconButtonWrap {
+	+ * {
+		margin-left: 8px;
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.root {
+		&.active {
+			.inner {
+				transform: translate3d(0, 0, 0);
+			}
+		}
+	}
+	.inner {
+		height:    100%;
+		width:     100vw;
+		transition: transform 200ms ease;
+		transform: translate3d(0, calc(100% + #{$toggleHeight}), 0);
+	}
+	.logoImg {
+		width:     100%;
+		max-width: 14rem;
+	}
+	.menuToggle {
+		display: block;
+	}
+	.mobileButton {
+		
+		&.buttonActive {
+			background-image: url("#{$assetUrl}/base/closed-thick.svg");
+		}
+	}
+	.footer {
+		margin: 0 0 24px + $toggleHeight 0;
+	}
+	
+	.icon {
+		svg {
+			width:   30px;
+		}
+	}
+	.iconButtonWrap {
+		+ * {
+			margin-left: 24px;
+		}
+	}
+	.geo {
+		width: 42px;
 	}
 }
