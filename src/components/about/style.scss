@@ -60,6 +60,9 @@
 }
 
 @media only screen and (max-width: 960px) {
+	.root {
+		height: calc(100vh - 60px);
+	}
 	.me {
 		bottom: 60px;
 	}
