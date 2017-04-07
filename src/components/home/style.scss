@@ -19,19 +19,21 @@
 		height:   100%;
 		top:      0;
 		left:     0;
-		background-color: transparentize(white,.7);
+		background-color: transparentize(white,.9);
 	}
 }
 
 .about {
 	position: relative;
-	width:    60%;
-	top:      15%;
-	left:     64px;
+	//width:    60%;
+	top:      24px;
+	left:     24px;
 	z-index: 2;
 	p {
-		font-size:   1.2rem;
+		//padding-left: 8rem;
+		font-size:   1.1rem;
 		line-height: 1.8;
+		margin: 0;
 	}
 }
 
@@ -39,6 +41,14 @@
 	display: none;
 	width: 100%;
 	max-width: 14rem;
+	margin-bottom: 18px;
+}
+
+.king {
+	display: block;
+	width: 100%;
+	max-width: 16rem;
+	margin: 64px 0 36px 64px;
 }
 
 .iconButtonWrap {
@@ -46,9 +56,23 @@
 	margin-top: 24px;
 }
 
+@media only screen and (max-width: 1120px) {
+	
+	.king {
+		margin: 48px 0 36px 48px;
+	}
+	
+}
+
+
 @media only screen and (max-width: 960px) {
 	.logo {
 		display: block;
+	}
+	.king {
+		///display: none;
+		margin: 24px 0 24px 24px;
+		max-width: 12rem;
 	}
 	.inner {
 		&:after {
@@ -79,5 +103,14 @@
 			padding: 0 4px;
 			font-size:   1rem;
 		}
+	}
+}
+
+
+@media only screen and (max-width: 600px) {
+	.king {
+		///display: none;
+		margin: 16px 0 16px 16px;
+		max-width: 11rem;
 	}
 }
