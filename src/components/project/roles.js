@@ -30,7 +30,7 @@ const Role = withActive(({label, active, on, off, toggle, children, context}) =>
 		<div className={classes}>
 			<ButtonOutline
 				color={context.rebass.colors.gold}
-				onClick={toggle}
+				//onClick={toggle}
 				pill
 				py={2}
 				px={3}

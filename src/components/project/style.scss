@@ -194,14 +194,15 @@ $peekSize: 40vh;
 .role {
 	padding: 3px 6px 3px 0;
 	button {
+		cursor: default !important;
 		text-transform: uppercase;
 		transition:     color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
 		box-shadow:     0 0 0 1px $gold inset !important;
-		&:hover {
-			color:            white !important;
-			background-color: $gold !important;
-			box-shadow:       0 0 0 1px $gold inset !important;
-		}
+		//&:hover {
+		//	color:            white !important;
+		//	background-color: $gold !important;
+		//	box-shadow:       0 0 0 1px $gold inset !important;
+		//}
 	}
 }
 
