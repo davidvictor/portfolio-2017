@@ -32,19 +32,16 @@ class App extends Component {
 				<div className={style.inner} style={{backgroundImage: bgImage}}>
 					<div className={style.about}>
 						<img src={`${assetUrl}/base/davidvictor.svg`} className={style.logo}/>
-					
-						<p>
-							I'm&nbsp;a&nbsp;
+						<p>I'm&nbsp;a&nbsp;
 							<a href="https://medium.com/fullstack-design-by-xpos-it/the-rise-of-the-full-stack-designer-and-the-tools-he-uses-3daf015eb3fc"
 							   target="_blank"
-							   onClick={()=>handleClick('Full Stack Designer')}><span><strong>full&nbsp;stack&nbsp;designer</strong></span></a> and&nbsp;
+							   onClick={() => handleClick('Full Stack Designer')}><span><strong>full&nbsp;stack&nbsp;designer</strong></span></a> and&nbsp;
 							<a href="http://f2em.com/"
 							   target="_blank"
-							   onClick={()=>handleClick('Front End Engineer')}><span><strong>front&nbsp;end&nbsp;engineer</strong></span></a><br/> I believe in the&nbsp;
+							   onClick={() => handleClick('Front End Engineer')}><span><strong>front&nbsp;end&nbsp;engineer</strong></span></a><br/> I believe in the&nbsp;
 							<a href="http://www.triplepundit.com/2011/11/yves-behars-7-principles-holistic-product-design/#"
 							   target="_blank"
-							   onClick={()=>handleClick('Holistic Approach')}><span>holistic&nbsp;approach</span></a> to&nbsp;product&nbsp;design.<br/>
-							I live in Venice,&nbsp;California.
+							   onClick={() => handleClick('Holistic Approach')}><span>holistic&nbsp;approach</span></a> to&nbsp;product&nbsp;design.<br/>I develop innovative, creative solutions that combine a unique visual identity with sustained emotional resonance. <br/>A roar through the noise of now.<br/>I live in Venice,&nbsp;California.
 						</p>
 						<img src={`${assetUrl}/lionhouse/king.svg`} className={style.king}/>
 						<div className={style.iconButtonWrap}>

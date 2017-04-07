@@ -1,17 +1,40 @@
+@import '../../styles/vars';
+
 .root {
+	width: 100%;
 	a {
 		display:         block;
+		position:        relative;
 		padding:         8px 0;
 		color:           black;
 		text-decoration: none;
+		text-transform:  lowercase;
 		font-weight:     300;
 		letter-spacing:  0.06rem;
 		font-size:       13px;
 		transform:       translateX(0);
 		transition:      transform 200ms ease;
+		&:before {
+			position:   absolute;
+			left:       0;
+			top:        50%;
+			height:     1px;
+			width:      calc(100% - 1px);
+			background: $border-color;
+		}
+		span {
+			position:   relative;
+			display:    inline-block;
+			background: white;
+			padding:    0 16px 0 24px;
+			z-index:    1;
+		}
 		&.selected {
 			color:     rgb(165, 127, 95);
 			transform: translateX(2px);
+			&:before {
+				//content: '';
+			}
 		}
 		&:hover,
 		&:focus {
@@ -23,8 +46,8 @@
 @media only screen and (max-width: 960px) {
 	.root {
 		a {
-			padding:         10px 0;
-			font-size:       14px;
+			padding:   10px 0;
+			font-size: 14px;
 		}
 	}
 }

@@ -1,0 +1,82 @@
+@import '../../styles/vars';
+
+.root {
+	position: relative;
+	height:   100vh;
+	width:    100%;
+}
+
+.me {
+	position:            absolute;
+	bottom:              0;
+	left:                0;
+	width:               320px;
+	height:              320px;
+	background-size:     100%;
+	background-position: center center;
+	background-repeat:   no-repeat;
+}
+
+.venice {
+	position: absolute;
+	bottom:   32px;
+	right:    48px;
+	font-size: 12px;
+	color: lighten(black, 60%);
+}
+
+.about {
+	position: relative;
+	z-index: 1;
+	padding: 48px;
+	p {
+		font-size: 15px;
+		font-weight:     300;
+		letter-spacing:  0.02rem;
+		margin: 0 0 8px 0;
+	}
+}
+
+@media only screen and (min-width: 1400px) {
+	.me {
+		width:  360px;
+		height: 360px;
+	}
+}
+
+@media only screen and (min-width: 1660px) {
+	.me {
+		width:  420px;
+		height: 420px;
+	}
+}
+
+@media only screen and (min-width: 1920px) {
+	.me {
+		width:  520px;
+		height: 520px;
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.me {
+		bottom: 60px;
+	}
+	.venice {
+		right:    18px;
+		bottom:   72px;
+	}
+	.about {
+		padding: 24px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.me {
+		width:  210px;
+		height: 210px;
+	}
+	.venice {
+		font-size: 10px;
+	}
+}

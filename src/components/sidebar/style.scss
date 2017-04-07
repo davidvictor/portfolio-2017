@@ -13,24 +13,24 @@ $toggleHeight: 60px;
 	//left:             0;
 	
 	.mobileButton {
-		display:          block;
-		width:            100%;
-		height:           $toggleHeight;
-		appearance:       none;
-		background-color: white;
-		color:            #111111;
-		box-shadow:       none;
-		border:           none;
-		cursor:           pointer;
-		font-size:        14px;
-		font-weight:      700;
-		text-transform:   uppercase;
-		letter-spacing:   0.02rem;
-		text-indent: -9999em;
-		background-image: url("#{$assetUrl}/base/opened-thick.svg");
-		background-size: 108px;
+		display:             block;
+		width:               100%;
+		height:              $toggleHeight;
+		appearance:          none;
+		background-color:    white;
+		color:               #111111;
+		box-shadow:          none;
+		border:              none;
+		cursor:              pointer;
+		font-size:           14px;
+		font-weight:         700;
+		text-transform:      uppercase;
+		letter-spacing:      0.02rem;
+		text-indent:         -9999em;
+		background-image:    url("#{$assetUrl}/base/opened-thick.svg");
+		background-size:     108px;
 		background-position: center center;
-		background-repeat: no-repeat;
+		background-repeat:   no-repeat;
 	}
 }
 
@@ -41,7 +41,7 @@ $toggleHeight: 60px;
 	z-index:          200;
 	top:              0;
 	background-color: white;
-	border-right:       1px solid $border-color;
+	border-right:     1px solid $border-color;
 }
 
 .header {
@@ -50,6 +50,14 @@ $toggleHeight: 60px;
 
 .footer {
 	margin: 0 0 24px 0;
+	a {
+		display:         block;
+		text-decoration: none;
+		font-weight:     300;
+		letter-spacing:  0.06rem;
+		font-size:       13px;
+		padding:         0 12px;
+	}
 }
 
 .icon {
@@ -65,9 +73,9 @@ $toggleHeight: 60px;
 }
 
 .logoImg {
-	width:  94%;
+	width:     94%;
 	max-width: 14rem;
-	margin: 0 0 12px 0;
+	margin:    0 0 12px 0;
 }
 
 .geo {
@@ -129,10 +137,10 @@ $toggleHeight: 60px;
 		}
 	}
 	.inner {
-		height:    100%;
-		width:     100vw;
+		height:     100%;
+		width:      100vw;
 		transition: transform 200ms ease;
-		transform: translate3d(0, calc(100% + #{$toggleHeight}), 0);
+		transform:  translate3d(0, calc(100% + #{$toggleHeight}), 0);
 	}
 	.logoImg {
 		width:     100%;
@@ -153,7 +161,7 @@ $toggleHeight: 60px;
 	
 	.icon {
 		svg {
-			width:   30px;
+			width: 30px;
 		}
 	}
 	.iconButtonWrap {

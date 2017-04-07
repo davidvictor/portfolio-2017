@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import Sidebar from '../sidebar';
 import Home from '../home';
+import About from '../about';
 import Amptube from '../work/amptube';
 import VOD from '../work/vetondemand';
 import LIB from '../work/lifeisbeautiful';
@@ -42,19 +43,22 @@ class App extends Component {
 				colors:        colors,
 				scale:         scale,
 				fontSizes:     fontSizes,
-				Button: {
+				borderRadius:  3,
+				Button:        {
 					fontSize:      fontSizes[10],
 					fontWeight:    '500',
 					letterSpacing: '0.02rem',
+					textTransform: 'uppercase',
 				},
 				ButtonOutline: {
 					fontSize:      fontSizes[10],
 					fontWeight:    '500',
 					letterSpacing: '0.02rem',
+					textTransform: 'uppercase',
 				},
-				Close: {
-					fontSize:      '6rem',
-					fontWeight:    '100',
+				Close:         {
+					fontSize:   '6rem',
+					fontWeight: '100',
 				}
 			}
 		}
@@ -70,7 +74,8 @@ class App extends Component {
 						<Sidebar/>
 					</Box>
 					<Box flexAuto className={style.content}>
-						<Route exact path="/" component={Home}/>
+						<Route exact path="/" component={About}/>
+						<Route exact path="/about" component={About}/>
 						<Route exact path="/work/amptube" component={Amptube}/>
 						<Route exact path="/work/vetondemand" component={VOD}/>
 						<Route exact path="/work/lifeisbeautiful" component={LIB}/>

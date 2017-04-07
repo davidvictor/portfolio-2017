@@ -21,6 +21,21 @@ const LogoGrid = () => {
 			src:  `${assetUrl}/archive/feast.jpg`,
 			zoom: `${assetUrl}/archive/feast@2x.jpg`,
 		}, {
+			src:  `${assetUrl}/archive/flexawn.jpg`,
+			zoom: `${assetUrl}/archive/flexawn@2x.jpg`,
+		}, {
+			src:  `${assetUrl}/archive/classic-1.jpg`,
+			zoom: `${assetUrl}/archive/classic-1@2x.jpg`,
+		}, {
+			src:  `${assetUrl}/archive/classic-2.jpg`,
+			zoom: `${assetUrl}/archive/classic-2@2x.jpg`,
+		}, {
+			src:  `${assetUrl}/archive/mcrs.jpg`,
+			zoom: `${assetUrl}/archive/mcrs@2x.jpg`,
+		}, {
+			src:  `${assetUrl}/archive/moodsmith.jpg`,
+			zoom: `${assetUrl}/archive/moodsmith@2x.jpg`,
+		}, {
 			src:  `${assetUrl}/archive/gro.jpg`,
 			zoom: `${assetUrl}/archive/gro@2x.jpg`,
 		}, {
@@ -59,22 +74,7 @@ const LogoGrid = () => {
 		}, {
 			src:  `${assetUrl}/archive/swag-city2.jpg`,
 			zoom: `${assetUrl}/archive/swag-city2@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/flexawn.jpg`,
-			zoom: `${assetUrl}/archive/flexawn@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/classic-1.jpg`,
-			zoom: `${assetUrl}/archive/classic-1@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/classic-2.jpg`,
-			zoom: `${assetUrl}/archive/classic-2@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/mcrs.jpg`,
-			zoom: `${assetUrl}/archive/mcrs@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/moodsmith.jpg`,
-			zoom: `${assetUrl}/archive/moodsmith@2x.jpg`,
-		}
+		},
 	];
 	const defaultStyles = {
 		overlay: {
@@ -84,7 +84,7 @@ const LogoGrid = () => {
 	return (
 		<Flex justify="center" wrap pt={0}>
 			{photos.map((photo, idx) =>
-				<Box key={idx} my={0} sm={12} md={12} lg={12}>
+				<Box key={idx} my={0} sm={12} md={6} lg={6}>
 					<ImageZoom
 						shouldPreload
 						zoomMargin={0}

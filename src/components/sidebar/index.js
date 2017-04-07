@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
+import {Link, NavLink} from 'react-router-dom';
 import IconButtons from './iconButtons';
 import Headroom from 'react-headroom';
-import {Link} from 'react-router-dom';
 import BodyClass from 'react-body-classname';
 import Menu from '../menu';
 import {Flex, Box} from 'reflexbox';
@@ -43,13 +43,24 @@ const Header = ({off}) => {
 
 const Footer = ({off}) => {
 	const classes  = classNames("footer", style.footer);
+	const handleToggle = () => {
+		off();
+	};
 	return (
 		<div className={classes}>
 			<Flex justify='flex-start' align='center' wrap={false}>
 				<Box >
 					<img src={`${assetUrl}/geo/geo-29.svg`} className={style.geo}/>
 				</Box>
-				<Box flexAuto>
+				<Box flexAuto style={{textAlign:'center'}}>
+					<NavLink to="/about"
+					         onClick={() => handleToggle()}
+					         activeClassName={style.selected}
+										style={{display:'none'}}>
+						about me
+					</NavLink>
+				</Box>
+				<Box>
 					<IconButtons off={off}/>
 				</Box>
 			</Flex>
@@ -69,14 +80,14 @@ const Sidebar = withActive(({active, on, off, toggle}) => {
 	});
 	return (
 		<div className={classes}>
-			<Flex flexColumn wrap={false} flex className={style.inner} px={2}>
-				<Box>
+			<Flex flexColumn wrap={false} flex className={style.inner} >
+				<Box px={2}>
 					<Header off={off}/>
 				</Box>
-				<Box flexAuto>
+				<Box flexAuto flex>
 					<Menu off={off}/>
 				</Box>
-				<Box>
+				<Box px={2}>
 					<Footer off={off}/>
 				</Box>
 			</Flex>
