@@ -13,7 +13,7 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
-const {accessKeyId, secretAccessKey, region} = require('./config/aws');
+const {accessKeyId, secretAccessKey, region, region2} = require('./config/aws');
 
 const gitRevisionPlugin = new GitRevisionPlugin({
 	lightweightTags: true,
@@ -559,7 +559,7 @@ exports.uploadS3 = function() {
 				s3Options:       {
 					accessKeyId:     accessKeyId,
 					secretAccessKey: secretAccessKey,
-					region:          region
+					region:          region2
 				},
 				s3UploadOptions: {
 					Bucket: 'techbro.biz',
@@ -581,7 +581,7 @@ exports.uploadS3 = function() {
 				s3Options:       {
 					accessKeyId:     accessKeyId,
 					secretAccessKey: secretAccessKey,
-					region:          region
+					region:          region2
 				},
 				s3UploadOptions: {
 					Bucket: 'www.techbro.biz',
