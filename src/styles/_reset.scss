@@ -156,6 +156,10 @@ table {
 	border-spacing:  0;
 }
 
+iframe {
+	max-width: 100%;
+	display: inline-block;
+}
 
 @media screen {
 	[hidden~="screen"] {

@@ -40,14 +40,53 @@
 	max-width: 1200px;
 }
 
+.videoPlayer {
+	position:       relative;
+	width:          800px;
+	height:         0;
+	padding-bottom: 56%;
+	> * {
+		position: absolute;
+		left:     0;
+		top:      0;
+		height:   100%;
+		width:    100%;
+	}
+	iframe {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.video {
+	.videoContainer {
+		
+	}
+	.videoInner {
+		
+	}
+}
+
 $ccWidth: 180px;
 
 .colorCard {
 	max-width: $ccWidth;
-	width: 20vw;
+	width:     20vw;
 	[class*='shades'] {
 		max-height: $ccWidth / 5;
-		height: 20vw / 5;
+		height:     20vw / 5;
+	}
+}
+
+@media only screen and (max-width: 1280px) {
+	.videoPlayer {
+		width:    600px;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.videoPlayer {
+		width:    480px;
 	}
 }
 
@@ -73,5 +112,14 @@ $ccWidth: 180px;
 		.type2 {
 			min-width: 200px;
 		}
+	}
+	.videoPlayer {
+		width:    70vw;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.videoPlayer {
+		width:    90vw;
 	}
 }

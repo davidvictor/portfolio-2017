@@ -4,6 +4,7 @@ import Project from '../../project';
 import Hero from '../../project/hero';
 import Heading from '../../project/heading';
 import ImageZoom from 'react-medium-image-zoom';
+import YouTube from 'react-youtube';
 import classNames from 'classnames';
 import style from './style.scss';
 
@@ -312,6 +313,36 @@ const Web = () => {
 	)
 };
 
+const Video = () => {
+	const classes = classNames(style.video, 'typeset-project');
+	const opts    = {
+		height:     '360',
+		width:      '640',
+		playerVars: {
+			autoplay:       0,
+			controls:       0,
+			enablejsapi:    1,
+			modestbranding: 1,
+			playsinline:    1,
+			showinfo:       0,
+		}
+	};
+	return (
+		<div className={classes}>
+			<Flex justify="center" mb={6} mt={4} wrap>
+				<Box p={4} style={{textAlign: 'center'}}>
+					<div className={style.videoPlayer}>
+						<YouTube
+							videoId="T1MXErdWYVs"
+							opts={opts}
+						/>
+					</div>
+				</Box>
+			</Flex>
+		</div>
+	)
+};
+
 const VetOnDemand = () => {
 	const classes = classNames("vetondemand", style.root);
 	return (
@@ -320,51 +351,53 @@ const VetOnDemand = () => {
 				live
 				title="Vet On Demand"
 				url='http://vetondemand.com'
-				roles={['strategy','branding','ui','ux','code']}
+				roles={['strategy', 'branding', 'ui', 'ux', 'code']}
 				description="Vet On Demand is the first mobile application to provide personalized, real time access to veterinary advice and recommendations through the power of live video conferencing."
 				contribution="Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy."
 				bg={`${assetUrl}/vetondemand/hero-2.png`}
-				logo={{src:`${assetUrl}/vetondemand/logo-h-white.svg`,width:'300px'}}>
+				logo={{src: `${assetUrl}/vetondemand/logo-h-white.svg`, width: '300px'}}>
+				
+				
+				<Heading title="Research"
+				         subtitle="Becoming a Dog Whisperer"
+				         icon={`${assetUrl}/lionhouse/data.svg`}
+				/>
+				
+				<Research/>
+				
+				<Heading title="Insight"
+				         subtitle="Every pet should have access to the care they deserve."
+				         icon={`${assetUrl}/lionhouse/devise.svg`}
+				/>
+				
+				<Insight/>
+				
+				<Heading title="Branding"
+				         subtitle="Trusted. Convenient. Affordable."
+				         icon={`${assetUrl}/lionhouse/design.svg`}
+				/>
+				
+				<Logos/>
+				<Palette/>
+				<Type/>
+				<Photos/>
+				<Video/>
+				
+				<Heading title="Mobile"
+				         subtitle="It's like having a vet in your pocket."
+				         icon={`${assetUrl}/lionhouse/ui-alt.svg`}
+				/>
+				
+				<Mobile/>
+				
+				<Heading title="Web"
+				         subtitle="Instantly scalable, always available."
+				         icon={`${assetUrl}/lionhouse/ux.svg`}
+				/>
+				
+				<Web/>
 			
 			
-			<Heading title="Research"
-			         subtitle="Becoming a Dog Whisperer"
-			         icon={`${assetUrl}/lionhouse/data.svg`}
-			/>
-			
-			<Research/>
-			
-			<Heading title="Insight"
-			         subtitle="Every pet should have access to the care they deserve."
-			         icon={`${assetUrl}/lionhouse/devise.svg`}
-			/>
-			
-			<Insight/>
-			
-			<Heading title="Branding"
-			         subtitle="Trusted. Convenient. Affordable."
-			         icon={`${assetUrl}/lionhouse/design.svg`}
-			/>
-			
-			<Logos/>
-			<Palette/>
-			<Type/>
-			<Photos/>
-			
-			<Heading title="Mobile"
-			         subtitle="It's like having a vet in your pocket."
-			         icon={`${assetUrl}/lionhouse/ui-alt.svg`}
-			/>
-			
-			<Mobile/>
-			
-			<Heading title="Web"
-			         subtitle="Instantly scalable, always available."
-			         icon={`${assetUrl}/lionhouse/ux.svg`}
-			/>
-			
-			<Web/>
-		
 			</Project>
 		</div>
 	);
