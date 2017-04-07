@@ -68,7 +68,8 @@
   },
   "scripts": {
     "local": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=local",
-    "build": "babel-node ./node_modules/.bin/webpack --env=production",
+    "build": "babel-node ./node_modules/.bin/webpack --env=development",
+    "deploy": "babel-node ./node_modules/.bin/webpack --env=production",
     "test": "babel-node ./node_modules/.bin/webpack --env=test --progress --display-chunks --display-reasons --display-error-details"
   },
   "browserslist": [

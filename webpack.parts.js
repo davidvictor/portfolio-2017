@@ -391,11 +391,79 @@ exports.useCDN = function() {
 	}
 };
 
+exports.uploadS3Dev = function() {
+	return {
+		output:  {
+			publicPath: `//d1x0bq6kwb2k3o.cloudfront.net/development/${gitTag}`,
+		},
+		plugins: [
+			new CompressionPlugin({
+				asset:     "[path].gz[query]",
+				algorithm: "gzip",
+				test:      /\.js$|\.css$/,
+				threshold: 10240,
+				minRatio:  0.8
+			}),
+			new S3Plugin({
+				include: /.*\.(css|js)/,
+				basePath:        `development/${gitTag}`,
+				s3Options:       {
+					accessKeyId:     accessKeyId,
+					secretAccessKey: secretAccessKey,
+					region:          region
+				},
+				s3UploadOptions: {
+					Bucket: 'assets.davidvictor.me',
+					/**
+					 * @return {string}
+					 */
+					ContentEncoding(fileName) {
+						if (/\.gz/.test(fileName))
+							return 'gzip';
+					},
+					/**
+					 * @return {string}
+					 */
+					ContentType(fileName) {
+						if (/\.js/.test(fileName)) {
+							return 'application/javascript';
+						} else if (/\.css/.test(fileName)) {
+							return 'text/css';
+						} else if (/\.html/.test(fileName)) {
+							return 'text/html';
+						} else {
+							return 'text/plain';
+						}
+					}
+				},
+			}),
+			new S3Plugin({
+				include:         /.*\.html$/,
+				basePath:        ``,
+				s3Options:       {
+					accessKeyId:     accessKeyId,
+					secretAccessKey: secretAccessKey,
+					region:          region
+				},
+				s3UploadOptions: {
+					Bucket: 'beta.davidvictor.me',
+					/**
+					 * @return {string}
+					 */
+					ContentType(fileName) {
+						if (/\.html/.test(fileName)) {
+							return 'text/html';
+						} else {
+							return 'text/plain';
+						}
+					}
+				},
+			}),
+		]
+	}
+};
+
 exports.uploadS3 = function() {
-	//if (!env) {
-	//	console.log('NO s3 upload env specified');
-	//	return
-	//}
 	return {
 		output:  {
 			publicPath: `//d1x0bq6kwb2k3o.cloudfront.net/production/${gitTag}`,
@@ -450,7 +518,73 @@ exports.uploadS3 = function() {
 					region:          region
 				},
 				s3UploadOptions: {
-					Bucket: 'beta.davidvictor.me',
+					Bucket: 'davidvictor.me',
+					/**
+					 * @return {string}
+					 */
+					ContentType(fileName) {
+						if (/\.html/.test(fileName)) {
+							return 'text/html';
+						} else {
+							return 'text/plain';
+						}
+					}
+				},
+			}),
+			new S3Plugin({
+				include:         /.*\.html$/,
+				basePath:        ``,
+				s3Options:       {
+					accessKeyId:     accessKeyId,
+					secretAccessKey: secretAccessKey,
+					region:          region
+				},
+				s3UploadOptions: {
+					Bucket: 'www.davidvictor.me',
+					/**
+					 * @return {string}
+					 */
+					ContentType(fileName) {
+						if (/\.html/.test(fileName)) {
+							return 'text/html';
+						} else {
+							return 'text/plain';
+						}
+					}
+				},
+			}),
+			new S3Plugin({
+				include:         /.*\.html$/,
+				basePath:        ``,
+				s3Options:       {
+					accessKeyId:     accessKeyId,
+					secretAccessKey: secretAccessKey,
+					region:          region
+				},
+				s3UploadOptions: {
+					Bucket: 'techbro.biz',
+					/**
+					 * @return {string}
+					 */
+					ContentType(fileName) {
+						if (/\.html/.test(fileName)) {
+							return 'text/html';
+						} else {
+							return 'text/plain';
+						}
+					}
+				},
+			}),
+			new S3Plugin({
+				include:         /.*\.html$/,
+				basePath:        ``,
+				s3Options:       {
+					accessKeyId:     accessKeyId,
+					secretAccessKey: secretAccessKey,
+					region:          region
+				},
+				s3UploadOptions: {
+					Bucket: 'www.techbro.biz',
 					/**
 					 * @return {string}
 					 */

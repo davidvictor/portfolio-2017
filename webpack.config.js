@@ -71,6 +71,30 @@ const productionConfig = merge([
 	parts.uploadS3(),
 ]);
 
+const developmentConfig = merge([
+	{
+		devtool: 'source-map',
+		output:  {
+			filename:      '[name].[hash:8].js',
+			chunkFilename: '[name].[hash:8].js',
+		},
+	},
+	parts.buildHtml(),
+	parts.uglifyJs(),
+	parts.extractBundles([{
+		name:      'vendor',
+		minChunks: ({userRequest}) => (
+			userRequest &&
+			userRequest.indexOf('node_modules') >= 0 &&
+			userRequest.match(/\.js$/)
+		)
+	}]),
+	parts.setFreeVariable('process.env.NODE_ENV', 'development'),
+	parts.clean(PATHS.build),
+	parts.assetBanner(),
+	parts.uploadS3Dev(),
+]);
+
 const localConfig = merge([
 	{
 		devtool: 'eval-source-map',
@@ -117,6 +141,9 @@ module.exports = function(env) {
 	process.env.BABEL_ENV = env;
 	if (env === 'production') {
 		return merge(commonConfig, productionConfig);
+	}
+	if (env === 'development') {
+		return merge(commonConfig, developmentConfig);
 	}
 	if (env === 'local') {
 		return merge(commonConfig, localConfig);

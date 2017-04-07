@@ -5,6 +5,10 @@ switch (process.env.NODE_ENV) {
 		assetUrl = '//d1x0bq6kwb2k3o.cloudfront.net';
 		follow   = 'index,follow';
 		break;
+	case 'development':
+		assetUrl = '//d1x0bq6kwb2k3o.cloudfront.net';
+		follow   = 'index,follow';
+		break;
 	default:
 		assetUrl = '/images';
 		follow   = 'noindex,nofollow';
