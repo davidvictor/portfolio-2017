@@ -42,12 +42,12 @@ const roleData    = [
 		id:          'strategy',
 		name:        "Strategy",
 		icon:        `${assetUrl}/lionhouse/strategy.svg`,
-		description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
+		description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal."
 	}, {
 		id:          'creative',
 		name:        "Creative Direction",
 		icon:        `${assetUrl}/lionhouse/content.svg`,
-		description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
+		description: "Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
 	}, {
 		id:          'branding',
 		name:        "Branding",
@@ -57,22 +57,22 @@ const roleData    = [
 		id:          'design',
 		name:        "Design",
 		icon:        `${assetUrl}/lionhouse/design.svg`,
-		description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
+		description: "Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
 	}, {
 		id:          'ui',
 		name:        "UI",
 		icon:        `${assetUrl}/lionhouse/interface.svg`,
-		description: "During the renaissance, philosophers poetically distinguished life from non-life with the terms “animate” and “in-animate”. Motion was living and possessed intention. Our approach to product development adheres to this philosophy. Well engineered interaction & movement, no matter how subtle, brings a product to life. Human experience exists within a natural world that is in constant motion and reacts to the smallest of changes, and that’s where LionHouse cultivates its ideas. If you see an element animate from the top of the screen, we’ve ensured its easing gains speed at the pixel equivalent of 9.8m/s2- why? Because, that’s gravity - you experience it everyday, and if presented differently, you're doing it wrong."
+		description: "Farm-to-table tbh readymade helvetica XOXO iPhone. XOXO plaid disrupt woke, snackwave flannel tattooed biodiesel affogato poutine messenger bag keytar butcher chicharrones ennui. Flexitarian salvia schlitz YOLO keytar."
 	}, {
 		id:          'ux',
 		name:        "UX",
 		icon:        `${assetUrl}/lionhouse/scope.svg`,
-		description: "Lyft skateboard master cleanse chambray. Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy. "
+		description: "Etsy pok pok raclette viral ethical. Tofu irony trust fund readymade, occupy YOLO locavore try-hard health goth cold-pressed put a bird on it leggings cred shabby chic. Shabby chic post-ironic ennui hoodie messenger bag."
 	}, {
 		id:          'code',
 		name:        "Code",
 		icon:        `${assetUrl}/lionhouse/develop.svg`,
-		description: "An application that remembers is an application that is personal. It develops a relationship with the user - remembering her name, his preferences, and their history. It guides them through complex logic & functionality as if it were simple. It anticipates intentions and provides the next step as if it were always there; the user is quietly convinced that an entire site used by millions was written just for his/her needs. An application that remembers, can navigate complex encyclopedic volumes of knowledge and deliver contextually relevant information as easily as we remember the days of the week. An unfortunate irony is that in many projects designing this human remembrance is often forgotten. It is diminished to a few hours of technical thought about only the necessary datapoints and their first-glance relationships. "
+		description: "Keytar tattooed polaroid affogato synth fam jean shorts. 3 wolf moon tacos polaroid artisan food truck butcher. Microdosing seitan irony, chillwave glossier stumptown dreamcatcher lumbersexual."
 	}
 ];
 

@@ -51,7 +51,7 @@
 	}
 	.headroom--unpinned {
 		position:  fixed;
-		transform: translateY(100%);
+		transform: translateY(calc(61px));
 	}
 	.headroom--pinned {
 		position:  fixed;

@@ -330,7 +330,7 @@ const Video = () => {
 	return (
 		<div className={classes}>
 			<Flex justify="center" mb={6} mt={4} wrap>
-				<Box p={4} style={{textAlign: 'center'}}>
+				<Box style={{textAlign: 'center'}}>
 					<div className={style.videoPlayer}>
 						<YouTube
 							videoId="T1MXErdWYVs"
@@ -354,7 +354,7 @@ const VetOnDemand = () => {
 				roles={['strategy', 'branding', 'ui', 'ux', 'code']}
 				description="Vet On Demand is the first mobile application to provide personalized, real time access to veterinary advice and recommendations through the power of live video conferencing."
 				contribution="Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy."
-				bg={`${assetUrl}/vetondemand/hero-2.png`}
+				bg={{src:`${assetUrl}/hero/vod-hero.jpg`,mobile:`${assetUrl}/hero/vod-hero-mobile.jpg`}}
 				logo={{src: `${assetUrl}/vetondemand/logo-h-white.svg`, width: '300px'}}>
 				
 				

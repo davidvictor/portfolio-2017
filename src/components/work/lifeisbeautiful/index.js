@@ -522,7 +522,7 @@ const LifeisBeautiful = () => {
 				roles={['creative','branding','design','ui','code']}
 				description="Life is Beautiful is an inspirational company dedicated to helping people conquer their fears and chase their dreams. Its signature project, the Life is Beautiful Festival, was founded in 2013 and launched in October of that same year as a highly successful lifestyle event featuring marquee musicians, chefs, artists and speakers. Held in the heart of Downtown Las Vegas, Life is Beautiful Festival attracted more than 60,000 patrons in its first year, and is now branching out to an international online forum inspiring social change."
 				contribution="Food truck pour-over microdosing, four dollar toast messenger bag pug flexitarian flannel church-key etsy. Mustache tattooed art party small batch narwhal, live-edge green juice pickled pug offal meh ugh. Mlkshk VHS skateboard, chambray meh PBR&B fixie lyft coloring book typewriter gastropub neutra hell of live-edge taxidermy."
-				bg={`${assetUrl}/lifeisbeautiful/hero-tilt.jpg`}
+				bg={{src:`${assetUrl}/hero/lib-hero.jpg`,mobile:`${assetUrl}/hero/lib-hero-mobile.jpg`}}
 				logo={{src: `${assetUrl}/lifeisbeautiful/logo-heart-white.png`, width: "180px"}}>
 				
 				<Brand/>
