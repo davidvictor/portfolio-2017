@@ -12,6 +12,12 @@ const Menu = ({off}) => {
 	return (
 		<Flex justify='flex-start' wrap={false} flexColumn className={classes}>
 			<Box>
+				<NavLink to="/work/amptube"
+				         onClick={() => handleToggle()}
+				         activeClassName={style.selected}><span> Amptube</span>
+				</NavLink>
+			</Box>
+			<Box>
 				<NavLink to="/work/vetondemand"
 				         onClick={() => handleToggle()}
 				         activeClassName={style.selected}><span> Vet On Demand </span></NavLink>
@@ -20,12 +26,6 @@ const Menu = ({off}) => {
 				<NavLink to="/work/lifeisbeautiful"
 				         onClick={() => handleToggle()}
 				         activeClassName={style.selected}><span> Life is Beautiful</span>
-				</NavLink>
-			</Box>
-			<Box>
-				<NavLink to="/work/amptube"
-				         onClick={() => handleToggle()}
-				         activeClassName={style.selected}><span> Amptube</span>
 				</NavLink>
 			</Box>
 			<Box>

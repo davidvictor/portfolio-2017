@@ -103,7 +103,8 @@ $peekSize: 40vh;
 
 .about {
 	position: relative;
-	width:    100%;
+	margin: 0 auto;
+	width:    calc(90vw - 18rem);
 	padding:  24px 0 48px;
 	> div {
 		margin:    0 auto;
@@ -174,6 +175,9 @@ $peekSize: 40vh;
 		h1 {
 			font-size: 1rem;
 		}
+	}
+	.about {
+		width:    calc(90vw);
 	}
 }
 

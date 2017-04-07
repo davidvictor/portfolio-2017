@@ -37,7 +37,7 @@ const colors = {
 	error:     baseColors.red
 };
 
-const scale = [0, 4, 8, 12, 24, 32, 64, 72];
+const scale = [0, 4, 8, 12, 16, 24, 32, 64, 72];
 
 const fontSizes = [64,48,36,24, 18, 16, 14, 13, 12, 11, 10];
 

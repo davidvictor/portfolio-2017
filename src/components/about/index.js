@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button, ButtonOutline} from 'rebass';
 import {browserHistory} from 'react-router-dom';
+import MediaQuery from 'react-responsive';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
@@ -32,14 +33,30 @@ const About = ({}, context) => {
 				</p>
 				<p> I develop innovative, creative solutions by combining a unique visual identity with sustained emotional resonance. </p>
 				<p> I define success as a roar, audible through the noise of now. </p>
-				<ButtonOutline
-					color={context.rebass.colors.gold}
-					py={2}
-					px={3}
-					mt={4}
-					style={{display: 'block'}}
-					className={style.roleButton}
-					onClick={() => handleButton()}> See my Work </ButtonOutline>
+				<MediaQuery minWidth={961}>
+					<ButtonOutline
+						color={context.rebass.colors.gold}
+						//backgroundColor={context.rebass.colors.gold}
+						inverted
+						big
+						py={4}
+						px={5}
+						mt={5}
+						style={{display: 'block'}}
+						className={style.button}
+						onClick={() => handleButton()}> See my Work </ButtonOutline>
+				</MediaQuery>
+				<MediaQuery maxWidth={960}>
+					<ButtonOutline
+						color={context.rebass.colors.gold}
+						py={3}
+						px={4}
+						mt={5}
+						style={{display: 'block'}}
+						className={style.button}
+						onClick={() => handleButton()}> See my Work </ButtonOutline>
+				</MediaQuery>
+				
 			</div>
 			<div className={style.venice}>Made&nbsp;with&nbsp; 🌴&nbsp;&nbsp;in Venice,&nbsp;California</div>
 		</div>

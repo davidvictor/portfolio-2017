@@ -348,7 +348,6 @@ const VetOnDemand = () => {
 	return (
 		<div className={classes}>
 			<Project
-				live
 				title="Vet On Demand"
 				url='http://vetondemand.com'
 				roles={['strategy', 'branding', 'ui', 'ux', 'code']}
