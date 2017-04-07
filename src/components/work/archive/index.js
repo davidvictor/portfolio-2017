@@ -9,6 +9,21 @@ import {assetUrl} from 'config';
 const LogoGrid = () => {
 	const photos        = [
 		{
+			src:  `${assetUrl}/archive/cherub.jpg`,
+			zoom: `${assetUrl}/archive/cherub@2x.jpg`,
+		}, {
+			src:  `${assetUrl}/archive/huntridge-1.jpg`,
+			zoom: `${assetUrl}/archive/huntridge-1@2x.jpg`,
+		}, {
+			src:  `${assetUrl}/archive/medicine-man.jpg`,
+			zoom: `${assetUrl}/archive/medicine-man@2x.jpg`,
+		}, {
+			src:  `${assetUrl}/archive/feast.jpg`,
+			zoom: `${assetUrl}/archive/feast@2x.jpg`,
+		}, {
+			src:  `${assetUrl}/archive/gro.jpg`,
+			zoom: `${assetUrl}/archive/gro@2x.jpg`,
+		}, {
 			src:  `${assetUrl}/archive/nrc.jpg`,
 			zoom: `${assetUrl}/archive/nrc@2x.jpg`,
 		}, {
@@ -44,21 +59,6 @@ const LogoGrid = () => {
 		}, {
 			src:  `${assetUrl}/archive/swag-city2.jpg`,
 			zoom: `${assetUrl}/archive/swag-city2@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/cherub.jpg`,
-			zoom: `${assetUrl}/archive/cherub@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/huntridge-1.jpg`,
-			zoom: `${assetUrl}/archive/huntridge-1@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/medicine-man.jpg`,
-			zoom: `${assetUrl}/archive/medicine-man@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/feast.jpg`,
-			zoom: `${assetUrl}/archive/feast@2x.jpg`,
-		}, {
-			src:  `${assetUrl}/archive/gro.jpg`,
-			zoom: `${assetUrl}/archive/gro@2x.jpg`,
 		}, {
 			src:  `${assetUrl}/archive/flexawn.jpg`,
 			zoom: `${assetUrl}/archive/flexawn@2x.jpg`,

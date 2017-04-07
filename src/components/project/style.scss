@@ -13,7 +13,8 @@ $peekSize: 40vh;
 	position:   relative;
 	width:      100%;
 	background: white;
-	margin-top: 4px;
+	//margin-top: 4px;
+	border-top: 1px solid $border-color;
 	transition: transform 300ms ease-in;
 	&.visible {
 		//transform: translate3d(0, -$peekSize, 0);
@@ -81,8 +82,8 @@ $peekSize: 40vh;
 		letter-spacing: 0.02rem;
 	}
 	h1 {
-		font-size: 1.2rem;
-		margin:    0;
+		font-size:      1.2rem;
+		margin:         0;
 		text-transform: uppercase;
 		letter-spacing: 0.03rem;
 	}
@@ -109,8 +110,8 @@ $peekSize: 40vh;
 	padding:  24px 0 48px;
 	> div {
 		margin:    0 auto;
-		width:     94%;
-		max-width: 680px;
+		width:     100%;
+		max-width: 800px;
 	}
 	label {
 		display:        block;
@@ -162,7 +163,7 @@ $peekSize: 40vh;
 	.cover {
 		//height: calc(100vh - #{$heightMobile * 2});
 		img {
-			transform:  translate3d(-50%, calc(-50% + #{$heightMobile/2}), 0);
+			transform: translate3d(-50%, calc(-50% + #{$heightMobile/2}), 0);
 		}
 	}
 	.fold {
@@ -187,8 +188,7 @@ $peekSize: 40vh;
 		text-transform: uppercase;
 		transition:     color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
 		box-shadow:     0 0 0 1px $gold inset !important;
-		&:hover,
-		&:focus {
+		&:hover {
 			color:            white !important;
 			background-color: $gold !important;
 			box-shadow:       0 0 0 1px $gold inset !important;
@@ -247,7 +247,7 @@ $peekSize: 40vh;
 	button {
 		margin:              36px auto 36px auto !important;
 		background-image:    url("#{$assetUrl}/base/close-thick.svg");
-		background-size:     136px;
+		background-size:     108px;
 		background-position: center center;
 		background-repeat:   no-repeat;
 		opacity:             0.2;
