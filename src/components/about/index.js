@@ -70,3 +70,8 @@ About.contextTypes = {
 };
 
 export default About;
+
+//
+//<p> I'm a&nbsp;
+//<strong>Product Designer</strong>
+//</p>
