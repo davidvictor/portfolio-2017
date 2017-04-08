@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Flex, Box} from 'reflexbox';
 import Project from '../../project';
-import Hero from '../../project/hero';
 import Heading from '../../project/heading';
 import ImageZoom from 'react-medium-image-zoom';
 import YouTube from 'react-youtube';
