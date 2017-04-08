@@ -13,7 +13,7 @@ const Logos = () => {
 	const classes = classNames(style.logos);
 	return (
 		<div className={classes}>
-			<Flex justify="space-around" my={5} wrap>
+			<Flex justify="space-around" align="center" my={5} wrap>
 				<Box p={2}>
 					<img className={style.logoH} src={`${assetUrl}/vetondemand/logo-h.svg`} alt="Logo"/>
 				</Box>
@@ -126,7 +126,7 @@ const Research = () => {
 	return (
 		<div className={classes}>
 			<Flex justify="space-around" mb={6} mt={2} wrap>
-				<Box p={2} sm={12} md={9} lg={7} mb={5}>
+				<Box p={2} col={10} sm={12} md={9} lg={7} mb={5}>
 					<ImageZoom
 						image={{
 							src:   `${assetUrl}/vetondemand/chart-2.png`,
@@ -141,7 +141,7 @@ const Research = () => {
 					<h3>THERE ARE PLENTY OF VETS</h3>
 					<p>The U.S. supply of veterinarians in 2012 was 90,200, and that supply exceeded the demand for veterinary services by about 11,250 full-time equivalent veterinarians.</p>
 				</Box>
-				<Box p={2} sm={12} md={9} lg={7}>
+				<Box p={2} col={10} sm={12} md={9} lg={7}>
 					<ImageZoom
 						image={{
 							src:   `${assetUrl}/vetondemand/chart-1.png`,
@@ -225,17 +225,17 @@ const Mobile = () => {
 	return (
 		<div className={classes}>
 			<Flex justify="center" mb={0} mt={2}>
-				<Box p={2} sm={11} md={10} lg={9} mb={2}>
+				<Box p={2} col={5} sm={11} md={10} lg={9} mb={2}>
 					<h3>iOS</h3>
 					<Flex justify='space-around' wrap>
 						{ios.map((phone, idx) =>
-							<Box py={2} px={3} key={idx}>
+							<Box col={12} sm={12} md={6} lg={3} py={2} px={2} key={idx}>
 								<ImageZoom
 									shouldPreload
 									image={{
 										src:   phone.src,
 										alt:   'Mobile App',
-										style: {maxWidth: '130px'}
+										style: {maxWidth: '130px', width:'100%'}
 									}}
 									zoomImage={{
 										src: phone.zoom,
@@ -248,17 +248,17 @@ const Mobile = () => {
 				</Box>
 			</Flex>
 			<Flex justify="center" mb={4} mt={2}>
-				<Box p={2} sm={11} md={10} lg={9} mb={5}>
+				<Box p={2} col={6} sm={11} md={10} lg={9} mb={5}>
 					<h3>Android</h3>
 					<Flex justify='space-around' wrap>
 						{android.map((phone, idx) =>
-							<Box p={2} key={idx}>
+							<Box col={12} sm={12} md={4} lg={4} p={2} key={idx}>
 								<ImageZoom
 									shouldPreload
 									image={{
 										src:   phone.src,
 										alt:   'Mobile App',
-										style: {maxWidth: '180px'}
+										style: {maxWidth: '180px', width:'100%'}
 									}}
 									zoomImage={{
 										src: phone.zoom,
@@ -279,7 +279,7 @@ const Web = () => {
 	return (
 		<div className={classes}>
 			<Flex justify="center" mb={6} mt={4} wrap>
-				<Box p={2} sm={12} lg={6} style={{textAlign: 'center'}}>
+				<Box p={2} col={10} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
 						shouldPreload
 						image={{
@@ -293,7 +293,7 @@ const Web = () => {
 						}}
 					/>
 				</Box>
-				<Box p={2} sm={12} lg={6} style={{textAlign: 'center'}}>
+				<Box p={2} col={10} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
 						shouldPreload
 						image={{
