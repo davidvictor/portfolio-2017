@@ -1,3 +1,5 @@
+@import '../../styles/vars';
+
 .root {
 	width:  14rem;
 	height: 100vh;
@@ -23,7 +25,6 @@
 	}
 }
 
-
 .logoLink {
 	display: block;
 }
@@ -38,13 +39,9 @@
 	top: 50%;
 	left: 50%;
 	transform: translate3d(-50%,-50%,0);
-	//width: calc(100vw - #{1rem * 8});
-	//max-width: 600px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	outline: none;
-	padding: 1rem * 2;
-	//background: white;
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -58,24 +55,22 @@
 	background-color: transparentize(white,0.03);
 }
 
-.emailme {
+.emailMe {
 	height: 100%;
 	> div {
 		height: 100%;
 	}
 	a {
-		font-size: 5vw;
+		font-size: 7vw;
 		letter-spacing: 0.2rem;
 		font-weight: 200;
 		span {
-			color: rgb(165, 127, 95);
+			color: $gold;
 		}
 	}
 }
 
-
 @media only screen and (max-width: 960px) {
-	
 	.icon {
 		svg {
 			display: block;

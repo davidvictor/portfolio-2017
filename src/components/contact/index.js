@@ -19,7 +19,6 @@ const withActive = compose(
 
 const ContactButton = withActive(({active, on, off, toggle, anchor}) => {
 	const classes        = classNames("contact", style.contactRoot);
-	//const getParent      = () => {return document.querySelector('#root');};
 	const onRequestClose = () => {
 		off();
 		mixpanel.track("Contact Modal Close");
@@ -49,10 +48,9 @@ const ContactButton = withActive(({active, on, off, toggle, anchor}) => {
 				className={style.modal}
 				overlayClassName={style.modalOverlay}
 				contentLabel="Contact David"
-				//parentSelector={getParent}
 				shouldCloseOnOverlayClick={true}
 				onAfterOpen={afterOpen}>
-				<div className={style.emailme}>
+				<div className={style.emailMe}>
 					<Flex justify='center' align='center' wrap={false}>
 						<Box>
 							<a href="mailTo:hello@davidvictor.me"
