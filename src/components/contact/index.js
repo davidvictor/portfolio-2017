@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactModal from 'react-modal';
-import {ButtonCircle} from 'rebass';
+import {Button,ButtonCircle} from 'rebass';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
@@ -17,9 +17,9 @@ const withActive = compose(
 	})
 );
 
-const ContactButton = withActive(({active, on, off, toggle}) => {
+const ContactButton = withActive(({active, on, off, toggle, anchor}) => {
 	const classes        = classNames("contact", style.contactRoot);
-	const getParent      = () => {return document.querySelector('#root');};
+	//const getParent      = () => {return document.querySelector('#root');};
 	const onRequestClose = () => {
 		off();
 		mixpanel.track("Contact Modal Close");
@@ -32,21 +32,24 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 	};
 	return (
 		<div className={classes}>
-			<ButtonCircle
-				backgroundColor="transparent"
-				color="white"
-				size={36}
-				onClick={toggle}
-				style={{display: 'block'}}>
-				<Email className={style.icon} color="#a57f5f"/>
-			</ButtonCircle>
+			{anchor ? <a
+					onClick={toggle}>
+					<span> Contact </span>
+				</a> : <ButtonCircle
+					backgroundColor="transparent"
+					color="white"
+					size={36}
+					onClick={toggle}
+					style={{display: 'block'}}>
+					<Email className={style.icon} color="#a57f5f"/>
+				</ButtonCircle> }
 			<ReactModal
 				isOpen={active}
 				onRequestClose={() => onRequestClose()}
 				className={style.modal}
 				overlayClassName={style.modalOverlay}
 				contentLabel="Contact David"
-				parentSelector={getParent}
+				//parentSelector={getParent}
 				shouldCloseOnOverlayClick={true}
 				onAfterOpen={afterOpen}>
 				<div className={style.emailme}>

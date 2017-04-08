@@ -3,8 +3,8 @@ import {
 	Route
 } from 'react-router-dom';
 import Sidebar from '../sidebar';
-import Home from '../home';
 import About from '../about';
+import Resume from '../resume';
 import Amptube from '../work/amptube';
 import VOD from '../work/vetondemand';
 import LIB from '../work/lifeisbeautiful';
@@ -57,7 +57,7 @@ class App extends Component {
 					textTransform: 'uppercase',
 				},
 				Close:         {
-					fontSize:   '6rem',
+					fontSize:   '42px',
 					fontWeight: '100',
 				}
 			}

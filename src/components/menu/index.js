@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import {Flex, Box} from 'reflexbox';
+import ContactButton from '../contact';
+import Resume from '../resume';
 import classNames from 'classnames';
 import style from './style.scss';
 
@@ -34,11 +36,18 @@ const Menu = ({off}) => {
 				         activeClassName={style.selected}>
 					<span>ESC Lab Sciences </span></NavLink>
 			</Box>
-			<Box flexAuto>
+			<Box>
 				<NavLink to="/work/archive"
 				         onClick={() => handleToggle()}
 				         activeClassName={style.selected}><span> Additional Work</span>
 				</NavLink>
+			</Box>
+			<hr/>
+			<Box>
+				<Resume/>
+			</Box>
+			<Box>
+				<ContactButton anchor/>
 			</Box>
 		</Flex>
 	

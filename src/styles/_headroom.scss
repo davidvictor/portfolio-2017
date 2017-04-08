@@ -67,3 +67,32 @@
 		}
 	}
 }
+
+
+.resume-modal {
+	.headroom {
+		top:     0;
+		left:    0;
+		right:   0;
+		z-index: 100;
+		background-color: rgb(236, 236, 236);
+		transition: background-color 200ms ease-in-out;
+	}
+	.headroom--unfixed {
+		position:  relative;
+		transform: translateY(0);
+	}
+	.headroom--scrolled {
+		transition: transform 200ms ease-in-out,background-color 200ms ease-in-out;
+		background-color: white;
+		border-bottom: 1px solid $border-color;
+	}
+	.headroom--unpinned {
+		position:  fixed;
+		transform: translateY(-100%);
+	}
+	.headroom--pinned {
+		position:  fixed;
+		transform: translateY(0%);
+	}
+}

@@ -17,12 +17,12 @@ const LogoGrid = () => {
 			zoom: `${assetUrl}/archive/funky-umbrella3@2x.jpg`,
 			size: 12,
 		}, {
-			src:  `${assetUrl}/archive/funky-umbrella1.jpg`,
-			zoom: `${assetUrl}/archive/funky-umbrella1@2x.jpg`,
-			size: 6,
-		}, {
 			src:  `${assetUrl}/archive/funky-umbrella2.jpg`,
 			zoom: `${assetUrl}/archive/funky-umbrella2@2x.jpg`,
+			size: 6,
+		}, {
+			src:  `${assetUrl}/archive/funky-umbrella1.jpg`,
+			zoom: `${assetUrl}/archive/funky-umbrella1@2x.jpg`,
 			size: 6,
 		},{
 			src:  `${assetUrl}/archive/medicine-man.jpg`,

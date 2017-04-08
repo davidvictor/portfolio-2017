@@ -39,9 +39,9 @@ const colors = {
 
 const scale = [0, 4, 8, 12, 16, 24, 32, 64, 72];
 
-const fontSizes = [64,48,36,24, 18, 16, 14, 13, 12, 11, 10];
+const fontSizes = [64, 48, 36, 24, 18, 16, 14, 13, 12, 11, 10];
 
-const roleData    = [
+const roleData = [
 	{
 		id:          'strategy',
 		name:        "Strategy",
@@ -80,6 +80,120 @@ const roleData    = [
 	}
 ];
 
+const resumeData = {
+	experience:           [
+		{
+			id:       'e1',
+			company:  'Amptube',
+			role:     'Head of Product',
+			location: 'Venice, CA',
+			date:     '2016 - 2017',
+			success:  [
+				{
+					id:          's1',
+					title:       "End-to-end design",
+					description: "for consumer facing, B2B, and internal products. Managed the implementation of business goals while maintaining a design process. Handled engineering delays and bootstrapped startup environment to successfully ship the product on time."
+				},
+				{
+					id:          's2',
+					title:       "Frontend Architecture",
+					description: "using leading libraries and platforms. Became fluent in JavaScript and mastered the art of interface building. Learned new technologies, like GraphQL and dove deep into the Facebook and YouTube APIs. Continuously optimized site performance, weight, and responsiveness."
+				}
+			]
+		}, {
+			id:       'e2',
+			company:  "Vet On Demand",
+			role:     "Chief Product Officer",
+			location: "Santa Monica, CA",
+			date:     "2014 - 2016",
+			success:  [
+				{
+					id:          's1',
+					title:       "End-to-end design",
+					description: "for cross platform telemedicine platform. Led the product development process from start to finish. Produced cross-platform interface designs for iOS & Android, the brochure website, and the vet web interface. Validated the business case with extensive research. Contributed to the companies marketing plan and oversaw significant martech integrations."
+				}
+			]
+		}, {
+			id:       'e3',
+			company:  "Environment Sciences Corporation",
+			role:     "Lead Designer",
+			location: "Nashville, TN",
+			date:     "2013 - 2014",
+			success:  [
+				{
+					id:          's1',
+					title:       "Brand vocabulary",
+					description: "for the largest environmental testing laboratory serving the entire United States from a single location. They’ve been delivering defensible data for over 40 years."
+				},
+				{
+					id:          's2',
+					title:       "Interface designs",
+					description: "for a complete rebuild of their laboratory management system, myESC. Created user journeys, functional specs, wireframes, and task inventories."
+				}
+			]
+		}, {
+			id:       'e4',
+			company:  "Life is Beautiful Festival",
+			role:     "Creative Director",
+			location: "Las Vegas, NV",
+			date:     "2012 - 2013",
+			success:  [
+				{
+					id:          's1',
+					title:       "Top-to-bottom Branding",
+					description: "from a custom CMS to manage website and app content to bathroom and exit signs. Led a creative team to plan, design, and implement every branded and visual element for the 2 day, 70k person event."
+				}
+			]
+		}, {
+			id:       'e5',
+			company:  "The Funky Umbrella",
+			role:     "Principal",
+			location: "Nashville, TN",
+			date:     "2011 - 2012",
+			success:  [
+				{
+					id:          's1',
+					title:       "Boutique branding",
+					description: "for a marketing and advertising agency specializing in making their clients look awesome. Designed logos, collateral, advertising, and websites for numerous local and regional small businesses."
+				}
+			]
+		}, {
+			id:       'e6',
+			company:  "Iridium Development",
+			role:     "User Interface Designer",
+			location: "Nashville, TN",
+			date:     "2010 - 2011",
+			success:  [
+				{
+					id:          's1',
+					title:       "Interface designs",
+					description: "for a wide variety of iPhone and iPad applications including a Photoshop companion app, an interactive drink menu, and a graduate level economics learning platform."
+				}
+			]
+		}
+	],
+	additionalExperience: [
+		{
+			id:       'ae1',
+			company:  "Crispin Porter + Bogusky",
+			role:     "Intern",
+			location: "Boulder, CO",
+			date:     "2007 - 2009",
+			success:  [
+				{
+					id:          's1',
+					title:       "Video Production Intern",
+					description: "creating brand essence videos, award show videos, web videos, viral videos and campaign integrated video.  Worked with world class brands including Microsoft, Burger King, and Dominoes Pizza."
+				}, {
+					id:          's2',
+					title:       "Account Planning Intern",
+					description: "gaining experience in the field conducting ethnographic studies and interviews. Worked with world class brands including Volkswagen, Sprite, and Slim Jim."
+				}
+			]
+		}
+	]
+};
+
 module.exports = {
 	siteUrl:   '//davidvictor.me',
 	assetUrl:  assetUrl,
@@ -87,5 +201,22 @@ module.exports = {
 	scale:     scale,
 	colors:    colors,
 	fontSizes: fontSizes,
-	roleData: roleData,
+	roleData:  roleData,
+	resume:    resumeData,
 };
+
+//
+//, {
+//	id:       'ae2',
+//		company:  "Habitat for Humanity",
+//		role:     "Copywriter",
+//		location: "Boulder, CO",
+//		date:     "2006 - 2007",
+//		success:  [
+//		{
+//			id:          's1',
+//			title:       "Creative Story Teller",
+//			description: "which became Flatirons Habitat’s “One Square Foot at a Time” campaign. Conducted SWOT analysis and assisted with strategic planning and a comprehensive, in-depth marketing plan."
+//		}
+//	]
+//}

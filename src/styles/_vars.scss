@@ -30,13 +30,13 @@ $faces: (
 					),
 					"gothamL": (
 						family: "gotham",
-						url: "#{$assetUrl}/fonts/gotham/GothamRounded-Light",
+						url: "#{$assetUrl}/fonts/gotham/Gotham-Light",
 						weight: 300,
 						style: normal
 					),
 					"gothamM": (
 						family: "gotham",
-						url: "#{$assetUrl}/fonts/gotham/GothamRounded-Bold",
+						url: "#{$assetUrl}/fonts/gotham/Gotham-Bold",
 						weight: 700,
 						style: normal
 					),
@@ -48,6 +48,9 @@ $gold: hsla(27, 28%, 51%, 1);
 $vod-purple: #49287a;
 $vod-yellow: #efa343;
 
+$text: hsla(345, 6%, 13%, 1);
+$text-light: hsla(345, 6%, 36%, 1);
+$text-muted: hsla(345, 6%, 62%, 1);
 
 $vod-brand-colors: (
 										 purple:$vod-purple,

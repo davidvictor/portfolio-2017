@@ -130,21 +130,12 @@ class Project extends Component {
 				<Hero {...this.props} className={heroClasses}>
 					<Deets title={title} url={url} roles={roles} live={live}/>
 				</Hero>
-				<VisibilitySensor
-					scrollCheck
-					scrollDelay={10}
-					//scrollThrottle={100}
-					intervalDelay={5000}
-					//resizeCheck
-					//resizeDelay={250}
-					partialVisibility
-					//delayedCall
-					onChange={this.onChange}>
+			
 					<div className={contentClasses}>
 						<About title={title} roles={roles} description={description} contribution={contribution}/>
 						{children}
 					</div>
-				</VisibilitySensor>
+			
 			
 			</div>
 		);

@@ -39,10 +39,6 @@ const IconButtons = ({off, left}) => {
 					<LinkedIn className={style.icon}/>
 				</ButtonCircle>
 			</Box>
-		
-			<Box className={style.iconButtonWrap} flex>
-				<ContactButton/>
-			</Box>
 		</Flex>
 	)
 };
