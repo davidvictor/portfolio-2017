@@ -20,6 +20,29 @@
 	}
 }
 
+.logos {
+	margin:    0 auto;
+	max-width: 600px;
+	.logoH {
+		max-width: 200px;
+	}
+	.logoV {
+		max-width: 140px;
+	}
+}
+
+
+$ccWidth: 180px;
+
+.colorCard {
+	max-width: $ccWidth;
+	width:     20vw;
+	[class*='shades'] {
+		max-height: $ccWidth / 5;
+		height:     20vw / 5;
+	}
+}
+
 @media only screen and (max-width: 1280px) {
 	.videoPlayer {
 		width:    600px;

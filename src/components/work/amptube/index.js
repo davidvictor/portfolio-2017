@@ -12,17 +12,26 @@ import {assetUrl} from 'config';
 const Amplify = () => {
 	return (
 		<div>
-			<Flex justify="center" my={6}>
+			<Flex justify="center" mt={6}>
 				<Box px={1}>
 					<ImageZoom
+						shouldRespectMaxDimension
 						image={{
 							src:   `${assetUrl}/amptube/amplify-panel.gif`,
 							alt:   'Amplify Animation',
 							style: {maxWidth: '361px', width: '100%'}
 						}}
-						zoomImage={{
-							src: `${assetUrl}/amptube/amplify-panel.gif`,
-							alt: 'Amplify Animation',
+					/>
+				</Box>
+			</Flex>
+			<Flex justify="center" mt={2} mb={6}>
+				<Box px={1}>
+					<ImageZoom
+						shouldRespectMaxDimension
+						image={{
+							src:   `${assetUrl}/amptube/leaderboard.png`,
+							alt:   'Amplify Leaderboard',
+							style: {maxWidth: '348px', width: '100%'}
 						}}
 					/>
 				</Box>
@@ -37,16 +46,33 @@ const UI = () => {
 			<Flex justify="center" mt={0} mb={5}>
 				<Box px={1}>
 					<ImageZoom
+						shouldPreload
 						image={{
 							src:   `${assetUrl}/amptube/video-page.png`,
-							alt:   'Logo',
+							alt:   'Video Page',
 							style: {maxWidth: '800px', width: '100%'}
 						}}
 						zoomImage={{
 							src: `${assetUrl}/amptube/video-page@2x.png`,
-							alt: 'Logo',
+							alt: 'Video Page',
 						}}
 					/>
+				</Box>
+			</Flex>
+		</div>
+	)
+};
+
+const Logos = () => {
+	const classes = classNames(style.logos);
+	return (
+		<div className={classes}>
+			<Flex justify="space-around" align="center" my={5} wrap>
+				<Box p={2}>
+					<img className={style.logoH} src={`${assetUrl}/amptube/lockup-horizontal.svg`} alt="Logo"/>
+				</Box>
+				<Box p={2}>
+					<img className={style.logoV} src={`${assetUrl}/amptube/lockup-vertical.svg`} alt="Logo"/>
 				</Box>
 			</Flex>
 		</div>
@@ -56,18 +82,18 @@ const UI = () => {
 const Palette = () => {
 	const colors = [
 		{
-			name: 'purple'
+			name: 'blue'
 		}, {
-			name: 'gold'
+			name: 'light-blue'
 		}, {
-			name: 'grey1'
+			name: 'red'
 		}, {
-			name: 'gunmetal'
+			name: 'gray'
 		}
 	];
 	return (
 		<div>
-			<Flex justify="center" my={4}>
+			<Flex justify="center" my={6}>
 				{colors.map((color, idx) =>
 					<Box key={idx}>
 						<div className={`color-card ${color.name} ${style.colorCard}`}>
@@ -131,6 +157,14 @@ const Amptube = () => {
 				/>
 				
 				<Video/>
+				
+				<Heading title="Branding"
+				         subtitle=""
+				         icon={`${assetUrl}/lionhouse/design.svg`}
+				/>
+				
+				<Logos/>
+				<Palette/>
 				
 				<Heading title="Web"
 				         subtitle=""
