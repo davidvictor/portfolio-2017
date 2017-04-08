@@ -49,8 +49,7 @@ const Contact = () => {
 
 const Expertise = () => {
 	const classes = classNames('sidebar-expertise', style.expertise);
-	const areas   = [
-		'Art Direction', 'Product Design', 'Product Management', 'Creative Direction', 'Branding', 'UX Design', 'UI Design', 'Mobile Web', 'Analytics'];
+	const areas   = resume.expertise;
 	return (
 		<div className={classes}>
 			<h5>Expertise</h5>
@@ -65,8 +64,7 @@ const Expertise = () => {
 
 const Technology = () => {
 	const classes = classNames('sidebar-technology', style.technology);
-	const techs   = [
-		'HTML5', 'CSS3', 'ES6', 'Sass', 'Git', 'React', 'Redux', 'GraphQL', 'Webpack', 'Node', 'Express'];
+	const techs   = resume.technology;
 	return (
 		<div className={classes}>
 			<h5>Technology</h5>
@@ -81,9 +79,7 @@ const Technology = () => {
 
 const Tools = () => {
 	const classes = classNames('sidebar-tools', style.tools);
-	const tools   = [
-		'Sketch', 'Photoshop', 'Illustrator', 'InDesign', 'AfterEffects', 'Premiere', 'PaintCode', 'IntelliJ', 'Paw', 'Xcode', 'Terminal'
-	];
+	const tools   = resume.tools;
 	return (
 		<div className={classes}>
 			<h5>Tools</h5>
@@ -98,9 +94,7 @@ const Tools = () => {
 
 const Platforms = () => {
 	const classes = classNames('sidebar-platforms', style.platforms);
-	const platforms   = [
-		'FB Ads','FB Insights','Amazon S3','Cloudfront','Google Analytics', 'AdWords','YouTube','Stripe','New Relic','Mixpanel','Segment','SendGrid','MailChimp','HubSpot','Sentry','Fullstory','Appboy','Heap','Intercom','Iron.io','Twitter',
-	];
+	const platforms   = resume.platforms;
 	return (
 		<div className={classes}>
 			<h5>Platforms</h5>

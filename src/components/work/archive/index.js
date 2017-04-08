@@ -12,64 +12,77 @@ const LogoGrid = () => {
 			src:  `${assetUrl}/archive/cherub.jpg`,
 			zoom: `${assetUrl}/archive/cherub@2x.jpg`,
 			size: 12,
+			dark: true,
 		}, {
 			src:  `${assetUrl}/archive/funky-umbrella3.jpg`,
 			zoom: `${assetUrl}/archive/funky-umbrella3@2x.jpg`,
 			size: 12,
+			dark: false,
 		}, {
 			src:  `${assetUrl}/archive/funky-umbrella2.jpg`,
 			zoom: `${assetUrl}/archive/funky-umbrella2@2x.jpg`,
 			size: 6,
+			dark: true,
 		}, {
 			src:  `${assetUrl}/archive/funky-umbrella1.jpg`,
 			zoom: `${assetUrl}/archive/funky-umbrella1@2x.jpg`,
 			size: 6,
-		},{
+			dark: false,
+		}, {
 			src:  `${assetUrl}/archive/medicine-man.jpg`,
 			zoom: `${assetUrl}/archive/medicine-man@2x.jpg`,
 			size: 6,
+			dark: true,
 		}, {
 			src:  `${assetUrl}/archive/classic-2.jpg`,
 			zoom: `${assetUrl}/archive/classic-2@2x.jpg`,
 			size: 6,
+			dark: true,
 		}, {
 			src:  `${assetUrl}/archive/nrc.jpg`,
 			zoom: `${assetUrl}/archive/nrc@2x.jpg`,
 			size: 6,
+			dark: true,
 		}, {
 			src:  `${assetUrl}/archive/gro.jpg`,
 			zoom: `${assetUrl}/archive/gro@2x.jpg`,
 			size: 6,
-		},{
+			dark: false,
+		}, {
 			src:  `${assetUrl}/archive/mcrs.jpg`,
 			zoom: `${assetUrl}/archive/mcrs@2x.jpg`,
 			size: 6,
+			dark: true,
 		}, {
 			src:  `${assetUrl}/archive/flexawn.jpg`,
 			zoom: `${assetUrl}/archive/flexawn@2x.jpg`,
 			size: 6,
+			dark: true,
 		}, {
 			src:  `${assetUrl}/archive/huntridge2.jpg`,
 			zoom: `${assetUrl}/archive/huntridge2@2x.jpg`,
 			size: 6,
-		
+			dark: true,
 		}, {
 			src:  `${assetUrl}/archive/headjamz.jpg`,
 			zoom: `${assetUrl}/archive/headjamz@2x.jpg`,
 			size: 6,
-		
-		},{
+			dark: true,
+		}, {
 			src:  `${assetUrl}/archive/classic-1.jpg`,
 			zoom: `${assetUrl}/archive/classic-1@2x.jpg`,
 			size: 12,
+			dark: true,
 		}, {
 			src:  `${assetUrl}/archive/skydogcon3.jpg`,
 			zoom: `${assetUrl}/archive/skydogcon3@2x.jpg`,
 			size: 6,
-		},   {
+			dark: false,
+		}, {
 			src:  `${assetUrl}/archive/swag-city2.jpg`,
 			zoom: `${assetUrl}/archive/swag-city2@2x.jpg`,
 			size: 6,
+			dark: true,
 		}
 	];
 	const defaultStyles = {
@@ -84,7 +97,7 @@ const LogoGrid = () => {
 					<ImageZoom
 						shouldPreload
 						zoomMargin={0}
-						defaultStyles={defaultStyles}
+						defaultStyles={photo.dark ? defaultStyles : {}}
 						image={{
 							src:   photo.src,
 							alt:   'Archive',

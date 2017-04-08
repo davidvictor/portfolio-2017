@@ -191,7 +191,11 @@ const resumeData = {
 				}
 			]
 		}
-	]
+	],
+	expertise:            ['Art Direction', 'Product Design', 'Product Management', 'Creative Direction', 'Branding', 'UX Design', 'UI Design', 'Mobile Web', 'Analytics'],
+	technology:           ['HTML5', 'CSS3', 'ES6', 'Sass', 'Git', 'React', 'Redux', 'GraphQL', 'Webpack', 'Node', 'Express'],
+	tools:                ['Sketch', 'Photoshop', 'Illustrator', 'InDesign', 'AfterEffects', 'Premiere', 'PaintCode', 'IntelliJ', 'Paw', 'Xcode', 'Terminal'],
+	platforms:            ['FB Ads', 'FB Insights', 'Amazon S3', 'Cloudfront', 'Google Analytics', 'AdWords', 'YouTube', 'Stripe', 'New Relic', 'Mixpanel', 'Segment', 'SendGrid', 'MailChimp', 'HubSpot', 'Sentry', 'Fullstory', 'Appboy', 'Heap', 'Intercom', 'Iron.io', 'Twitter',]
 };
 
 module.exports = {

@@ -349,7 +349,7 @@ const VetOnDemand = () => {
 		<div className={classes}>
 			<Project
 				title="Vet On Demand"
-				url='http://vetondemand.com'
+				//url='http://vetondemand.com'
 				roles={['strategy', 'branding', 'ui', 'ux', 'code']}
 				description="Vet On Demand is the first mobile application to provide personalized, real time access to veterinary advice and recommendations through the power of live video conferencing."
 				contribution="While running a small dev shop in Nashville, I was introduced to two brothers who loved their dogs as much as each other. Inspired by a wave of healthcare applications sweeping the industry, we set out to build the first telemedicine platform for veterinary care. My team lead the product development process from start to finish. We validated the business case with extensive research, partnered with local veterinarians to help guide the road map, and built a cross platform telemedicine application strong enough operate in a regulatory and legal landscape even tighter than what our two-legged doctor friends face. Building and running Vet on Demand remains the most valuable experience of my life so far."

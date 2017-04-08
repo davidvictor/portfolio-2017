@@ -41,7 +41,7 @@ const About = ({}, context) => {
 						big
 						py={4}
 						px={5}
-						mt={5}
+						mt={6}
 						style={{display: 'block'}}
 						className={style.button}
 						onClick={() => handleButton()}> See my Work </ButtonOutline>
