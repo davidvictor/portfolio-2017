@@ -115,7 +115,7 @@ const resumeData = {
 			]
 		}, {
 			id:       'e3',
-			company:  "Environment Sciences Corporation",
+			company:  "Environment Science Corporation",
 			role:     "Lead Designer",
 			location: "Nashville, TN",
 			date:     "2013 - 2014",

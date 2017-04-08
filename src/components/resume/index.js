@@ -52,13 +52,15 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 				shouldCloseOnOverlayClick={true}
 				onAfterOpen={afterOpen}>
 				<div className={style.modalContent}>
-					<Headroom disableInlineStyles parent={getScrollParent}>
+					<Headroom disableInlineStyles parent={getScrollParent} disable>
 						<div className={style.modalHeader}>
 							<Flex align="center">
-								<Box>
+								<Box flexAuto style={{textAlign:'right'}}>
 									<Close onClick={() => onRequestClose()}
 									        className={style.closeButton}
-									px={0} py={1}>
+									       color="rgb(164, 152, 155)"
+													px={0}
+                         py={1}>
 										close
 									</Close>
 								</Box>
