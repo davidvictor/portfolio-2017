@@ -7,6 +7,8 @@ import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
 
+import _ from 'lodash';
+
 import {assetUrl, resume} from 'config';
 
 const Experience = ({role, company, location, date, children}) => {
@@ -62,10 +64,12 @@ const Resume = () => {
 						<Experience role={ex.role}
 						            company={ex.company}
 						            location={ex.location}
-						            date={ex.date}>
+						            date={ex.date}
+						            key={_.uniqueId('experience_')}>
 							{ex.success.map((su, idx) =>
 								<Success title={su.title}
-								         description={su.description}/>
+								         description={su.description}
+								         key={_.uniqueId('success_')}/>
 							)}
 						</Experience>
 					)}
@@ -74,10 +78,12 @@ const Resume = () => {
 						<Experience role={ex.role}
 						            company={ex.company}
 						            location={ex.location}
-						            date={ex.date}>
+						            date={ex.date}
+						            key={_.uniqueId('additionalExperience_')}>
 							{ex.success.map((su, idx) =>
 								<Success title={su.title}
-								         description={su.description}/>
+								         description={su.description}
+								         key={_.uniqueId('success_')}/>
 							)}
 						</Experience>
 					)}

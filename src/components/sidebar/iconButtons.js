@@ -4,6 +4,7 @@ import {ButtonCircle} from 'rebass';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
+import a from '../../utils/analytics';
 
 import {assetUrl} from 'config';
 
@@ -11,12 +12,13 @@ import {Github, LinkedIn, Resume} from '../icon';
 
 const IconButtons = ({off, left}) => {
 	const classes  = classNames(style.iconButtons);
-	const openLink = (url) => {
+	const openLink = (url,id) => {
 		if (url) {
 			if (off) {
 				off();
 			}
 			window.open(url);
+			a.track(`Clicked ${id}`)
 		}
 	};
 	return (
@@ -26,7 +28,7 @@ const IconButtons = ({off, left}) => {
 					backgroundColor="transparent"
 					color="white"
 					size={36}
-					onClick={() => openLink('https://github.com/davidvictor')}>
+					onClick={() => openLink('https://github.com/davidvictor','gitHub')}>
 					<Github className={style.icon}/>
 				</ButtonCircle>
 			</Box>
@@ -35,7 +37,7 @@ const IconButtons = ({off, left}) => {
 					backgroundColor="transparent"
 					color="white"
 					size={36}
-					onClick={() => openLink('https://www.linkedin.com/in/dvictor')}>
+					onClick={() => openLink('https://www.linkedin.com/in/dvictor','linkedIn')}>
 					<LinkedIn className={style.icon}/>
 				</ButtonCircle>
 			</Box>

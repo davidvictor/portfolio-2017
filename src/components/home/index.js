@@ -3,6 +3,7 @@ import {Flex, Box} from 'reflexbox';
 import IconButtons from '../sidebar/iconButtons';
 import classNames from 'classnames';
 import style from './style.scss';
+import a from '../../utils/analytics';
 
 import {assetUrl} from 'config';
 
@@ -23,7 +24,7 @@ class App extends Component {
 			bgImage = 'url(' + assetUrl + '/base/lionhouse-poster.jpg)';
 		}
 		const handleClick = (type) => {
-			mixpanel.track('Clicked Home Link', {
+			a.track('Clicked Home Link', {
 				type: type
 			})
 		};

@@ -207,6 +207,8 @@ module.exports = {
 	fontSizes: fontSizes,
 	roleData:  roleData,
 	resume:    resumeData,
+	analytics: process.env.NODE_ENV === 'production',
+	logs: process.env.NODE_ENV !== 'production',
 };
 
 //

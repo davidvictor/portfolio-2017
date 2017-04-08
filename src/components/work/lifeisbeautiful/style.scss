@@ -1,8 +1,36 @@
 .root {
-
+	
 }
 
 .bullnose {
 	width: 100%;
-	//max-width: 360px;
+}
+
+$ccWidth: 180px;
+
+.colorCard {
+	max-width: $ccWidth;
+	width:     12vw;
+	[class*='shades'] {
+		max-height: $ccWidth / 5;
+		height:     12vw / 5;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.colorCard {
+		width: 12vw;
+		[class*='shades'] {
+			height: 12vw / 5;
+		}
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.colorCard {
+		width: 17vw;
+		[class*='shades'] {
+			height: 17vw / 5;
+		}
+	}
 }

@@ -4,6 +4,7 @@ import {browserHistory} from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
+import a from '../../utils/analytics';
 import style from './style.scss';
 
 import {assetUrl} from 'config';
@@ -12,12 +13,13 @@ const About = ({}, context) => {
 	
 	const classes      = classNames("about", style.root);
 	const handleClick  = (type) => {
-		mixpanel.track('Clicked About Link', {
+		a.track('Clicked About Link', {
 			type: type
 		})
 	};
 	const handleButton = () => {
 		context.router.history.push({pathname: '/work/vetondemand'});
+		a.track('Clicked See My Work')
 	};
 	const bgImage      = 'url(' + assetUrl + '/base/dv-headshot.jpg)';
 	return (
@@ -56,7 +58,6 @@ const About = ({}, context) => {
 						className={style.button}
 						onClick={() => handleButton()}> See my Work </ButtonOutline>
 				</MediaQuery>
-				
 			</div>
 			<div className={style.venice}>Made&nbsp;with&nbsp; 🌴&nbsp;&nbsp;in Venice,&nbsp;California</div>
 		</div>

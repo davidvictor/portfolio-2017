@@ -53,6 +53,12 @@ $ccWidth: 180px;
 	.videoPlayer {
 		width:    480px;
 	}
+	.colorCard {
+		width:     15vw;
+		[class*='shades'] {
+			height:     15vw / 5;
+		}
+	}
 }
 
 @media only screen and (max-width: 960px) {
@@ -64,5 +70,15 @@ $ccWidth: 180px;
 @media only screen and (max-width: 600px) {
 	.videoPlayer {
 		width:    90vw;
+	}
+}
+
+
+@media only screen and (max-width: 1024px) {
+	.colorCard {
+		width:     15vw;
+		[class*='shades'] {
+			height:     15vw / 5;
+		}
 	}
 }

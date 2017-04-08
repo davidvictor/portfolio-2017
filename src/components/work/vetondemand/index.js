@@ -6,6 +6,7 @@ import ImageZoom from 'react-medium-image-zoom';
 import YouTube from 'react-youtube';
 import classNames from 'classnames';
 import style from './style.scss';
+import a from '../../../utils/analytics';
 
 import {assetUrl} from 'config';
 

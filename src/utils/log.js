@@ -1,5 +1,5 @@
 import emoji from 'node-emoji';
-import {logs} from 'config/debug';
+import {logs} from 'config';
 
 export default function log(group, data, img, type, props, state) {
 	if (!group) return false;

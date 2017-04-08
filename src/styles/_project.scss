@@ -20,6 +20,11 @@ $colorCardWidthMobile: 23vw;
 			@include color-card($color)
 		}
 	}
+	@each $item, $color in $lib-brand-colors {
+		&.#{$item} {
+			@include color-card($color)
+		}
+	}
 }
 
 @media only screen and (max-width: 960px) {

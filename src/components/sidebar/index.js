@@ -7,6 +7,7 @@ import Menu from '../menu';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
+import a from '../../utils/analytics';
 
 import {assetUrl} from 'config';
 
@@ -25,6 +26,7 @@ const Header = ({off}) => {
 	const classes      = classNames("header", style.header);
 	const handleToggle = () => {
 		off();
+		a.track('Site Logo Clicked');
 	};
 	return (
 		<div className={classes}>
@@ -78,6 +80,10 @@ const Sidebar = withActive(({active, on, off, toggle}) => {
 	const bodyClasses   = classNames({
 		'noverflow': active,
 	});
+	const handleToggle = () => {
+		toggle();
+		a.track('Menu Toggled');
+	};
 	return (
 		<div className={classes}>
 			<Flex flexColumn wrap={false} flex className={style.inner} >
@@ -93,7 +99,7 @@ const Sidebar = withActive(({active, on, off, toggle}) => {
 			</Flex>
 			<Headroom disableInlineStyles>
 				<div className={style.menuToggle}>
-					<button onClick={toggle} className={buttonClasses}>{!active ? 'menu' : 'close'}</button>
+					<button onClick={() => handleToggle()} className={buttonClasses}>{!active ? 'menu' : 'close'}</button>
 				</div>
 			</Headroom>
 			<BodyClass className={bodyClasses}/>

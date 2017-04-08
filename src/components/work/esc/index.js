@@ -4,6 +4,7 @@ import Project from '../../project';
 import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
 import style from './style.scss';
+import a from '../../../utils/analytics';
 
 import {assetUrl} from 'config';
 
@@ -22,6 +23,10 @@ const Website = () => {
 							src: `${assetUrl}/esc/website@2x.png`,
 							alt: 'Website',
 						}}
+						onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'website.png'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -44,6 +49,10 @@ const Portal = () => {
 							src: `${assetUrl}/esc/portal-rb-data@2x.png`,
 							alt: 'Portal Data',
 						}}
+					  onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'portal-rb-data.png'
+						})}
 					/>
 				</Box>
 				<Box p={2}>
@@ -57,6 +66,10 @@ const Portal = () => {
 							src: `${assetUrl}/esc/portal-dashboard@2x.png`,
 							alt: 'Portal Dashboard',
 						}}
+					  onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'portal-dashboard.png'
+						})}
 					/>
 				</Box>
 				<Box p={2}>
@@ -70,6 +83,10 @@ const Portal = () => {
 							src: `${assetUrl}/esc/portal-rb-toolsbox@2x.png`,
 							alt: 'Portal Toolbox',
 						}}
+					  onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'portal-rb-toolsbox.png'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -92,6 +109,10 @@ const Report = () => {
 							src: `${assetUrl}/esc/report-1@2x.jpg`,
 							alt: 'Report',
 						}}
+						onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'report-1.jpg'
+						})}
 					/>
 				</Box>
 				<Box p={2}>
@@ -105,6 +126,10 @@ const Report = () => {
 							src: `${assetUrl}/esc/report-3@2x.jpg`,
 							alt: 'Report',
 						}}
+					  onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'report-3.jpg'
+						})}
 					/>
 				</Box>
 				<Box p={2}>
@@ -118,6 +143,10 @@ const Report = () => {
 							src: `${assetUrl}/esc/report-2@2x.jpg`,
 							alt: 'Report',
 						}}
+					  onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'report-2.jpg'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -140,6 +169,10 @@ const Display = () => {
 							src: `${assetUrl}/esc/trade-display@2x.png`,
 							alt: 'Trade Display',
 						}}
+						onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'trade-display.png'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -162,6 +195,10 @@ const ERS = () => {
 							src: `${assetUrl}/esc/ers-logo-light@2x.jpg`,
 							alt: 'ERS Logo',
 						}}
+					  onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'ers-logo-light.jpg'
+						})}
 					/>
 				</Box>
 				<Box p={2}>
@@ -175,6 +212,10 @@ const ERS = () => {
 							src: `${assetUrl}/esc/ers-logo-dark@2x.jpg`,
 							alt: 'ERS Logo',
 						}}
+					  onZoom={()=>a.track('Image Zoomed',{
+							page: 'ESC',
+							src: 'ers-logo-dark.jpg'
+						})}
 					/>
 				</Box>
 			</Flex>

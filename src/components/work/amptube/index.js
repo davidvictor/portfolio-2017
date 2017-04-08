@@ -6,6 +6,7 @@ import YouTube from 'react-youtube';
 import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
 import style from './style.scss';
+import a from '../../../utils/analytics';
 
 import {assetUrl} from 'config';
 
@@ -21,6 +22,10 @@ const Amplify = () => {
 							alt:   'Amplify Animation',
 							style: {maxWidth: '361px', width: '100%'}
 						}}
+						onZoom={()=>a.track('Image Zoomed',{
+							page: 'Amptube',
+							src: `amplify-panel.gif`
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -33,6 +38,10 @@ const Amplify = () => {
 							alt:   'Amplify Leaderboard',
 							style: {maxWidth: '348px', width: '100%'}
 						}}
+						onZoom={()=>a.track('Image Zoomed',{
+							page: 'Amptube',
+							src: `leaderboard.png`
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -56,6 +65,10 @@ const UI = () => {
 							src: `${assetUrl}/amptube/video-page@2x.png`,
 							alt: 'Video Page',
 						}}
+						onZoom={()=>a.track('Image Zoomed',{
+							page: 'Amptube',
+							src: `video-page.png`
+						})}
 					/>
 				</Box>
 			</Flex>

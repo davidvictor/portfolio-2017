@@ -3,6 +3,8 @@ import {Flex, Box} from 'reflexbox';
 import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
 import style from './style.scss';
+import a from '../../../utils/analytics';
+import _ from 'lodash';
 
 import {assetUrl} from 'config';
 
@@ -93,7 +95,7 @@ const LogoGrid = () => {
 	return (
 		<Flex justify="center" wrap pt={0}>
 			{photos.map((photo, idx) =>
-				<Box key={idx} my={0} sm={12} md={photo.size} lg={photo.size}>
+				<Box key={_.uniqueId('archive_')} my={0} sm={12} md={photo.size} lg={photo.size}>
 					<ImageZoom
 						shouldPreload
 						zoomMargin={0}
@@ -107,6 +109,10 @@ const LogoGrid = () => {
 							src: photo.zoom,
 							alt: 'Archive',
 						}}
+						onZoom={()=>a.track('Image Zoomed',{
+							page: 'Archive',
+							src: photo.src.split('/archive/')[1]
+						})}
 					/>
 				</Box>
 			)}

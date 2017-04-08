@@ -3,7 +3,7 @@ import ReactModal from 'react-modal';
 import {Close,Button, ButtonOutline, ButtonCircle} from 'rebass';
 import {Flex, Box} from 'reflexbox';
 import Headroom from 'react-headroom';
-import BodyClass from 'react-body-classname';
+import a from '../../utils/analytics';
 import classNames from 'classnames';
 import style from './style.scss';
 import ResumeContent from './resume';
@@ -27,14 +27,16 @@ const withActive = compose(
 const ContactButton = withActive(({active, on, off, toggle}) => {
 	const classes         = classNames("resume", style.root);
 	const modalClasses    = classNames("resume-modal", style.modal);
+	const buttonClasses         = classNames(style.backButton);
+	const buttonLargeClasses         = classNames(style.backButton,style.backButtonLarge);
 	const getParent       = () => {return document.querySelector('#root');};
 	const getScrollParent = () => {return document.querySelector('.resume-modal');};
 	const onRequestClose  = () => {
 		off();
-		//mixpanel.track("Resume Modal Close");
+		a.track("Resume Close");
 	};
 	const afterOpen       = () => {
-		//mixpanel.track("Resume Modal Open");
+		a.track("Resume Open");
 	};
 	return (
 		<div className={classes}>
@@ -55,14 +57,18 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 					<Headroom disableInlineStyles parent={getScrollParent} disable>
 						<div className={style.modalHeader}>
 							<Flex align="center">
-								<Box flexAuto style={{textAlign:'right'}}>
-									<Close onClick={() => onRequestClose()}
+								
+								<Box flexAuto style={{textAlign:'right',display:'none'}}>
+									<Button onClick={() => onRequestClose()}
 									        className={style.closeButton}
-									       color="rgb(164, 152, 155)"
-													px={0}
-                         py={1}>
-										close
-									</Close>
+									        backgroundColor={`rgb(165, 127, 95)`}
+									        px={3} py={2}>
+										download
+									</Button>
+								</Box>
+								<Box flexAuto style={{textAlign:'right'}}>
+									<button onClick={() => onRequestClose()}
+									        className={buttonClasses}>back</button>
 								</Box>
 								<Box flexAuto style={{textAlign:'right',display:'none'}}>
 									<Button onClick={() => onRequestClose()}
@@ -78,6 +84,8 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 					<div className={style.modalInnerContent}>
 						<ResumeContent/>
 					</div>
+					<button onClick={() => onRequestClose()}
+					        className={buttonLargeClasses}>back</button>
 				</div>
 			</ReactModal>
 		</div>

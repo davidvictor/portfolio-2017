@@ -65,7 +65,6 @@ class App extends Component {
 	}
 	
 	render() {
-		const {children} = this.props;
 		const classes    = classNames("app", style.root);
 		return (
 			<div className={classes}>

@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {Flex, Box} from 'reflexbox';
 import Project from '../../project';
 import ImageZoom from 'react-medium-image-zoom';
-import {DefaultPlayer as Video} from 'react-html5video';
+import a from '../../../utils/analytics';
 import 'react-html5video/dist/styles.css';
 import classNames from 'classnames';
 import style from './style.scss';
-
+import _ from 'lodash';
 import {assetUrl} from 'config';
 
 const Brand = () => {
@@ -24,8 +24,42 @@ const Brand = () => {
 							src: `${assetUrl}/lifeisbeautiful/logo-lockup@2x.png`,
 							alt: 'Logo',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Life is Beautiful',
+							src:  'logo-lockup.png'
+						})}
 					/>
 				</Box>
+			</Flex>
+		</div>
+	)
+};
+
+const Palette = () => {
+	const colors = [
+		{
+			name: 'dark-purple'
+		}, {
+			name: 'light-purple'
+		}, {
+			name: 'pink'
+		}, {
+			name: 'lib-red1'
+		},{
+			name: 'lib-red2'
+		}
+	];
+	return (
+		<div>
+			<Flex justify="center" my={6}>
+				{colors.map((color, idx) =>
+					<Box key={idx}>
+						<div className={`color-card ${color.name} ${style.colorCard}`}>
+							<div className="color-preview "></div>
+							<div className="color-shades"></div>
+						</div>
+					</Box>
+				)}
 			</Flex>
 		</div>
 	)
@@ -46,6 +80,10 @@ const Web = () => {
 							src: `${assetUrl}/lifeisbeautiful/website@2x.png`,
 							alt: 'Website',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Life is Beautiful',
+							src:  'website.png'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -54,61 +92,43 @@ const Web = () => {
 };
 
 const App = () => {
+	const screens = [
+		{
+			src:  `${assetUrl}/lifeisbeautiful/app/app-1.png`,
+			zoom: `${assetUrl}/lifeisbeautiful/app/app-1@2x.png`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/app/app-2.png`,
+			zoom: `${assetUrl}/lifeisbeautiful/app/app-2@2x.png`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/app/app-3.png`,
+			zoom: `${assetUrl}/lifeisbeautiful/app/app-3@2x.png`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/app/app-4.png`,
+			zoom: `${assetUrl}/lifeisbeautiful/app/app-5@2x.png`,
+		}
+	];
 	return (
 		<div>
 			<Flex justify="center" wrap>
-				<Box py={2} px={4}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/app/app-1.png`,
-							alt:   'Festival App',
-							style: {width: '130px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/app/app-1@2x.png`,
-							alt: 'Festival App',
-						}}
-					/>
-				</Box>
-				<Box py={2} px={4}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/app/app-2.png`,
-							alt:   'Festival App',
-							style: {width: '130px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/app/app-2@2x.png`,
-							alt: 'Festival App',
-						}}
-					/>
-				</Box>
-				<Box py={2} px={4}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/app/app-3.png`,
-							alt:   'Festival App',
-							style: {width: '130px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/app/app-3@2x.png`,
-							alt: 'Festival App',
-						}}
-					/>
-				</Box>
-				<Box py={2} px={4}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/app/app-4.png`,
-							alt:   'Festival App',
-							style: {width: '130px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/app/app-4@2x.png`,
-							alt: 'Festival App',
-						}}
-					/>
-				</Box>
+				{screens.map((screen, idx) =>
+					<Box py={2} px={4}  key={_.uniqueId('app_')}>
+						<ImageZoom
+							image={{
+								src:   screen.src,
+								alt:   'Festival App',
+								style: {width: '130px'}
+							}}
+							zoomImage={{
+								src: screen.zoom,
+								alt: 'Festival App',
+							}}
+							onZoom={() => a.track('Image Zoomed', {
+								page: 'Life is Beautiful',
+								src:  screen.src.split('/lifeisbeautiful/')[1]
+							})}
+						/>
+					</Box>
+				)}
 			</Flex>
 		</div>
 	)
@@ -129,6 +149,10 @@ const Poster = () => {
 							src: `${assetUrl}/lifeisbeautiful/poster@2x.jpg`,
 							alt: 'Lineup Poster'
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Life is Beautiful',
+							src:  'poster.jpg'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -151,6 +175,10 @@ const Guide = () => {
 							src: `${assetUrl}/lifeisbeautiful/map@2x.jpg`,
 							alt: 'Guide Inside Cover',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Life is Beautiful',
+							src:  'map.jpg'
+						})}
 					/>
 				</Box>
 				<Box flex px={2}>
@@ -166,6 +194,10 @@ const Guide = () => {
 									src: `${assetUrl}/lifeisbeautiful/schedule@2x.jpg`,
 									alt: 'Schedule',
 								}}
+								onZoom={() => a.track('Image Zoomed', {
+									page: 'Life is Beautiful',
+									src:  'schedule.jpg'
+								})}
 							/>
 						</Box>
 						<Box>
@@ -179,6 +211,10 @@ const Guide = () => {
 									src: `${assetUrl}/lifeisbeautiful/guide-inside@2x.png`,
 									alt: 'Guide Inside Cover',
 								}}
+								onZoom={() => a.track('Image Zoomed', {
+									page: 'Life is Beautiful',
+									src:  'guide-inside.png'
+								})}
 							/>
 						</Box>
 					</Flex>
@@ -189,48 +225,40 @@ const Guide = () => {
 };
 
 const VIP = () => {
+	const artworks = [
+		{
+			src:  `${assetUrl}/lifeisbeautiful/vip1.png`,
+			zoom: `${assetUrl}/lifeisbeautiful/vip1@2x.png`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/vip2.png`,
+			zoom: `${assetUrl}/lifeisbeautiful/vip2@2x.png`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/vip3.png`,
+			zoom: `${assetUrl}/lifeisbeautiful/vip3@2x.png`,
+		}
+	];
 	return (
 		<div>
 			<Flex justify="center" py={4} wrap>
-				<Box sm={12} md={3} lg={3} px={2} style={{textAlign: 'center'}}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/vip1.png`,
-							alt:   'VIP Artwork',
-							style: {width: '100%', maxWidth: '280px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/vip1@2x.png`,
-							alt: 'VIP Artwork',
-						}}
-					/>
-				</Box>
-				<Box sm={12} md={3} lg={3} px={2} style={{textAlign: 'center'}}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/vip2.png`,
-							alt:   'VIP Artwork',
-							style: {width: '100%', maxWidth: '280px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/vip2@2x.png`,
-							alt: 'VIP Artwork',
-						}}
-					/>
-				</Box>
-				<Box sm={12} md={3} lg={3} px={2} style={{textAlign: 'center'}}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/vip3.png`,
-							alt:   'VIP Artwork',
-							style: {width: '100%', maxWidth: '280px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/vip3@2x.png`,
-							alt: 'VIP Artwork',
-						}}
-					/>
-				</Box>
+				{artworks.map((artwork, idx) =>
+					<Box col={10} sm={12} md={3} lg={3} px={2} style={{textAlign: 'center'}} key={_.uniqueId('vip_')}>
+						<ImageZoom
+							image={{
+								src:   artwork.src,
+								alt:   'VIP Artwork',
+								style: {width: '100%', maxWidth: '280px'}
+							}}
+							zoomImage={{
+								src: artwork.zoom,
+								alt: 'VIP Artwork',
+							}}
+							onZoom={() => a.track('Image Zoomed', {
+								page: 'Life is Beautiful',
+								src:  artwork.src.split('/lifeisbeautiful/')[1]
+							})}
+						/>
+					</Box>
+				)}
 			</Flex>
 		</div>
 	)
@@ -265,6 +293,10 @@ const Tickets = () => {
 							src: `${assetUrl}/lifeisbeautiful/ad-728x90_music.gif`,
 							alt: 'Banner Ad',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Life is Beautiful',
+							src:  'ad-728x90_music'
+						})}
 					/>
 				</Box>
 				<Box pr={1} mb={2}>
@@ -278,6 +310,10 @@ const Tickets = () => {
 							src: `${assetUrl}/lifeisbeautiful/ticket-animate@2x.gif`,
 							alt: 'Commemorative Ticket',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Life is Beautiful',
+							src:  'ticket-animate.gif'
+						})}
 					/>
 				</Box>
 				<Box>
@@ -291,6 +327,10 @@ const Tickets = () => {
 							src: `${assetUrl}/lifeisbeautiful/wristbands@2x.png`,
 							alt: 'Wristbands',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Life is Beautiful',
+							src:  'wristbands.png'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -299,87 +339,50 @@ const Tickets = () => {
 };
 
 const Culinary = () => {
+	const logos = [
+		{
+			src:  `${assetUrl}/lifeisbeautiful/culinary/1.jpg`,
+			zoom: `${assetUrl}/lifeisbeautiful/culinary/1@3x.jpg`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/culinary/2.jpg`,
+			zoom: `${assetUrl}/lifeisbeautiful/culinary/2@3x.jpg`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/culinary/3.jpg`,
+			zoom: `${assetUrl}/lifeisbeautiful/culinary/3@3x.jpg`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/culinary/4.jpg`,
+			zoom: `${assetUrl}/lifeisbeautiful/culinary/4@3x.jpg`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/culinary/5.jpg`,
+			zoom: `${assetUrl}/lifeisbeautiful/culinary/5@3x.jpg`,
+		}, {
+			src:  `${assetUrl}/lifeisbeautiful/culinary/6.jpg`,
+			zoom: `${assetUrl}/lifeisbeautiful/culinary/6@3x.jpg`,
+		},
+	];
 	return (
 		<div>
 			<Flex justify="center" wrap pt={2} pb={2}>
-				<Box p={2}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/culinary/1.jpg`,
-							alt:   'Culinary Logo',
-							style: {width: 'auto', maxWidth: '240px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/culinary/1@3x.jpg`,
-							alt: 'Culinary Logo',
-						}}
-					/>
-				</Box>
-				<Box p={2}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/culinary/2.jpg`,
-							alt:   'Culinary Logo',
-							style: {width: 'auto', maxWidth: '240px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/culinary/2@3x.jpg`,
-							alt: 'Culinary Logo',
-						}}
-					/>
-				</Box>
-				<Box p={2}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/culinary/3.jpg`,
-							alt:   'Culinary Logo',
-							style: {width: 'auto', maxWidth: '240px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/culinary/3@3x.jpg`,
-							alt: 'Culinary Logo',
-						}}
-					/>
-				</Box>
-				<Box p={2}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/culinary/4.jpg`,
-							alt:   'Culinary Logo',
-							style: {width: 'auto', maxWidth: '240px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/culinary/4@3x.jpg`,
-							alt: 'Culinary Logo',
-						}}
-					/>
-				</Box>
-				<Box p={2}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/culinary/5.jpg`,
-							alt:   'Culinary Logo',
-							style: {width: 'auto', maxWidth: '240px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/culinary/5@3x.jpg`,
-							alt: 'Culinary Logo',
-						}}
-					/>
-				</Box>
-				<Box p={2}>
-					<ImageZoom
-						image={{
-							src:   `${assetUrl}/lifeisbeautiful/culinary/6.jpg`,
-							alt:   'Culinary Logo',
-							style: {width: 'auto', maxWidth: '240px'}
-						}}
-						zoomImage={{
-							src: `${assetUrl}/lifeisbeautiful/culinary/6@3x.jpg`,
-							alt: 'Culinary Logo',
-						}}
-					/>
-				</Box>
+				{logos.map((logo, idx) =>
+					<Box p={2} key={_.uniqueId('culinary_')}>
+						<ImageZoom
+							zoomMargin={0}
+							image={{
+								src:   logo.src,
+								alt:   'Culinary Logo',
+								style: {width: 'auto', maxWidth: '240px'}
+							}}
+							zoomImage={{
+								src: logo.zoom,
+								alt: 'Culinary Logo',
+							}}
+							onZoom={() => a.track('Image Zoomed', {
+								page: 'Life is Beautiful',
+								src:  logo.src.split('/lifeisbeautiful/')[1]
+							})}
+						/>
+					</Box>
+				)}
 			</Flex>
 		</div>
 	)
@@ -400,6 +403,10 @@ const Love = () => {
 							src: `${assetUrl}/lifeisbeautiful/equal-love@2x.png`,
 							alt: 'Equal Love Promo Logo',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Life is Beautiful',
+							src:  'equal-love.png'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -458,9 +465,8 @@ const Photos = () => {
 		<div>
 			<Flex justify="center" wrap pt={2} pb={2}>
 				{photos.map((photo, idx) =>
-					<Box key={idx} p={1}>
+					<Box key={_.uniqueId('photos_')} p={1}>
 						<ImageZoom
-							shouldPreload
 							zoomMargin={0}
 							defaultStyles={defaultStyles}
 							image={{
@@ -472,6 +478,10 @@ const Photos = () => {
 								src: photo.zoom,
 								alt: 'Festival Photo',
 							}}
+							onZoom={() => a.track('Image Zoomed', {
+								page: 'Life is Beautiful',
+								src:  photo.src.split('/lifeisbeautiful/')[1]
+							})}
 						/>
 					</Box>
 				)}
@@ -491,7 +501,6 @@ const PlanetHollywood = () => {
 			<Flex justify="center" mt={6} mb={3}>
 				<Box col={12}>
 					<ImageZoom
-						shouldPreload
 						zoomMargin={0}
 						defaultStyles={defaultStyles}
 						image={{
@@ -503,6 +512,10 @@ const PlanetHollywood = () => {
 							src: `${assetUrl}/lifeisbeautiful/planet-hollywood-crop@2x.jpg`,
 							alt: 'Vegas Strip Takeover',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Life is Beautiful',
+							src:  'planet-hollywood-crop.jpg'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -519,13 +532,14 @@ const LifeisBeautiful = () => {
 			<Project
 				title="Life is Beautiful"
 				url='https://lifeisbeautiful.com'
-				roles={['creative','branding','design','ui','code']}
+				roles={['creative', 'branding', 'design', 'ui', 'code']}
 				description="Life is Beautiful is an inspirational company dedicated to helping people conquer their fears and chase their dreams. Its signature project, the Life is Beautiful Festival, was founded in 2013 and launched in October of that same year as a highly successful lifestyle event featuring marquee musicians, chefs, artists and speakers. Held in the heart of Downtown Las Vegas, Life is Beautiful Festival attracted more than 60,000 patrons in its first year, and is now branching out to an international online forum inspiring social change."
 				contribution="I was selected to become a member of the founding team after an extensive pitch process in 2012. I worked closely with the founder, Rehan Choudhry, to turn his vision into reality. Drawing much inspiration from the host city, downtown Las Vegas, a gritty, raw, artistic logo, juxtaposed with shapes inspired by old town Vegas architecture emerged. Add some marquee lights and vibrant colors and you've got yourself a festival. I led a creative team to implement every branded and visual element for the event. From a custom CMS to manage website and app content to bathroom and exit signs, I oversaw it all."
-				bg={{src:`${assetUrl}/hero/lib-hero.jpg`,mobile:`${assetUrl}/hero/lib-hero-mobile.jpg`}}
+				bg={{src: `${assetUrl}/hero/lib-hero.jpg`, mobile: `${assetUrl}/hero/lib-hero-mobile.jpg`}}
 				logo={{src: `${assetUrl}/lifeisbeautiful/logo-heart-white.png`, width: "180px"}}>
 				
 				<Brand/>
+				<Palette/>
 				<Poster/>
 				<Web/>
 				<App/>

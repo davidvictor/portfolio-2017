@@ -6,6 +6,8 @@ import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
 
+import _ from 'lodash';
+
 import {assetUrl, resume} from 'config';
 
 const Identity = () => {
@@ -55,7 +57,7 @@ const Expertise = () => {
 			<h5>Expertise</h5>
 			<ul>
 				{areas.map((area, idx) =>
-					<li>{area}</li>
+					<li key={_.uniqueId('expertise_')}>{area}</li>
 				)}
 			</ul>
 		</div>
@@ -70,7 +72,7 @@ const Technology = () => {
 			<h5>Technology</h5>
 			<ul>
 				{techs.map((tech, idx) =>
-					<li>{tech}</li>
+					<li key={_.uniqueId('technology_')}>{tech}</li>
 				)}
 			</ul>
 		</div>
@@ -85,7 +87,7 @@ const Tools = () => {
 			<h5>Tools</h5>
 			<ul>
 				{tools.map((tool, idx) =>
-					<li>{tool}</li>
+					<li key={_.uniqueId('tools_')}>{tool}</li>
 				)}
 			</ul>
 		</div>
@@ -100,7 +102,7 @@ const Platforms = () => {
 			<h5>Platforms</h5>
 			<ul>
 				{platforms.map((platform, idx) =>
-					<li>{platform}</li>
+					<li key={_.uniqueId('platforms_')}>{platform}</li>
 				)}
 			</ul>
 		</div>

@@ -5,6 +5,7 @@ import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
 import {Email} from '../icon';
+import a from '../../utils/analytics';
 
 import {compose, withState, withHandlers} from 'recompose';
 
@@ -21,13 +22,13 @@ const ContactButton = withActive(({active, on, off, toggle, anchor}) => {
 	const classes        = classNames("contact", style.contactRoot);
 	const onRequestClose = () => {
 		off();
-		mixpanel.track("Contact Modal Close");
+		a.track("Contact Modal Close");
 	};
 	const afterOpen      = () => {
-		mixpanel.track("Contact Modal Open");
+		a.track("Contact Modal Open");
 	};
 	const handleEmail    = () => {
-		mixpanel.track("Email Address Clicked");
+		a.track("Email Address Clicked");
 	};
 	return (
 		<div className={classes}>
