@@ -9,6 +9,8 @@ import classNames from 'classnames';
 import style from './style.scss';
 import a from '../../utils/analytics';
 
+import K from '../kaleidoscope';
+
 import {assetUrl} from 'config';
 
 import {compose, withState, withHandlers} from 'recompose';
@@ -52,7 +54,8 @@ const Footer = ({off}) => {
 		<div className={classes}>
 			<Flex justify='flex-start' align='center' wrap={false}>
 				<Box >
-					<img src={`${assetUrl}/geo/geo-29.svg`} className={style.geo}/>
+					<K/>
+					
 				</Box>
 				<Box flexAuto style={{textAlign:'center'}}>
 					<NavLink to="/about"

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactModal from 'react-modal';
-import {Close,Button, ButtonOutline, ButtonCircle} from 'rebass';
+import {Close, Button, ButtonOutline, ButtonCircle} from 'rebass';
 import {Flex, Box} from 'reflexbox';
 import Headroom from 'react-headroom';
 import a from '../../utils/analytics';
@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import style from './style.scss';
 import ResumeContent from './resume';
 
-import {compose, withState, withHandlers,withContext} from 'recompose';
+import {compose, withState, withHandlers} from 'recompose';
 
 const withActive = compose(
 	withState('active', 'setActive', false),
@@ -18,24 +18,20 @@ const withActive = compose(
 		toggle: props => () => props.setActive(a => !a),
 	})
 );
-//
-//const provide = (rebass) => withContext(
-//	{ rebass: React.PropTypes.object },
-//	() => ({ rebass })
-//);
 
 const ContactButton = withActive(({active, on, off, toggle}) => {
-	const classes         = classNames("resume", style.root);
-	const modalClasses    = classNames("resume-modal", style.modal);
-	const buttonClasses         = classNames(style.backButton);
-	const buttonLargeClasses         = classNames(style.backButton,style.backButtonLarge);
-	const getParent       = () => {return document.querySelector('#root');};
-	const getScrollParent = () => {return document.querySelector('.resume-modal');};
-	const onRequestClose  = () => {
+	const classes             = classNames("resume", style.root);
+	const modalClasses        = classNames("resume-modal", style.modal);
+	const modalContentClasses = classNames("resume-modal-content", style.modalContent);
+	const buttonClasses       = classNames(style.backButton);
+	const buttonLargeClasses  = classNames(style.backButton, style.backButtonLarge);
+	const getParent           = () => {return document.querySelector('#root');};
+	const getScrollParent     = () => {return document.querySelector('.resume-modal-content');};
+	const onRequestClose      = () => {
 		off();
 		a.track("Resume Close");
 	};
-	const afterOpen       = () => {
+	const afterOpen           = () => {
 		a.track("Resume Open");
 	};
 	return (
@@ -53,30 +49,27 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 				parentSelector={getParent}
 				shouldCloseOnOverlayClick={true}
 				onAfterOpen={afterOpen}>
-				<div className={style.modalContent}>
-					<Headroom disableInlineStyles parent={getScrollParent} disable>
+				<div className={modalContentClasses}>
+					<Headroom disableInlineStyles parent={getScrollParent}>
 						<div className={style.modalHeader}>
 							<Flex align="center">
-								
-								<Box flexAuto style={{textAlign:'right',display:'none'}}>
+								<Box flexAuto style={{textAlign: 'right', display: 'none'}}>
 									<Button onClick={() => onRequestClose()}
 									        className={style.closeButton}
 									        backgroundColor={`rgb(165, 127, 95)`}
-									        px={3} py={2}>
-										download
-									</Button>
+									        px={3} py={2}> download </Button>
 								</Box>
-								<Box flexAuto style={{textAlign:'right'}}>
+								<Box style={{textAlign: 'right'}}>
 									<button onClick={() => onRequestClose()}
-									        className={buttonClasses}>back</button>
+									        className={buttonClasses}>back
+									</button>
 								</Box>
-								<Box flexAuto style={{textAlign:'right',display:'none'}}>
-									<Button onClick={() => onRequestClose()}
-									        className={style.closeButton}
+								<Box flexAuto style={{textAlign: 'right'}}>
+									<Button href="https://d1x0bq6kwb2k3o.cloudfront.net/resume/davidvictor-resume-2017-a.pdf"
+									        download
+									        onClick={() => onRequestClose()}
 									        backgroundColor={`rgb(165, 127, 95)`}
-									px={3} py={2}>
-										download
-									</Button>
+									        px={3} py={2}> download pdf</Button>
 								</Box>
 							</Flex>
 						</div>
@@ -85,7 +78,9 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 						<ResumeContent/>
 					</div>
 					<button onClick={() => onRequestClose()}
-					        className={buttonLargeClasses}>back</button>
+					        className={buttonLargeClasses}>
+						back
+					</button>
 				</div>
 			</ReactModal>
 		</div>

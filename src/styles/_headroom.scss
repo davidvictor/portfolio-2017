@@ -68,24 +68,21 @@
 	}
 }
 
-
 .resume-modal {
 	.headroom {
-		top:     0;
-		left:    0;
-		right:   0;
-		z-index: 100;
-		background-color: rgb(236, 236, 236);
-		transition: background-color 200ms ease-in-out;
+		top:              0;
+		left:             0;
+		right:            0;
+		z-index:          100;
+		background-color: $resumeModalBg;
 	}
 	.headroom--unfixed {
 		position:  relative;
 		transform: translateY(0);
 	}
 	.headroom--scrolled {
-		transition: transform 200ms ease-in-out,background-color 200ms ease-in-out;
-		background-color: white;
-		border-bottom: 1px solid $border-color;
+		transition:       transform 200ms ease-in-out, background-color 200ms ease-in-out;
+		background-color: transparentize($resumeModalBg, 0.1);
 	}
 	.headroom--unpinned {
 		position:  fixed;
@@ -94,5 +91,14 @@
 	.headroom--pinned {
 		position:  fixed;
 		transform: translateY(0%);
+	}
+}
+
+@supports (backdrop-filter: blur(6px)) {
+	.resume-modal {
+		.headroom--scrolled {
+			background-color: transparentize($resumeModalBg, 0.3);
+			backdrop-filter:  blur(6px);
+		}
 	}
 }

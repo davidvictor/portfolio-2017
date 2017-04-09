@@ -3,15 +3,11 @@
 $toggleHeight: 60px;
 
 .menuToggle {
-	//z-index:          300;
 	height:           $toggleHeight;
 	width:            100vw;
 	background-color: white;
 	display:          none;
 	border-top:       1px solid $border-color;
-	//bottom:           0;
-	//left:             0;
-	
 	.mobileButton {
 		display:             block;
 		width:               100%;
@@ -87,13 +83,10 @@ $toggleHeight: 60px;
 	top:                        50%;
 	left:                       50%;
 	transform:                  translate3d(-50%, -50%, 0);
-	//width: calc(100vw - #{1rem * 8});
-	//max-width: 600px;
 	overflow-y:                 auto;
 	overflow-x:                 hidden;
 	outline:                    none;
 	padding:                    1rem * 2;
-	//background: white;
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -132,15 +125,18 @@ $toggleHeight: 60px;
 	.root {
 		&.active {
 			.inner {
+				visibility: visible;
 				transform: translate3d(0, 0, 0);
+				transition-delay:0s;
 			}
 		}
 	}
 	.inner {
 		height:     100%;
 		width:      100vw;
-		transition: transform 200ms ease;
+		visibility: hidden;
 		transform:  translate3d(0, calc(100% + #{$toggleHeight}), 0);
+		transition: visibility 0s linear 200ms, transform 200ms ease-in-out;
 	}
 	.logoImg {
 		width:     100%;
@@ -150,7 +146,6 @@ $toggleHeight: 60px;
 		display: block;
 	}
 	.mobileButton {
-		
 		&.buttonActive {
 			background-image: url("#{$assetUrl}/base/closed-thick.svg");
 		}

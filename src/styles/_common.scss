@@ -81,3 +81,8 @@ a, button {
 		outline: none;
 	}
 }
+
+//noinspection CssInvalidPropertyValue
+@-ms-viewport{
+	width: device-width;
+}
