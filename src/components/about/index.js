@@ -31,7 +31,7 @@ const About = ({}, context) => {
 					<a href="https://medium.com/fullstack-design-by-xpos-it/the-rise-of-the-full-stack-designer-and-the-tools-he-uses-3daf015eb3fc"
 					   target="_blank"
 					   onClick={() => handleClick('Full Stack Designer')}><span><strong>full&nbsp;stack&nbsp;designer</strong></span></a> &&nbsp;
-					<a href="http://f2em.com/" target="_blank" onClick={() => handleClick('Front End Engineer')}><span><strong>front&nbsp;end&nbsp;engineer</strong></span></a>
+					<a href="http://f2em.com/" target="_blank" onClick={() => handleClick('Front End Engineer')}><span><strong>front&nbsp;end&nbsp;engineer</strong></span></a>.
 				</p>
 				<p> I develop innovative, creative solutions by combining a unique visual identity with sustained emotional resonance. </p>
 				<p> I define success as a roar, audible through the noise of now. </p>
