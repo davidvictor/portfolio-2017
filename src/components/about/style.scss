@@ -10,8 +10,8 @@
 	position:            absolute;
 	bottom:              0;
 	left:                0;
-	width:               320px;
-	height:              320px;
+	width:               260px;
+	height:              260px;
 	background-size:     100%;
 	background-position: center center;
 	background-repeat:   no-repeat;
@@ -49,11 +49,18 @@
 	}
 }
 
+@media only screen and (min-width: 1280px) {
+	.me {
+		width:  300px;
+		height: 300px;
+	}
+}
+
 
 @media only screen and (min-width: 1400px) {
 	.me {
-		width:  360px;
-		height: 360px;
+		width:  340px;
+		height: 340px;
 	}
 }
 

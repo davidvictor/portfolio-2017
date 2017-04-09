@@ -92,12 +92,12 @@ const resumeData = {
 				{
 					id:          's1',
 					title:       "End-to-end design",
-					description: "for consumer facing, B2B, and internal products. Managed the implementation of business goals while maintaining a design process. Handled engineering delays and bootstrapped startup environment to successfully ship the product on time."
+					description: "for consumer facing, B2B, and internal products. Managed the implementation of business goals while maintaining a design process. Handled engineering delays and a bootstrapped startup environment to successfully ship the product on time."
 				},
 				{
 					id:          's2',
 					title:       "Frontend Architecture",
-					description: "using leading libraries and platforms. Became fluent in JavaScript and mastered the art of interface building. Learned new technologies, like GraphQL and dove deep into the Facebook and YouTube APIs. Continuously optimized site performance, weight, and responsiveness."
+					description: "using leading libraries and platforms. Became fluent in JavaScript and mastered the art of interface building. Learned new technologies, like GraphQL, and dove deep into the Facebook and YouTube APIs. Continuously optimized site performance, weight, and responsiveness."
 				}
 			]
 		}, {
