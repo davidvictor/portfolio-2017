@@ -40,16 +40,7 @@ class KHole extends React.Component {
 			rotation:  null,
 			landscape: false
 		};
-		this.images    = [
-			`${assetUrl}/archive/cherub6.jpg`,
-			`${assetUrl}/archive/huntridge1.jpg`,
-			`${assetUrl}/archive/mimosa.jpg`,
-			`${assetUrl}/archive/classic-2.jpg`,
-			`${assetUrl}/archive/medicine-man2.jpg`,
-			//`${assetUrl}/archive/lionhouse.jpg`,
 		
-			//`${assetUrl}/archive/fishdicks.jpg`,
-		];
 		this.container = null;
 		this.interval  = null;
 		this.container = null;
@@ -83,10 +74,10 @@ class KHole extends React.Component {
 	};
 	
 	changePicture = () => {
-		this.scope.setImage(this.images[this.state.index]);
+		this.scope.setImage(this.props.images[this.state.index]);
 		this.setState({
 			index: (
-			       this.state.index + 1) % this.images.length,
+			       this.state.index + 1) % this.props.images.length,
 		})
 	};
 	
@@ -149,7 +140,7 @@ class KHole extends React.Component {
 	componentWillMount = () => {
 		this.setState({
 			isMobile: this.isMobile()
-		})
+		});
 	};
 	
 	componentDidMount = () => {
@@ -208,10 +199,18 @@ class KHole extends React.Component {
 
 KHole.defaultProps = {
 	multiplier: 0.3,
-	useGravity: true
+	useGravity: true,
+	images: [`${assetUrl}/archive/cherub6.jpg`]
 };
 
 const Kaleidoscope = withActive(({active, on, off, toggle}) => {
+	const images = [
+		`${assetUrl}/archive/cherub6.jpg`,
+		`${assetUrl}/archive/huntridge1.jpg`,
+		`${assetUrl}/archive/mimosa.jpg`,
+		`${assetUrl}/archive/classic-2.jpg`,
+		`${assetUrl}/archive/medicine-man2.jpg`,
+	];
 	const classes        = classNames("kaleidoscope", style.root);
 	const modalClasses   = classNames("kaleidoscope-modal", style.modal);
 	const getParent      = () => {return document.querySelector('#root');};
@@ -226,7 +225,7 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 	return (
 		<div className={classes}>
 			<Button onClick={toggle} backgroundColor='transparent'>
-				<Pyramid />
+				<Pyramid preloadImages={images}/>
 			</Button>
 			<ReactModal
 				id="kaleidoscope-modal"
@@ -239,7 +238,7 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 				shouldCloseOnOverlayClick={true}
 				onAfterOpen={afterOpen}>
 				<div onClick={()=>onRequestClose()}>
-					<KHole debug={process.env.NODE_ENV !== 'production'}/>
+					<KHole debug={process.env.NODE_ENV !== 'production'} images={images}/>
 				</div>
 			</ReactModal>
 		</div>

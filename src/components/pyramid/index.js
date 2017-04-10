@@ -72,6 +72,9 @@ class Pyramid extends Component {
 				parent.setAttribute('class', 'polygon' + (
 					i + 1));
 			}
+			this.setState({
+				initialized: true,
+			})
 		}
 		
 		this.interval = setInterval(function () {
@@ -98,24 +101,35 @@ class Pyramid extends Component {
 	}
 	
 	startAnimation = (e) => {
-	//	console.log(e);
 		if (!this.state.playing) {
 			this.setState({
 				playing:     true,
-				initialized: true,
 			}, this.animate());
 		}
-		
 	};
 	
 	stopAnimation = (e) => {
-		//console.log(e);
 		if (this.state.playing) {
 			this.setState({
 				playing: false,
 			}, clearInterval(this.interval));
 		}
 	};
+	
+	handleMouseOver = () => {
+		if (!this.state.initialized) {
+			this.props.preloadImages.forEach((src) => {
+				const img = document.createElement('img');
+				img.src   = src;
+			});
+		}
+		this.startAnimation();
+	};
+	
+	handleMouseLeave = () => {
+		this.stopAnimation();
+	};
+	
 	
 	render() {
 		const classes        = classNames(style.container, {
@@ -124,7 +138,7 @@ class Pyramid extends Component {
 		const pyramidClasses = classNames("pyramid", style.pyramid);
 		const geoClasses     = classNames("geo", style.geo);
 		return (
-			<div className={classes} onMouseOver={this.startAnimation} onMouseLeave={this.stopAnimation}>
+			<div className={classes} onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave}>
 				<svg className={pyramidClasses} ref="pyramid">
 				
 				</svg>
@@ -148,6 +162,7 @@ Pyramid.propTypes = {
 	dur:      React.PropTypes.number,
 	num:      React.PropTypes.number,
 	sides:    React.PropTypes.number,
-	startDeg: React.PropTypes.number
+	startDeg: React.PropTypes.number,
+	//preloadImages: React.PropTypes.array.required,
 };
 export default Pyramid;
