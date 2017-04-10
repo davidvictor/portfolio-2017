@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import classNames from 'classnames';
 import style from './style.scss';
-//import EventListener, {withOptions} from 'react-event-listener';
 import MobileDetect from 'mobile-detect';
+import a from '../../utils/analytics';
 
 import {assetUrl} from 'config';
 
@@ -72,6 +72,8 @@ class Pyramid extends Component {
 				parent = this.createPolygon(parent, sides, this.props.startDeg);
 				parent.setAttribute('class', 'polygon' + (
 					i + 1));
+				//parent.setAttribute('stroke-width', (
+				//(i + 1) * .75) + 'px');
 			}
 			this.setState({
 				initialized: true,
@@ -84,7 +86,7 @@ class Pyramid extends Component {
 			const innerCornerDeg = Math.round(360 / sides);
 			
 			if (Math.abs(theta) > innerCornerDeg) {
-				//dir *= -1;
+				//dir *= -1; //alternate direction
 				theta = (
 					Math.abs(theta) - innerCornerDeg) * dir;
 			}
@@ -95,10 +97,15 @@ class Pyramid extends Component {
 				Math.sin(thetaValue) + Math.sin(innerCornerDeg * Math.PI / 180 - thetaValue));
 			
 			for (let i = 1; i < num; i++) {
-				document.querySelector('.polygon' + (
-					i + 1)).style.transform = 'scale(' + scaleRatio + ') rotate(' + theta + 'deg)';
+				let el = document.querySelector('.polygon' + (
+					i + 1));
+				el.style.transform = 'scale(' + scaleRatio + ') rotate(' + theta + 'deg)';
+				el.style.strokeWidth = (i * .5) / scaleRatio + 'px';
 			}
 		}, dur);
+		
+		a.track("Pyramid Hovered");
+		
 	}
 	
 	isMobile = () => {
@@ -115,7 +122,7 @@ class Pyramid extends Component {
 	startAnimation = (e) => {
 		if (!this.state.playing) {
 			this.setState({
-				playing:     true,
+				playing: true,
 			}, this.animate());
 		}
 	};
@@ -142,7 +149,6 @@ class Pyramid extends Component {
 		this.stopAnimation();
 	};
 	
-	
 	render() {
 		const classes        = classNames(style.container, {
 			[style.playing]: this.state.playing,
@@ -150,12 +156,13 @@ class Pyramid extends Component {
 		const pyramidClasses = classNames("pyramid", style.pyramid);
 		const geoClasses     = classNames("geo", style.geo);
 		return this.state.isMobile ? (
-			<div className={classes}>
-				<svg className={pyramidClasses} ref="pyramid">
-				</svg>
-				<img src={`${assetUrl}/geo/geo-29.svg`} className={geoClasses} ref="geo"/>
-			</div>
-		) : <div className={classes} onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave}>
+				<div className={classes}>
+					<svg className={pyramidClasses} ref="pyramid">
+					</svg>
+					<img src={`${assetUrl}/geo/geo-29.svg`} className={geoClasses} ref="geo"/>
+				</div>
+			) :
+			<div className={classes} onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave}>
 				<svg className={pyramidClasses} ref="pyramid">
 				</svg>
 				<img src={`${assetUrl}/geo/geo-29.svg`} className={geoClasses} ref="geo"/>

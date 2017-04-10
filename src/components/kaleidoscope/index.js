@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactModal from 'react-modal';
 import Graphemescope from '../../utils/graphemescope';
 import {Close, Button, ButtonOutline, ButtonCircle} from 'rebass';
-import {Flex, Box} from 'reflexbox';
+//import {Flex, Box} from 'reflexbox';
 import a from '../../utils/analytics';
 import classNames from 'classnames';
 import style from './style.scss';
@@ -28,7 +28,7 @@ const withActive = compose(
 class KHole extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state     = {
+		this.state = {
 			cX:        window.innerWidth,
 			cY:        window.innerHeight,
 			mX:        0.04,
@@ -66,7 +66,7 @@ class KHole extends React.Component {
 		this.scope.zoomFactor  = 1.0;
 		this.scope.angleFactor = 1.0;
 		
-		this.scope.ease = 0.1;
+		this.scope.ease        = 0.1;
 		this.scope.easeEnabled = this.state.isMobile;
 		
 		this.scope.alphaFactor = 1.0;
@@ -170,19 +170,30 @@ class KHole extends React.Component {
 	render() {
 		const kStyle = {
 			position: 'relative',
-			height: this.state.cY,
-			width:  this.state.cX,
+			height:   this.state.cY,
+			width:    this.state.cX,
 		};
 		return (
 			<div>
 				<div className="k" style={kStyle}/>
-				{this.props.debug ? 	<div className={style.debug}>
-						{this.state.isMobile ? <div>
-								<div><span>X: </span>{this.state.x}</div>
-								<div><span>Y: </span>{this.state.y}</div>
-							</div> : <div>
-								<div><span>X: </span>{this.state.mX}</div>
-								<div><span>Y: </span>{this.state.mY}</div>
+				{this.props.debug ?
+					<div className={style.debug}>
+						{this.state.isMobile ?
+							<div>
+								<div>
+									<span>X: </span>{this.state.x}
+								</div>
+								<div>
+									<span>Y: </span>{this.state.y}
+								</div>
+							</div> :
+							<div>
+								<div>
+									<span>X: </span>{this.state.mX}
+								</div>
+								<div>
+									<span>Y: </span>{this.state.mY}
+								</div>
 							</div>}
 					</div> : false}
 				
@@ -199,11 +210,11 @@ class KHole extends React.Component {
 KHole.defaultProps = {
 	multiplier: 0.2,
 	useGravity: true,
-	images: [`${assetUrl}/archive/cherub6.jpg`]
+	images:     [`${assetUrl}/archive/cherub6.jpg`]
 };
 
 const Kaleidoscope = withActive(({active, on, off, toggle}) => {
-	const images = [
+	const images         = [
 		`${assetUrl}/archive/cherub6.jpg`,
 		`${assetUrl}/archive/huntridge1.jpg`,
 		`${assetUrl}/archive/mimosa.jpg`,
@@ -220,7 +231,6 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 	const afterOpen      = () => {
 		a.track("Kaleidoscope Open");
 	};
-	//<img src={`${assetUrl}/geo/geo-29.svg`} className={style.geo}/>
 	return (
 		<div className={classes}>
 			<Button onClick={toggle} backgroundColor='transparent'>
@@ -236,7 +246,7 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 				parentSelector={getParent}
 				shouldCloseOnOverlayClick={true}
 				onAfterOpen={afterOpen}>
-				<div onClick={()=>onRequestClose()}>
+				<div onClick={() => onRequestClose()}>
 					<KHole debug={process.env.NODE_ENV !== 'production'} images={images}/>
 				</div>
 			</ReactModal>
