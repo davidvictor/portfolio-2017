@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import style from './style.scss';
 //import EventListener, {withOptions} from 'react-event-listener';
+import MobileDetect from 'mobile-detect';
 
 import {assetUrl} from 'config';
 
@@ -100,6 +101,17 @@ class Pyramid extends Component {
 		}, dur);
 	}
 	
+	isMobile = () => {
+		const md = new MobileDetect(window.navigator.userAgent);
+		return md.mobile();
+	};
+	
+	componentWillMount = () => {
+		this.setState({
+			isMobile: this.isMobile()
+		})
+	};
+	
 	startAnimation = (e) => {
 		if (!this.state.playing) {
 			this.setState({
@@ -137,14 +149,17 @@ class Pyramid extends Component {
 		});
 		const pyramidClasses = classNames("pyramid", style.pyramid);
 		const geoClasses     = classNames("geo", style.geo);
-		return (
-			<div className={classes} onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave}>
+		return this.state.isMobile ? (
+			<div className={classes}>
 				<svg className={pyramidClasses} ref="pyramid">
-				
 				</svg>
 				<img src={`${assetUrl}/geo/geo-29.svg`} className={geoClasses} ref="geo"/>
 			</div>
-		);
+		) : <div className={classes} onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave}>
+				<svg className={pyramidClasses} ref="pyramid">
+				</svg>
+				<img src={`${assetUrl}/geo/geo-29.svg`} className={geoClasses} ref="geo"/>
+			</div>;
 	}
 }
 

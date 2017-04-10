@@ -63,11 +63,11 @@ class KHole extends React.Component {
 		
 		this.scope.radiusFactor = 0.5;
 		
-		this.scope.zoomFactor  = 2.0;
+		this.scope.zoomFactor  = 1.0;
 		this.scope.angleFactor = 1.0;
 		
-		this.scope.ease = 0.01;
-		this.scope.easeEnabled = false;
+		this.scope.ease = 0.1;
+		this.scope.easeEnabled = this.state.isMobile;
 		
 		this.scope.alphaFactor = 1.0;
 		this.scope.alphaTarget = 1.0;
@@ -186,7 +186,6 @@ class KHole extends React.Component {
 							</div>}
 					</div> : false}
 				
-			
 				<EventListener
 					target="window"
 					onResize={this.handleResize}
@@ -198,7 +197,7 @@ class KHole extends React.Component {
 }
 
 KHole.defaultProps = {
-	multiplier: 0.3,
+	multiplier: 0.2,
 	useGravity: true,
 	images: [`${assetUrl}/archive/cherub6.jpg`]
 };
