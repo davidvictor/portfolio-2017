@@ -119,6 +119,11 @@ $toggleHeight: 60px;
 	+ * {
 		margin-left: 4px;
 	}
+	transition: transform 200ms ease;
+	&:hover,
+	&:focus {
+		transform: scale(1.1);
+	}
 }
 
 @media only screen and (max-width: 960px) {

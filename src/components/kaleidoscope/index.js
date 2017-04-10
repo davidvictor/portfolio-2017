@@ -10,7 +10,8 @@ import EventListener, {withOptions} from 'react-event-listener';
 import MobileDetect from 'mobile-detect';
 //import ReactAccelerometer from 'react-accelerometer'
 //import { Motion, spring } from 'react-motion'
-
+//import Khole from "./kscope";
+import Pyramid from '../pyramid';
 import {assetUrl} from 'config';
 
 import {compose, withState, withHandlers} from 'recompose';
@@ -30,8 +31,8 @@ class KHole extends React.Component {
 		this.state     = {
 			cX:        window.innerWidth,
 			cY:        window.innerHeight,
-			mX:        0,
-			mY:        0,
+			mX:        0.04,
+			mY:        0.9,
 			index:     0,
 			x:         null,
 			y:         null,
@@ -40,9 +41,13 @@ class KHole extends React.Component {
 			landscape: false
 		};
 		this.images    = [
-			`${assetUrl}/archive/cherub.jpg`,
+			`${assetUrl}/archive/cherub6.jpg`,
+			`${assetUrl}/archive/huntridge1.jpg`,
+			`${assetUrl}/archive/mimosa.jpg`,
 			`${assetUrl}/archive/classic-2.jpg`,
-			`${assetUrl}/archive/swag-city2.jpg`,
+			`${assetUrl}/archive/medicine-man2.jpg`,
+			//`${assetUrl}/archive/lionhouse.jpg`,
+		
 			//`${assetUrl}/archive/fishdicks.jpg`,
 		];
 		this.container = null;
@@ -65,12 +70,13 @@ class KHole extends React.Component {
 	setScope = () => {
 		this.scope = new Graphemescope(this.container);
 		
-		this.scope.radiusFactor = 1.0;
+		this.scope.radiusFactor = 0.5;
 		
 		this.scope.zoomFactor  = 2.0;
 		this.scope.angleFactor = 1.0;
 		
-		this.scope.ease = 0.05;
+		this.scope.ease = 0.01;
+		this.scope.easeEnabled = false;
 		
 		this.scope.alphaFactor = 1.0;
 		this.scope.alphaTarget = 1.0;
@@ -103,12 +109,12 @@ class KHole extends React.Component {
 	
 	doMouseShit = () => {
 		this.scope.angleTarget = this.state.mX;
-		this.scope.zoomTarget  = 0.75 + 0.75 * this.state.mY;
+		this.scope.zoomTarget  = .5 + 0.75 * this.state.mY;
 	};
 	
 	doMotionShit = () => {
 		this.scope.angleTarget = this.state.x;
-		this.scope.zoomTarget  = 0.75 + 0.75 * this.state.y;
+		this.scope.zoomTarget  = 1 + 0.5 * this.state.y;
 	};
 	
 	handleResize = (windowSize) => {
@@ -157,7 +163,7 @@ class KHole extends React.Component {
 		this.setContainer();
 		this.setScope();
 		
-		this.interval = setInterval(this.changePicture, 2000);
+		this.interval = setInterval(this.changePicture, 3000);
 		this.changePicture();
 	};
 	
@@ -172,12 +178,24 @@ class KHole extends React.Component {
 	
 	render() {
 		const kStyle = {
+			position: 'relative',
 			height: this.state.cY,
 			width:  this.state.cX,
 		};
 		return (
 			<div>
 				<div className="k" style={kStyle}/>
+				{this.props.debug ? 	<div className={style.debug}>
+						{this.state.isMobile ? <div>
+								<div><span>X: </span>{this.state.x}</div>
+								<div><span>Y: </span>{this.state.y}</div>
+							</div> : <div>
+								<div><span>X: </span>{this.state.mX}</div>
+								<div><span>Y: </span>{this.state.mY}</div>
+							</div>}
+					</div> : false}
+				
+			
 				<EventListener
 					target="window"
 					onResize={this.handleResize}
@@ -204,11 +222,11 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 	const afterOpen      = () => {
 		a.track("Kaleidoscope Open");
 	};
-	
+	//<img src={`${assetUrl}/geo/geo-29.svg`} className={style.geo}/>
 	return (
 		<div className={classes}>
 			<Button onClick={toggle} backgroundColor='transparent'>
-				<img src={`${assetUrl}/geo/geo-29.svg`} className={style.geo}/>
+				<Pyramid />
 			</Button>
 			<ReactModal
 				id="kaleidoscope-modal"
@@ -221,7 +239,7 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 				shouldCloseOnOverlayClick={true}
 				onAfterOpen={afterOpen}>
 				<div onClick={()=>onRequestClose()}>
-					<KHole/>
+					<KHole debug={process.env.NODE_ENV !== 'production'}/>
 				</div>
 			</ReactModal>
 		</div>

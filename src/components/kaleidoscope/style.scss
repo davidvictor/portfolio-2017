@@ -22,3 +22,12 @@
 	bottom:           0;
 	background-color: $black;
 }
+
+.debug {
+	position: absolute;
+	top: 24px;
+	left: 24px;
+	background: white;
+	padding: 24px;
+	font-size: 18px;
+}

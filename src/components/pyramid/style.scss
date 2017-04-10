@@ -1,0 +1,55 @@
+@import '../../styles/vars';
+
+.modal {
+	position:                   absolute;
+	top:              0;
+	left:             0;
+	right:            0;
+	bottom:           0;
+	outline:                    none;
+}
+
+.modalOverlay {
+	position:         fixed;
+	z-index:          1000;
+	top:              0;
+	left:             0;
+	right:            0;
+	bottom:           0;
+	background-color: $black;
+}
+
+.geo {
+	height: 32px;
+	width: 42px;
+	object-fit: fill;
+	transition: opacity 200ms ease;
+}
+.pyramid {
+	opacity: 0;
+	position: absolute;
+	height: 32px;
+	width: 42px;
+	fill: none;
+	stroke: $gold;
+	stroke-width: 0.75;
+	transition: opacity 200ms ease;
+}
+
+.container {
+	height: 32px;
+	width: 42px;
+	position: relative;
+	&.playing {
+		.geo {
+			opacity: 0;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.pyramid {
+			opacity: 1;
+			position: relative;
+		}
+	}
+}
