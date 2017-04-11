@@ -24,7 +24,7 @@ const About = () => {
 	const classes = classNames('sidebar-about', style.about);
 	return (
 		<div className={classes}>
-			<p>A&nbsp;
+			<p>I am a&nbsp;
 			<strong>product designer</strong>. I develop innovative, creative solutions by combining a unique visual identity with sustained emotional resonance. I define success as a roar, audible through the noise of now.
 			</p>
 			<p>I live in&nbsp;
