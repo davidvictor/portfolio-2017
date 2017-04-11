@@ -23,16 +23,22 @@ const withActive = compose(
 );
 
 const Blurb = withActive(({active, on, off, toggle}) => {
+	
+	const handleOff = () => {
+		off();
+	};
+	
 	const handleRoar  = () => {
 		on();
 		a.track('Clicked Roar');
 	};
-	const isMobile = () => {
-		const md = new MobileDetect(window.navigator.userAgent);
-		return md.mobile();
-	};
+	//const isMobile = () => {
+	//	const md = new MobileDetect(window.navigator.userAgent);
+	//	//return md.mobile();
+	//	return false;
+	//};
 	return (
-		<div>
+		<div className='about-blurb'>
 			<p> Hi, I'm David. </p>
 			<p> I'm a&nbsp;
 			<strong>product&nbsp;designer</strong>&nbsp;&&nbsp;
@@ -40,12 +46,12 @@ const Blurb = withActive(({active, on, off, toggle}) => {
 			</p>
 			<p> I develop innovative, creative solutions by combining a unique visual identity with sustained emotional resonance. </p>
 			<p> I define success as a&nbsp;
-			{isMobile() ? 'roar' : <a onClick={() => handleRoar()}><span>roar</span></a>}, audible through the noise of now.
+			<span className="a" onClick={() => handleRoar()}><span>roar</span></span>, audible through the noise of now.
 			</p> {active ?
 			<Sound
 				url={`${assetUrl}/base/roar.wav`}
 				playStatus={Sound.status.PLAYING}
-				onFinishedPlaying={() => off()}/> : false}
+				onFinishedPlaying={() => handleOff()}/> : false}
 		</div>
 	)
 });
@@ -96,8 +102,3 @@ About.contextTypes = {
 };
 
 export default About;
-
-//
-//<p> I'm a&nbsp;
-//<strong>Product Designer</strong>
-//</p>
