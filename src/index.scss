@@ -1,8 +1,10 @@
 @import './styles/vars';
 
-p a {
-	position: relative;
-	transition:       color 200ms ease;
+p a,
+span[class='a'] {
+	position:   relative;
+	transition: color 200ms ease;
+	cursor: pointer;
 	span {
 		position: relative;
 	}
@@ -10,7 +12,7 @@ p a {
 		font-weight: 700;
 	}
 	&:before {
-		z-index: 0;
+		z-index:          0;
 		content:          '';
 		position:         absolute;
 		bottom:           0.1rem;
@@ -19,14 +21,14 @@ p a {
 		height:           2px;
 		background-color: rgb(165, 127, 95);
 		opacity:          0.4;
-		transition:       opacity 200ms ease,height 200ms ease;
+		transition:       opacity 200ms ease, height 200ms ease;
 	}
 	&:hover,
 	&:focus {
-		color: white;
+		color:   white;
 		z-index: 1;
 		&:before {
-			height:           90%;
+			height:  90%;
 			opacity: 0.9;
 		}
 	}
