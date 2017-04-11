@@ -45,7 +45,7 @@ class Graphemescope {
 			this.oldResizeHandler = window.onresize;
 		}
 		
-		window.onresize = () => (this.resizeHandler)();
+		//window.onresize = () => (this.resizeHandler)();
 		(this.resizeHandler)();
 		
 		if (this.enabled) {

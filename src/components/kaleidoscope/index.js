@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import ReactModal from 'react-modal';
 import Graphemescope from '../../utils/graphemescope';
 import {Close, Button, ButtonOutline, ButtonCircle} from 'rebass';
-//import {Flex, Box} from 'reflexbox';
+import {Flex, Box} from 'reflexbox';
 import a from '../../utils/analytics';
+import log from '../../utils/log';
 import classNames from 'classnames';
 import style from './style.scss';
 import EventListener, {withOptions} from 'react-event-listener';
 import MobileDetect from 'mobile-detect';
+import {Motion, spring} from 'react-motion';
 //import ReactAccelerometer from 'react-accelerometer'
 //import { Motion, spring } from 'react-motion'
 //import Khole from "./kscope";
@@ -29,16 +31,20 @@ class KHole extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			cX:        window.innerWidth,
-			cY:        window.innerHeight,
-			mX:        0.04,
-			mY:        0.9,
-			index:     0,
-			x:         null,
-			y:         null,
-			z:         null,
-			rotation:  null,
-			landscape: false
+			cX:         window.innerWidth,
+			cY:         window.innerHeight,
+			mX:         0.04,
+			mY:         0.9,
+			index:      0,
+			reachedEnd: false,
+			x:          null,
+			y:          null,
+			z:          null,
+			rotation:   null,
+			landscape:  false,
+			sX:         1,
+			sY:         1,
+			
 		};
 		
 		this.container = null;
@@ -46,6 +52,10 @@ class KHole extends React.Component {
 		this.container = null;
 		this.scope     = null;
 	}
+	
+	handleOff = () => {
+		this.props.off();
+	};
 	
 	isMobile = () => {
 		const md = new MobileDetect(window.navigator.userAgent);
@@ -61,12 +71,12 @@ class KHole extends React.Component {
 	setScope = () => {
 		this.scope = new Graphemescope(this.container);
 		
-		this.scope.radiusFactor = 0.5;
+		this.scope.radiusFactor = 1;
 		
-		this.scope.zoomFactor  = 1.0;
+		this.scope.zoomFactor  = 2.0;
 		this.scope.angleFactor = 1.0;
 		
-		this.scope.ease        = 0.1;
+		this.scope.ease        = 0.15;
 		this.scope.easeEnabled = this.state.isMobile;
 		
 		this.scope.alphaFactor = 1.0;
@@ -76,8 +86,11 @@ class KHole extends React.Component {
 	changePicture = () => {
 		this.scope.setImage(this.props.images[this.state.index]);
 		this.setState({
-			index: (
-			       this.state.index + 1) % this.props.images.length,
+			index:      (
+			            this.state.index + 1) % this.props.images.length,
+			reachedEnd: (
+			            this.state.index + 1) > (
+			this.props.images.length - 1),
 		})
 	};
 	
@@ -93,9 +106,29 @@ class KHole extends React.Component {
 		if (!this.state.isMobile) {
 			this.setState({
 				mX: event.clientX / this.getWindowWidth(),
-				mY: event.clientY / this.getWindowHeight()
+				mY: event.clientY / this.getWindowHeight(),
 			}, this.doMouseShit())
 		}
+	};
+	
+	handleScroll = (e) => {
+		//log('scroll',e);
+		//log('scroll', e);
+		if (!this.state.isMobile) {
+			this.setState({
+				sY: 1 - (
+				e.srcElement.scrollTop / (
+				e.srcElement.scrollHeight / 2)),
+				sX: 1 - (
+				e.srcElement.scrollLeft / (
+				e.srcElement.scrollWidth / 2))
+			}, this.doScrollShit());
+		}
+	};
+	
+	doScrollShit = () => {
+		this.scope.radiusFactor = this.state.sY.toFixed(2);
+		this.scope.resizeHandler();
 	};
 	
 	doMouseShit = () => {
@@ -104,15 +137,18 @@ class KHole extends React.Component {
 	};
 	
 	doMotionShit = () => {
-		this.scope.angleTarget = this.state.x;
-		this.scope.zoomTarget  = 1 + 0.5 * this.state.y;
+		this.scope.angleTarget = 0.5 * this.state.x;
+		this.scope.zoomTarget  = 1 + 0.35 * this.state.y;
 	};
 	
-	handleResize = (windowSize) => {
+	handleResize = () => {
+		const size = {x: window.innerWidth, y: window.innerHeight};
+		log('Resize', size);
 		this.setState({
-			cX: windowSize.windowWidth,
-			cY: windowSize.windowHeight
-		})
+			cX: this.getWindowWidth(),
+			cY: this.getWindowHeight()
+		});
+		this.scope.resizeHandler();
 	};
 	
 	handleOrientation = (event) => {
@@ -137,6 +173,17 @@ class KHole extends React.Component {
 		}, this.doMotionShit())
 	};
 	
+	handleClick = () => {
+		if (this.state.reachedEnd) {
+			this.handleOff();
+		} else {
+			this.changePicture();
+			a.track("Kaleidoscope Clicked", {
+				index: this.state.index,
+			});
+		}
+	};
+	
 	componentWillMount = () => {
 		this.setState({
 			isMobile: this.isMobile()
@@ -144,7 +191,7 @@ class KHole extends React.Component {
 	};
 	
 	componentDidMount = () => {
-		this.handleOrientation();
+		//this.handleOrientation();
 		
 		if (this.state.isMobile) {
 			window.addEventListener('devicemotion', this.handleAcceleration);
@@ -153,13 +200,14 @@ class KHole extends React.Component {
 		
 		this.setContainer();
 		this.setScope();
-		
-		this.interval = setInterval(this.changePicture, 3000);
+		log(this.state.index);
+		//this.interval = setInterval(this.changePicture, 3000);
 		this.changePicture();
+		//this.scope.resizeHandler();
 	};
 	
 	componentWillUnmount = () => {
-		//console.log('Unmounted');
+		//window.removeEventListener('scroll', this.handleScroll);
 		this.scope.enabled = false;
 		window.removeEventListener('devicemotion', this.handleAcceleration);
 		//window.removeEventListener('orientationchange', this.handleOrientation);
@@ -169,38 +217,59 @@ class KHole extends React.Component {
 	
 	render() {
 		const kStyle = {
-			position: 'relative',
-			height:   this.state.cY,
-			width:    this.state.cX,
+			height: this.state.cY,
+			width:  this.state.cX,
 		};
+		const Debug  = () => {
+			return this.props.debug ? (
+					<div className={style.debug}>
+						<Flex flexColumn>
+							<Box>
+								<span>i: </span>{this.state.index}
+							</Box>
+							<Box>
+								<span>images: </span>{this.props.images.length}
+							</Box>
+							<Box>
+								<span>reachedEnd: </span>{this.state.reachedEnd ? 'true' : 'false'}
+							</Box>
+						</Flex>
+						<Flex flexColumn>
+							<Box>
+								<span>X: </span>{!this.state.isMobile ? this.state.mX : this.state.x}
+							</Box>
+							<Box>
+								<span>Y: </span>{!this.state.isMobile ? this.state.mY : this.state.y}
+							</Box>
+						</Flex>
+						<Flex flexColumn>
+							<Box>
+								<span>sY: </span>{this.state.sY}
+							</Box>
+							<Box>
+								<span>sX: </span>{this.state.sX}
+							</Box>
+						</Flex>
+					</div>
+				) : false
+		};
+		
+		const classes = classNames("k", style.k);
+		
 		return (
 			<div>
-				<div className="k" style={kStyle}/>
-				{this.props.debug ?
-					<div className={style.debug}>
-						{this.state.isMobile ?
-							<div>
-								<div>
-									<span>X: </span>{this.state.x}
-								</div>
-								<div>
-									<span>Y: </span>{this.state.y}
-								</div>
-							</div> :
-							<div>
-								<div>
-									<span>X: </span>{this.state.mX}
-								</div>
-								<div>
-									<span>Y: </span>{this.state.mY}
-								</div>
-							</div>}
-					</div> : false}
+				<div className={classes} style={kStyle}/>
 				
+				<Debug />
 				<EventListener
 					target="window"
 					onResize={this.handleResize}
+					onScroll={withOptions(this.handleScroll, {passive: true, capture: true})}
+				/>
+				<EventListener
+					target="document"
 					onMouseMove={this.handleMouseMove}
+					onClick={() => this.handleClick()}
 				/>
 			</div>
 		)
@@ -231,6 +300,13 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 	const afterOpen      = () => {
 		a.track("Kaleidoscope Open");
 	};
+	const Scroller       = () => {
+		return (
+			<div className={style.scroll}>
+				<div className={style.inner}/>
+			</div>
+		)
+	};
 	return (
 		<div className={classes}>
 			<Button onClick={toggle} backgroundColor='transparent'>
@@ -246,8 +322,9 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 				parentSelector={getParent}
 				shouldCloseOnOverlayClick={true}
 				onAfterOpen={afterOpen}>
-				<div onClick={() => onRequestClose()}>
-					<KHole debug={process.env.NODE_ENV !== 'production'} images={images}/>
+				<div>
+					<KHole debug={process.env.NODE_ENV !== 'production'} images={images} off={onRequestClose}/>
+					<Scroller/>
 				</div>
 			</ReactModal>
 		</div>
