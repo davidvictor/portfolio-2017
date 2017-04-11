@@ -34,7 +34,7 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 	const afterOpen           = () => {
 		a.track("Resume Open");
 	};
-	const onDownload = () => {
+	const onDownload          = () => {
 		a.track("Resume Downloaded");
 		onRequestClose();
 	};
@@ -63,11 +63,12 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 									</button>
 								</Box>
 								<Box flexAuto style={{textAlign: 'right'}} className={style.downloadButton}>
-									<Button href="https://www.dropbox.com/s/0h0jo7zivmhxvca/davidvictor-resume-public.pdf"
-									        download
+									<Button href="https://d1x0bq6kwb2k3o.cloudfront.net/resume/davidvictor-resume-2017-b.pdf"
+									        target="_blank"
 									        onClick={() => onDownload()}
 									        backgroundColor={`rgb(165, 127, 95)`}
-									        px={3} py={2}> download pdf</Button>
+									        px={3}
+									        py={2}> download pdf </Button>
 								</Box>
 							</Flex>
 						</div>
@@ -84,9 +85,5 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 		</div>
 	);
 });
-//
-//ContactButton.contextTypes = {
-//	rebass: React.PropTypes.object
-//};
 
 export default ContactButton;

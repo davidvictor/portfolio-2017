@@ -290,12 +290,12 @@ $modalInnerPadding: 48px;
 	background-position: center center;
 	opacity:             1;
 	background-repeat:   no-repeat;
-	transition:          opacity 200ms ease;
 	min-width:           43px;
 	padding:             0;
+	transition: transform 200ms ease;
 	&:hover,
 	&:focus {
-		opacity: 0.5;
+		transform: scale(1.05);
 	}
 	&.backButtonLarge {
 		height:              60px;
