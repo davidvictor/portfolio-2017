@@ -305,6 +305,16 @@ $modalInnerPadding: 48px;
 	}
 }
 
+.downloadButton {
+	a {
+		transition: transform 200ms ease;
+		&:hover,
+		&:focus {
+			transform: scale(1.05);
+		}
+	}
+}
+
 @media only screen and (max-width: 1024px) {
 	.main {
 		padding: 42px 42px 42px 42px;

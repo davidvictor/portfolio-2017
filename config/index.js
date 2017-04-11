@@ -97,7 +97,7 @@ const resumeData = {
 				{
 					id:          's2',
 					title:       "Frontend Architecture",
-					description: "using leading libraries and platforms. Became fluent in JavaScript and mastered the art of interface building. Learned new technologies, like GraphQL, and dove deep into the Facebook and YouTube APIs. Continuously optimized site performance, weight, and responsiveness."
+					description: "using leading libraries and platforms. Became fluent in JavaScript and mastered the art of interface building. Learned new technologies, like GraphQL, and dove deep into the Facebook and YouTube APIs. Continuously optimized site performance, reporting, and responsiveness."
 				}
 			]
 		}, {
@@ -110,7 +110,7 @@ const resumeData = {
 				{
 					id:          's1',
 					title:       "End-to-end design",
-					description: "for cross platform telemedicine platform. Led the product development process from start to finish. Produced cross-platform interface designs for iOS & Android, the brochure website, and the vet web interface. Validated the business case with extensive research. Contributed to the companies marketing plan and oversaw significant martech integrations."
+					description: "for a veterinary telemedicine platform. Led the product development process from start to finish. Produced cross-platform interface designs for iOS & Android, the brochure website, and the vet web app interface. Validated the business case with extensive research. Contributed to the companie’s marketing plan and oversaw significant martech integrations."
 				}
 			]
 		}, {
@@ -123,7 +123,7 @@ const resumeData = {
 				{
 					id:          's1',
 					title:       "Brand vocabulary",
-					description: "for the largest environmental testing laboratory serving the entire United States from a single location. They’ve been delivering defensible data for over 40 years."
+					description: "for the largest environmental testing laboratory serving the entire United States from a single location. Designed reports for delivering defensible data."
 				},
 				{
 					id:          's2',
@@ -141,7 +141,7 @@ const resumeData = {
 				{
 					id:          's1',
 					title:       "Top-to-bottom Branding",
-					description: "from a custom CMS to manage website and app content to bathroom and exit signs. Led a creative team to plan, design, and implement every branded and visual element for the 2 day, 70k person event."
+					description: "for the 2 day, 70k person music, food, art, and learning festival. Led a creative team to plan, design, and implement every branded and visual element from a national multimedia advertising campaign to the bathroom and exit signs."
 				}
 			]
 		}, {
@@ -167,7 +167,7 @@ const resumeData = {
 				{
 					id:          's1',
 					title:       "Interface designs",
-					description: "for a wide variety of iPhone and iPad applications including a Photoshop companion app, an interactive drink menu, and a graduate level economics learning platform."
+					description: "for a variety of iPhone and iPad applications including a Photoshop companion app, an interactive drink menu, and a graduate level economics learning platform."
 				}
 			]
 		}
@@ -193,7 +193,7 @@ const resumeData = {
 		}
 	],
 	expertise:            ['Art Direction', 'Product Design', 'Product Management', 'Creative Direction', 'Branding', 'UX Design', 'UI Design', 'Mobile Web', 'Analytics'],
-	technology:           ['HTML5', 'CSS3', 'ES6', 'Sass', 'Git', 'React', 'Redux', 'GraphQL', 'Webpack', 'Node', 'Express'],
+	technology:           ['HTML5', 'CSS3', 'ES6', 'Sass', 'Git', 'React', 'Redux', 'GraphQL', 'Webpack', 'Node', 'Express','Angular','Wordpress'],
 	tools:                ['Sketch', 'Photoshop', 'Illustrator', 'InDesign', 'AfterEffects', 'Premiere', 'PaintCode', 'IntelliJ', 'Paw', 'Xcode', 'Terminal'],
 	platforms:            ['FB Ads', 'FB Insights', 'Amazon S3', 'Cloudfront', 'Google Analytics', 'AdWords', 'YouTube', 'Stripe', 'New Relic', 'Mixpanel', 'Segment', 'SendGrid', 'MailChimp', 'HubSpot', 'Sentry', 'Fullstory', 'Appboy', 'Heap', 'Intercom', 'Iron.io', 'Twitter',]
 };

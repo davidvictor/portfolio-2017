@@ -216,9 +216,7 @@ class Graphemescope {
 			return this.setImageDirect(image);
 		}
 	}
-};
-
-
+}
 
 function __range__(left, right, inclusive) {
 	let range = [];

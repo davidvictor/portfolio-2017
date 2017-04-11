@@ -159,7 +159,7 @@ class KHole extends React.Component {
 	};
 	
 	componentWillUnmount = () => {
-		console.log('Unmounted');
+		//console.log('Unmounted');
 		this.scope.enabled = false;
 		window.removeEventListener('devicemotion', this.handleAcceleration);
 		//window.removeEventListener('orientationchange', this.handleOrientation);

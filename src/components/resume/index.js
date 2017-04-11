@@ -34,6 +34,10 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 	const afterOpen           = () => {
 		a.track("Resume Open");
 	};
+	const onDownload = () => {
+		a.track("Resume Downloaded");
+		onRequestClose();
+	};
 	return (
 		<div className={classes}>
 			<a onClick={toggle}>
@@ -53,21 +57,15 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 					<Headroom disableInlineStyles parent={getScrollParent}>
 						<div className={style.modalHeader}>
 							<Flex align="center">
-								<Box flexAuto style={{textAlign: 'right', display: 'none'}}>
-									<Button onClick={() => onRequestClose()}
-									        className={style.closeButton}
-									        backgroundColor={`rgb(165, 127, 95)`}
-									        px={3} py={2}> download </Button>
-								</Box>
 								<Box style={{textAlign: 'right'}}>
 									<button onClick={() => onRequestClose()}
 									        className={buttonClasses}>back
 									</button>
 								</Box>
-								<Box flexAuto style={{textAlign: 'right'}}>
-									<Button href="https://d1x0bq6kwb2k3o.cloudfront.net/resume/davidvictor-resume-2017-a.pdf"
+								<Box flexAuto style={{textAlign: 'right'}} className={style.downloadButton}>
+									<Button href="https://www.dropbox.com/s/0h0jo7zivmhxvca/davidvictor-resume-public.pdf"
 									        download
-									        onClick={() => onRequestClose()}
+									        onClick={() => onDownload()}
 									        backgroundColor={`rgb(165, 127, 95)`}
 									        px={3} py={2}> download pdf</Button>
 								</Box>
