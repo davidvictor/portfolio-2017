@@ -4,6 +4,7 @@ import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
 import style from './style.scss';
 import a from '../../../utils/analytics';
+import isMobile from '../../../utils/isMobile';
 import _ from 'lodash';
 
 import {assetUrl} from 'config';
@@ -97,7 +98,7 @@ const LogoGrid = () => {
 			{photos.map((photo, idx) =>
 				<Box key={_.uniqueId('archive_')} my={0} sm={12} md={photo.size} lg={photo.size}>
 					<ImageZoom
-						shouldPreload
+						shouldPreload={!isMobile()}
 						zoomMargin={0}
 						defaultStyles={photo.dark ? defaultStyles : {}}
 						image={{

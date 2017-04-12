@@ -5,6 +5,7 @@ import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
 import style from './style.scss';
 import a from '../../../utils/analytics';
+import isMobile from '../../../utils/isMobile';
 
 import {assetUrl} from 'config';
 
@@ -14,6 +15,7 @@ const Website = () => {
 			<Flex justify="center" align="flex-end" wrap mt={0}>
 				<Box p={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/esc/website.png`,
 							alt:   'Website',
@@ -40,6 +42,7 @@ const Portal = () => {
 			<Flex justify="center" align="flex-end" wrap mt={5}>
 				<Box p={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/esc/portal-rb-data.png`,
 							alt:   'Portal Data',
@@ -57,6 +60,7 @@ const Portal = () => {
 				</Box>
 				<Box p={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/esc/portal-dashboard.png`,
 							alt:   'Portal Dashboard',
@@ -74,6 +78,7 @@ const Portal = () => {
 				</Box>
 				<Box p={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/esc/portal-rb-toolsbox.png`,
 							alt:   'Portal Toolbox',
@@ -100,6 +105,7 @@ const Report = () => {
 			<Flex justify="center" align="flex-end" wrap my={5}>
 				<Box p={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/esc/report-1.jpg`,
 							alt:   'Report',
@@ -117,6 +123,7 @@ const Report = () => {
 				</Box>
 				<Box p={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/esc/report-3.jpg`,
 							alt:   'Report',
@@ -134,6 +141,7 @@ const Report = () => {
 				</Box>
 				<Box p={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/esc/report-2.jpg`,
 							alt:   'Report',

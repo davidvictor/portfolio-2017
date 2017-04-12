@@ -4,11 +4,25 @@ import Project from '../../project';
 import Heading from '../../project/heading';
 import ImageZoom from 'react-medium-image-zoom';
 import YouTube from 'react-youtube';
+import ReactModal from 'react-modal';
 import classNames from 'classnames';
 import style from './style.scss';
 import a from '../../../utils/analytics';
+import isMobile from '../../../utils/isMobile';
 
 import {assetUrl} from 'config';
+
+import {compose, withState, withHandlers} from 'recompose';
+
+const withActive = compose(
+	withState('active', 'setActive', false),
+	withHandlers({
+		on:     props => () => props.setActive(true),
+		off:    props => () => props.setActive(false),
+		toggle: props => () => props.setActive(a => !a),
+	})
+);
+
 
 const Logos = () => {
 	const classes = classNames(style.logos);
@@ -102,7 +116,7 @@ const Photos = () => {
 				{photos.map((photo, idx) =>
 					<Box key={idx} style={{padding: '2px'}} sm={11} md={6} lg={4}>
 						<ImageZoom
-							shouldPreload
+							shouldPreload={!isMobile()}
 							zoomMargin={0}
 							defaultStyles={defaultStyles}
 							image={{
@@ -114,6 +128,10 @@ const Photos = () => {
 								src: photo.zoom,
 								alt: 'Brand Photo',
 							}}
+							onZoom={() => a.track('Image Zoomed', {
+								page: 'Vet On Demand',
+								src: photo.src.split('/photo/')[1]
+							})}
 						/>
 					</Box>
 				)}
@@ -138,6 +156,10 @@ const Research = () => {
 							src: `${assetUrl}/vetondemand/chart-2.png`,
 							alt: 'Chart',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Vet On Demand',
+							src: 'chart-2.png'
+						})}
 					/>
 					<h3>THERE ARE PLENTY OF VETS</h3>
 					<p>The U.S. supply of veterinarians in 2012 was 90,200, and that supply exceeded the demand for veterinary services by about 11,250 full-time equivalent veterinarians.</p>
@@ -153,6 +175,10 @@ const Research = () => {
 							src: `${assetUrl}/vetondemand/chart-1.png`,
 							alt: 'Chart',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Vet On Demand',
+							src: 'chart-1.png'
+						})}
 					/>
 					<h3>INCOMES ARE FALLING</h3>
 					<p>Over the past decade, veterinarians have seen their wages fall. Increasing prices from pharmaceutical companies and the ever advancing march of technology have cut even deeper into practices nationwide.</p>
@@ -232,7 +258,7 @@ const Mobile = () => {
 						{ios.map((phone, idx) =>
 							<Box col={12} sm={12} md={6} lg={3} py={2} px={2} key={idx}>
 								<ImageZoom
-									shouldPreload
+									shouldPreload={!isMobile()}
 									image={{
 										src:   phone.src,
 										alt:   'Mobile App',
@@ -242,6 +268,10 @@ const Mobile = () => {
 										src: phone.zoom,
 										alt: 'Mobile App',
 									}}
+									onZoom={() => a.track('Image Zoomed', {
+										page: 'Vet On Demand',
+										src: photo.src.split('/sm/')[1]
+									})}
 								/>
 							</Box>
 						)}
@@ -265,6 +295,10 @@ const Mobile = () => {
 										src: phone.zoom,
 										alt: 'Mobile App',
 									}}
+									onZoom={() => a.track('Image Zoomed', {
+										page: 'Vet On Demand',
+										src: photo.src.split('/sm/')[1]
+									})}
 								/>
 							</Box>
 						)}
@@ -282,7 +316,7 @@ const Web = () => {
 			<Flex justify="center" mb={6} mt={4} wrap>
 				<Box p={2} col={10} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
-						shouldPreload
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/vetondemand/web/dashboard-left.png`,
 							alt:   'Web',
@@ -292,11 +326,15 @@ const Web = () => {
 							src: `${assetUrl}/vetondemand/web/dashboard-left@2x.png`,
 							alt: 'Web',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Vet On Demand',
+							src: 'dashboard-left.png'
+						})}
 					/>
 				</Box>
 				<Box p={2} col={10} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
-						shouldPreload
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/vetondemand/web/call-right.png`,
 							alt:   'Web',
@@ -306,6 +344,10 @@ const Web = () => {
 							src: `${assetUrl}/vetondemand/web/call-right@2x.png`,
 							alt: 'Web',
 						}}
+						onZoom={() => a.track('Image Zoomed', {
+							page: 'Vet On Demand',
+							src: 'call-right.png'
+						})}
 					/>
 				</Box>
 			</Flex>
@@ -313,35 +355,90 @@ const Web = () => {
 	)
 };
 
-const Video = () => {
+const Video = withActive(({active, on, off, toggle}) => {
+	const getParent      = () => {return document.querySelector('#root');};
 	const classes = classNames(style.video, 'typeset-project');
 	const opts    = {
 		height:     '360',
 		width:      '640',
 		playerVars: {
-			autoplay:       0,
+			autoplay:       1,
 			controls:       0,
 			enablejsapi:    1,
 			modestbranding: 1,
-			playsinline:    1,
+			playsinline:    0,
 			showinfo:       0,
 		}
+	};
+	const mobileOpts    = {
+		height:     '360',
+		width:      '640',
+		playerVars: {
+			autoplay:       0,
+			controls:       1,
+			enablejsapi:    1,
+			modestbranding: 1,
+			playsinline:    0,
+			showinfo:       0,
+		}
+	};
+	const handleOpen = () => {
+		on();
+	};
+	const handlePlay = () => {
+		a.track('Video Played', {
+			video: 'Vet On Demand'
+		})
+	};
+	const onRequestClose = () => {
+		off();
+		a.track("Video Close");
+	};
+	const afterOpen      = () => {
+		a.track("Video Open");
 	};
 	return (
 		<div className={classes}>
 			<Flex justify="center" mb={6} mt={4} wrap>
 				<Box style={{textAlign: 'center'}}>
+					{isMobile() ? <div className={style.videoPlayer}>
+						<YouTube
+							videoId="T1MXErdWYVs"
+							opts={mobileOpts}
+							onPlay={handlePlay}
+						/>
+					</div> :
+					<div className={style.videoPoster} onClick={() => handleOpen()}>
+						<div className={style.videoPosterImage}/>
+					</div> }
+				</Box>
+			</Flex>
+			<ReactModal
+				id="youtube-modal"
+				isOpen={active}
+				onRequestClose={() => onRequestClose()}
+				className={style.modal}
+				overlayClassName={style.modalOverlay}
+				contentLabel="Kaleidoscope"
+				parentSelector={getParent}
+				shouldCloseOnOverlayClick={true}
+				onAfterOpen={afterOpen}>
+				<div>
 					<div className={style.videoPlayer}>
 						<YouTube
 							videoId="T1MXErdWYVs"
 							opts={opts}
+							onPlay={handlePlay}
+							onPause={onRequestClose}
+							onEnd={onRequestClose}
+							onError={onRequestClose}
 						/>
 					</div>
-				</Box>
-			</Flex>
+				</div>
+			</ReactModal>
 		</div>
 	)
-};
+});
 
 const VetOnDemand = () => {
 	const classes = classNames("vetondemand", style.root);

@@ -3,7 +3,7 @@ import {Flex, Box} from 'reflexbox';
 import Project from '../../project';
 import ImageZoom from 'react-medium-image-zoom';
 import a from '../../../utils/analytics';
-import 'react-html5video/dist/styles.css';
+import isMobile from '../../../utils/isMobile';
 import classNames from 'classnames';
 import style from './style.scss';
 import _ from 'lodash';
@@ -140,6 +140,7 @@ const Poster = () => {
 			<Flex justify="center" mt={5} mb={3} wrap>
 				<Box px={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/poster.jpg`,
 							alt:   'Lineup Poster',
@@ -166,6 +167,7 @@ const Guide = () => {
 			<Flex justify="center" py={4} px={2} wrap>
 				<Box mt={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/map.jpg`,
 							alt:   'Guide Inside Cover',
@@ -185,6 +187,7 @@ const Guide = () => {
 					<Flex justify="space-between" align="center" flex flexColumn>
 						<Box my={2}>
 							<ImageZoom
+								shouldPreload={!isMobile()}
 								image={{
 									src:   `${assetUrl}/lifeisbeautiful/schedule.jpg`,
 									alt:   'Schedule',
@@ -202,6 +205,7 @@ const Guide = () => {
 						</Box>
 						<Box>
 							<ImageZoom
+								shouldPreload={!isMobile()}
 								image={{
 									src:   `${assetUrl}/lifeisbeautiful/guide-inside.png`,
 									alt:   'Guide Inside Cover',
@@ -243,6 +247,7 @@ const VIP = () => {
 				{artworks.map((artwork, idx) =>
 					<Box col={10} sm={12} md={3} lg={3} px={2} style={{textAlign: 'center'}} key={_.uniqueId('vip_')}>
 						<ImageZoom
+							shouldPreload={!isMobile()}
 							image={{
 								src:   artwork.src,
 								alt:   'VIP Artwork',
@@ -284,6 +289,7 @@ const Tickets = () => {
 			<Flex justify="space-around" py={4} px={2} wrap>
 				<Box col={12} mb={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/ad-728x90_music.gif`,
 							alt:   'Banner Ad',
@@ -301,6 +307,7 @@ const Tickets = () => {
 				</Box>
 				<Box pr={1} mb={2}>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/ticket-animate.gif`,
 							alt:   'Commemorative Ticket',
@@ -318,6 +325,7 @@ const Tickets = () => {
 				</Box>
 				<Box>
 					<ImageZoom
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/wristbands.png`,
 							alt:   'Wristbands',

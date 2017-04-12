@@ -1,3 +1,5 @@
+@import '../../../styles/vars';
+
 .root {
 	
 }
@@ -42,7 +44,7 @@
 
 .videoPlayer {
 	position:       relative;
-	width:          800px;
+	width:          100%;
 	height:         0;
 	padding-bottom: 56%;
 	> * {
@@ -54,7 +56,44 @@
 	}
 	iframe {
 		height: 100%;
-		width: 100%;
+		width:  100%;
+	}
+}
+
+.videoPoster {
+	position:       relative;
+	width:          800px;
+	height:         0;
+	padding-bottom: 56%;
+	.videoPosterImage {
+		position:         absolute;
+		left:             0;
+		top:              0;
+		height:           100%;
+		width:            100%;
+		background-image: url("#{$assetUrl}/vetondemand/video-poster-sm.png");
+		background-size:  cover;
+	}
+	&:after {
+		content:             '';
+		display:             block;
+		position:            absolute;
+		top:                 50%;
+		left:                50%;
+		transform:           translate3d(-50%, -50%, 0);
+		background-image:    url("#{$assetUrl}/social/Youtube-fill.svg");
+		background-position: center center;
+		background-repeat:   no-repeat;
+		width:               68px;
+		height:              68px;
+		transition: transform 200ms ease-in-out;
+	}
+	cursor:         pointer;
+	&:hover,
+	&:focus {
+		&:after {
+			transform: translate3d(-50%, -50%, 0) scale(1.2);
+		}
 	}
 }
 
@@ -80,18 +119,18 @@ $ccWidth: 180px;
 
 @media only screen and (max-width: 1280px) {
 	.videoPlayer {
-		width:    600px;
+		width: 600px;
 	}
 }
 
 @media only screen and (max-width: 1024px) {
 	.videoPlayer {
-		width:    480px;
+		width: 480px;
 	}
 	.colorCard {
-		width:     15vw;
+		width: 15vw;
 		[class*='shades'] {
-			height:     15vw / 5;
+			height: 15vw / 5;
 		}
 	}
 	
@@ -121,12 +160,31 @@ $ccWidth: 180px;
 		}
 	}
 	.videoPlayer {
-		width:    70vw;
+		width: 70vw;
 	}
 }
 
 @media only screen and (max-width: 600px) {
 	.videoPlayer {
-		width:    90vw;
+		width: 90vw;
 	}
+}
+
+.modal {
+	position: absolute;
+	top:      0;
+	left:     0;
+	right:    0;
+	bottom:   0;
+	outline:  none;
+}
+
+.modalOverlay {
+	position:         fixed;
+	z-index:          1000;
+	top:              0;
+	left:             0;
+	right:            0;
+	bottom:           0;
+	background-color: $black;
 }

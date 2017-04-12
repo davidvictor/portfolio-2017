@@ -6,6 +6,7 @@ import YouTube from 'react-youtube';
 import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
 import style from './style.scss';
+import isMobile from '../../../utils/isMobile';
 import a from '../../../utils/analytics';
 
 import {assetUrl} from 'config';
@@ -55,7 +56,7 @@ const UI = () => {
 			<Flex justify="center" mt={0} mb={5}>
 				<Box px={1}>
 					<ImageZoom
-						shouldPreload
+						shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/amptube/video-page.png`,
 							alt:   'Video Page',
