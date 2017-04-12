@@ -17,7 +17,7 @@ const Amplify = () => {
 			<Flex justify="center" mt={6}>
 				<Box px={1}>
 					<ImageZoom
-						shouldRespectMaxDimension
+						//shouldRespectMaxDimension
 						image={{
 							src:   `${assetUrl}/amptube/amplify-panel.gif`,
 							alt:   'Amplify Animation',
@@ -33,7 +33,7 @@ const Amplify = () => {
 			<Flex justify="center" mt={2} mb={6}>
 				<Box px={1}>
 					<ImageZoom
-						shouldRespectMaxDimension
+						//shouldRespectMaxDimension
 						image={{
 							src:   `${assetUrl}/amptube/leaderboard.png`,
 							alt:   'Amplify Leaderboard',
@@ -56,7 +56,7 @@ const UI = () => {
 			<Flex justify="center" mt={0} mb={5}>
 				<Box px={1}>
 					<ImageZoom
-						shouldPreload={!isMobile()}
+						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/amptube/video-page.png`,
 							alt:   'Video Page',

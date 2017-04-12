@@ -116,7 +116,7 @@ const Photos = () => {
 				{photos.map((photo, idx) =>
 					<Box key={idx} style={{padding: '2px'}} sm={11} md={6} lg={4}>
 						<ImageZoom
-							shouldPreload={!isMobile()}
+							//shouldPreload={!isMobile()}
 							zoomMargin={0}
 							defaultStyles={defaultStyles}
 							image={{
@@ -258,7 +258,7 @@ const Mobile = () => {
 						{ios.map((phone, idx) =>
 							<Box col={12} sm={12} md={6} lg={3} py={2} px={2} key={idx}>
 								<ImageZoom
-									shouldPreload={!isMobile()}
+									//shouldPreload={!isMobile()}
 									image={{
 										src:   phone.src,
 										alt:   'Mobile App',
@@ -285,7 +285,7 @@ const Mobile = () => {
 						{android.map((phone, idx) =>
 							<Box col={12} sm={12} md={4} lg={4} p={2} key={idx}>
 								<ImageZoom
-									shouldPreload
+									//shouldPreload
 									image={{
 										src:   phone.src,
 										alt:   'Mobile App',
@@ -316,7 +316,7 @@ const Web = () => {
 			<Flex justify="center" mb={6} mt={4} wrap>
 				<Box p={2} col={10} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
-						shouldPreload={!isMobile()}
+						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/vetondemand/web/dashboard-left.png`,
 							alt:   'Web',
@@ -334,7 +334,7 @@ const Web = () => {
 				</Box>
 				<Box p={2} col={10} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
-						shouldPreload={!isMobile()}
+						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/vetondemand/web/call-right.png`,
 							alt:   'Web',

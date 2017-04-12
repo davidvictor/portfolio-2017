@@ -98,7 +98,7 @@ const LogoGrid = () => {
 			{photos.map((photo, idx) =>
 				<Box key={_.uniqueId('archive_')} my={0} sm={12} md={photo.size} lg={photo.size}>
 					<ImageZoom
-						shouldPreload={!isMobile()}
+						//shouldPreload={!isMobile()}
 						zoomMargin={0}
 						defaultStyles={photo.dark ? defaultStyles : {}}
 						image={{
