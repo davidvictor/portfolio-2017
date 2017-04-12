@@ -8,7 +8,7 @@ import a from '../../utils/analytics';
 
 import {assetUrl} from 'config';
 
-import {Github, LinkedIn, Resume} from '../icon';
+import {Github, LinkedIn, Dribbble} from '../icon';
 
 const IconButtons = ({off, left}) => {
 	const classes  = classNames(style.iconButtons);
@@ -23,6 +23,15 @@ const IconButtons = ({off, left}) => {
 	};
 	return (
 		<Flex justify={left ? 'flex-start' : 'flex-end'} align='center' wrap={false} className={classes}>
+			<Box className={style.iconButtonWrap} flex>
+				<ButtonCircle
+					backgroundColor="transparent"
+					color="white"
+					size={36}
+					onClick={() => openLink('https://dribbble.com/davidvictor','dribbble')}>
+					<Dribbble className={style.icon}/>
+				</ButtonCircle>
+			</Box>
 			<Box className={style.iconButtonWrap} flex>
 				<ButtonCircle
 					backgroundColor="transparent"
