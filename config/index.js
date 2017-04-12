@@ -2,11 +2,11 @@ let assetUrl, follow;
 
 switch (process.env.NODE_ENV) {
 	case 'production':
-		assetUrl = '//d1x0bq6kwb2k3o.cloudfront.net';
+		assetUrl = 'https://assets.davidvictor.me';
 		follow   = 'index,follow';
 		break;
 	case 'development':
-		assetUrl = '//d1x0bq6kwb2k3o.cloudfront.net';
+		assetUrl = 'https://assets.davidvictor.me';
 		follow   = 'index,follow';
 		break;
 	default:

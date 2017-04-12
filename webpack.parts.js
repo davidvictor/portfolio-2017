@@ -13,7 +13,7 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
-const {accessKeyId, secretAccessKey, region, region2} = require('./config/aws');
+const {accessKeyId, secretAccessKey, distId, region, region2} = require('./config/aws');
 
 const gitRevisionPlugin = new GitRevisionPlugin({
 	lightweightTags: true,
@@ -394,7 +394,7 @@ exports.useCDN = function() {
 exports.uploadS3Dev = function() {
 	return {
 		output:  {
-			publicPath: `//d1x0bq6kwb2k3o.cloudfront.net/development/${gitTag}`,
+			publicPath: `https://cdn.davidvictor.me/development/${gitTag}`,
 		},
 		plugins: [
 			new CompressionPlugin({
@@ -466,7 +466,7 @@ exports.uploadS3Dev = function() {
 exports.uploadS3 = function() {
 	return {
 		output:  {
-			publicPath: `//d1x0bq6kwb2k3o.cloudfront.net/production/${gitTag}`,
+			publicPath: `https://cdn.davidvictor.me/production/${gitTag}`,
 		},
 		plugins: [
 			new CompressionPlugin({
@@ -508,6 +508,10 @@ exports.uploadS3 = function() {
 						}
 					}
 				},
+				cloudfrontInvalidateOptions: {
+					DistributionId: distId,
+					Items: ["/*"]
+				}
 			}),
 			new S3Plugin({
 				include:         /.*\.html$/,
@@ -531,72 +535,72 @@ exports.uploadS3 = function() {
 					}
 				},
 			}),
-			new S3Plugin({
-				include:         /.*\.html$/,
-				basePath:        ``,
-				s3Options:       {
-					accessKeyId:     accessKeyId,
-					secretAccessKey: secretAccessKey,
-					region:          region
-				},
-				s3UploadOptions: {
-					Bucket: 'www.davidvictor.me',
-					/**
-					 * @return {string}
-					 */
-					ContentType(fileName) {
-						if (/\.html/.test(fileName)) {
-							return 'text/html';
-						} else {
-							return 'text/plain';
-						}
-					}
-				},
-			}),
-			new S3Plugin({
-				include:         /.*\.html$/,
-				basePath:        ``,
-				s3Options:       {
-					accessKeyId:     accessKeyId,
-					secretAccessKey: secretAccessKey,
-					region:          region2
-				},
-				s3UploadOptions: {
-					Bucket: 'techbro.biz',
-					/**
-					 * @return {string}
-					 */
-					ContentType(fileName) {
-						if (/\.html/.test(fileName)) {
-							return 'text/html';
-						} else {
-							return 'text/plain';
-						}
-					}
-				},
-			}),
-			new S3Plugin({
-				include:         /.*\.html$/,
-				basePath:        ``,
-				s3Options:       {
-					accessKeyId:     accessKeyId,
-					secretAccessKey: secretAccessKey,
-					region:          region2
-				},
-				s3UploadOptions: {
-					Bucket: 'www.techbro.biz',
-					/**
-					 * @return {string}
-					 */
-					ContentType(fileName) {
-						if (/\.html/.test(fileName)) {
-							return 'text/html';
-						} else {
-							return 'text/plain';
-						}
-					}
-				},
-			}),
+			//new S3Plugin({
+			//	include:         /.*\.html$/,
+			//	basePath:        ``,
+			//	s3Options:       {
+			//		accessKeyId:     accessKeyId,
+			//		secretAccessKey: secretAccessKey,
+			//		region:          region
+			//	},
+			//	s3UploadOptions: {
+			//		Bucket: 'www.davidvictor.me',
+			//		/**
+			//		 * @return {string}
+			//		 */
+			//		ContentType(fileName) {
+			//			if (/\.html/.test(fileName)) {
+			//				return 'text/html';
+			//			} else {
+			//				return 'text/plain';
+			//			}
+			//		}
+			//	},
+			//}),
+			//new S3Plugin({
+			//	include:         /.*\.html$/,
+			//	basePath:        ``,
+			//	s3Options:       {
+			//		accessKeyId:     accessKeyId,
+			//		secretAccessKey: secretAccessKey,
+			//		region:          region2
+			//	},
+			//	s3UploadOptions: {
+			//		Bucket: 'techbro.biz',
+			//		/**
+			//		 * @return {string}
+			//		 */
+			//		ContentType(fileName) {
+			//			if (/\.html/.test(fileName)) {
+			//				return 'text/html';
+			//			} else {
+			//				return 'text/plain';
+			//			}
+			//		}
+			//	},
+			//}),
+			//new S3Plugin({
+			//	include:         /.*\.html$/,
+			//	basePath:        ``,
+			//	s3Options:       {
+			//		accessKeyId:     accessKeyId,
+			//		secretAccessKey: secretAccessKey,
+			//		region:          region2
+			//	},
+			//	s3UploadOptions: {
+			//		Bucket: 'www.techbro.biz',
+			//		/**
+			//		 * @return {string}
+			//		 */
+			//		ContentType(fileName) {
+			//			if (/\.html/.test(fileName)) {
+			//				return 'text/html';
+			//			} else {
+			//				return 'text/plain';
+			//			}
+			//		}
+			//	},
+			//}),
 		]
 	}
 };
