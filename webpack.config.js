@@ -11,6 +11,14 @@ const PATHS = {
 	build: path.join(__dirname, 'build'),
 };
 
+const sitemapPaths = [
+	'/work/amptube/',
+	'/work/vetondemand/',
+	'/work/lifeisbeautiful/',
+	'/work/esc/',
+	'/work/archive/',
+];
+
 const commonConfig = merge([
 	{
 		context: __dirname,
@@ -69,6 +77,7 @@ const productionConfig = merge([
 	parts.setFreeVariable('process.env.NODE_ENV', 'production'),
 	parts.clean(PATHS.build),
 	parts.assetBanner(),
+	parts.sitemap(sitemapPaths),
 	parts.uploadS3(),
 ]);
 
@@ -93,6 +102,7 @@ const developmentConfig = merge([
 	parts.setFreeVariable('process.env.NODE_ENV', 'development'),
 	parts.clean(PATHS.build),
 	parts.assetBanner(),
+	parts.sitemap(sitemapPaths),
 	parts.uploadS3Dev(),
 ]);
 

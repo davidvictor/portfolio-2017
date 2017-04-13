@@ -1,17 +1,18 @@
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const S3Plugin = require('webpack-s3-plugin');
-const StatsPlugin = require('stats-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const GitRevisionPlugin = require('git-revision-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+const path                          = require('path');
+const webpack                       = require('webpack');
+const autoprefixer                  = require('autoprefixer');
+const S3Plugin                      = require('webpack-s3-plugin');
+const StatsPlugin                   = require('stats-webpack-plugin');
+const HtmlWebpackPlugin             = require('html-webpack-plugin');
+const CleanWebpackPlugin            = require('clean-webpack-plugin');
+const ExtractTextPlugin             = require('extract-text-webpack-plugin');
+const GitRevisionPlugin             = require('git-revision-webpack-plugin');
+const CompressionPlugin             = require('compression-webpack-plugin');
+const BrowserSyncPlugin             = require('browser-sync-webpack-plugin');
+const WebpackBuildNotifierPlugin    = require('webpack-build-notifier');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+const SitemapPlugin                 = require('sitemap-webpack-plugin');
 
 const {accessKeyId, secretAccessKey, distId, region, region2} = require('./config/aws');
 
@@ -31,7 +32,7 @@ const extractGlobalStyle = new ExtractTextPlugin({
 
 const gitTag = gitRevisionPlugin.commithash().slice(0, 5);
 
-exports.buildHtml = function(local) {
+exports.buildHtml = function (local) {
 	const index = local ? 'src/template/index-local.html' : 'src/template/index.html';
 	return {
 		plugins: [
@@ -44,7 +45,7 @@ exports.buildHtml = function(local) {
 	};
 };
 
-exports.devServer = function() {
+exports.devServer = function () {
 	return {
 		devServer: {
 			contentBase:        'build',
@@ -95,7 +96,7 @@ exports.devServer = function() {
 	};
 };
 
-exports.loadCSS = function() {
+exports.loadCSS = function () {
 	return {
 		module:  {
 			rules: [
@@ -128,7 +129,7 @@ exports.loadCSS = function() {
 							{
 								loader:  'postcss-loader',
 								options: {
-									plugins: function() {
+									plugins: function () {
 										return [
 											require("autoprefixer")
 										];
@@ -161,7 +162,7 @@ exports.loadCSS = function() {
 							{
 								loader:  'postcss-loader',
 								options: {
-									plugins: function() {
+									plugins: function () {
 										return [
 											require("autoprefixer")
 										];
@@ -194,7 +195,7 @@ exports.loadCSS = function() {
 							{
 								loader:  'postcss-loader',
 								options: {
-									plugins: function() {
+									plugins: function () {
 										return [
 											require("autoprefixer")
 										];
@@ -231,7 +232,7 @@ exports.loadCSS = function() {
 	};
 };
 
-exports.loadJavaScript = function() {
+exports.loadJavaScript = function () {
 	return {
 		module:  {
 			rules: [
@@ -262,7 +263,7 @@ exports.loadJavaScript = function() {
 	};
 };
 
-exports.loadGraphQl = function() {
+exports.loadGraphQl = function () {
 	return {
 		module: {
 			rules: [
@@ -276,7 +277,7 @@ exports.loadGraphQl = function() {
 	};
 };
 
-exports.loadHtml = function() {
+exports.loadHtml = function () {
 	return {
 		module: {
 			rules: [
@@ -289,7 +290,7 @@ exports.loadHtml = function() {
 	};
 };
 
-exports.loadFile = function() {
+exports.loadFile = function () {
 	return {
 		module: {
 			rules: [
@@ -302,7 +303,7 @@ exports.loadFile = function() {
 	};
 };
 
-exports.clean = function(path) {
+exports.clean = function (path) {
 	return {
 		plugins: [
 			new CleanWebpackPlugin([path]),
@@ -310,7 +311,7 @@ exports.clean = function(path) {
 	};
 };
 
-exports.assetBanner = function() {
+exports.assetBanner = function () {
 	return {
 		plugins: [
 			new webpack.BannerPlugin({
@@ -320,8 +321,16 @@ exports.assetBanner = function() {
 	};
 };
 
-exports.extractBundles = function(bundles) {
-	const entry = {};
+exports.sitemap = function (paths) {
+	return {
+		plugins: [
+			new SitemapPlugin('https://davidvictor.me', paths),
+		],
+	};
+};
+
+exports.extractBundles = function (bundles) {
+	const entry   = {};
 	const plugins = [];
 	
 	bundles.forEach((bundle) => {
@@ -339,9 +348,9 @@ exports.extractBundles = function(bundles) {
 	return {entry, plugins};
 };
 
-exports.setFreeVariable = function(key, value) {
+exports.setFreeVariable = function (key, value) {
 	const env = {};
-	env[key] = JSON.stringify(value);
+	env[key]  = JSON.stringify(value);
 	return {
 		plugins: [
 			new webpack.DefinePlugin(env),
@@ -349,7 +358,7 @@ exports.setFreeVariable = function(key, value) {
 	};
 };
 
-exports.uglifyJs = function(mangle) {
+exports.uglifyJs = function (mangle) {
 	let ops;
 	if (mangle) {
 		ops = {
@@ -383,7 +392,7 @@ exports.uglifyJs = function(mangle) {
 	}
 };
 
-exports.useCDN = function() {
+exports.useCDN = function () {
 	return {
 		output: {
 			publicPath: 'https://cdn.amptu.be/assets',
@@ -391,7 +400,7 @@ exports.useCDN = function() {
 	}
 };
 
-exports.uploadS3Dev = function() {
+exports.uploadS3Dev = function () {
 	return {
 		output:  {
 			publicPath: `https://cdn.davidvictor.me/development/${gitTag}`,
@@ -405,7 +414,7 @@ exports.uploadS3Dev = function() {
 				minRatio:  0.8
 			}),
 			new S3Plugin({
-				include: /.*\.(css|js)/,
+				include:         /.*\.(css|js)/,
 				basePath:        `development/${gitTag}`,
 				s3Options:       {
 					accessKeyId:     accessKeyId,
@@ -418,8 +427,9 @@ exports.uploadS3Dev = function() {
 					 * @return {string}
 					 */
 					ContentEncoding(fileName) {
-						if (/\.gz/.test(fileName))
+						if (/\.gz/.test(fileName)) {
 							return 'gzip';
+						}
 					},
 					/**
 					 * @return {string}
@@ -463,7 +473,7 @@ exports.uploadS3Dev = function() {
 	}
 };
 
-exports.uploadS3 = function() {
+exports.uploadS3 = function () {
 	return {
 		output:  {
 			publicPath: `https://cdn.davidvictor.me/production/${gitTag}`,
@@ -477,21 +487,22 @@ exports.uploadS3 = function() {
 				minRatio:  0.8
 			}),
 			new S3Plugin({
-				include: /.*\.(css|js)/,
-				basePath:        `production/${gitTag}`,
-				s3Options:       {
+				include:                     /.*\.(css|js)/,
+				basePath:                    `production/${gitTag}`,
+				s3Options:                   {
 					accessKeyId:     accessKeyId,
 					secretAccessKey: secretAccessKey,
 					region:          region
 				},
-				s3UploadOptions: {
+				s3UploadOptions:             {
 					Bucket: 'assets.davidvictor.me',
 					/**
 					 * @return {string}
 					 */
 					ContentEncoding(fileName) {
-						if (/\.gz/.test(fileName))
+						if (/\.gz/.test(fileName)) {
 							return 'gzip';
+						}
 					},
 					/**
 					 * @return {string}
@@ -508,13 +519,9 @@ exports.uploadS3 = function() {
 						}
 					}
 				},
-				cloudfrontInvalidateOptions: {
-					DistributionId: distId,
-					Items: ["/*"]
-				}
 			}),
 			new S3Plugin({
-				include:         /.*\.html$/,
+				include:                     /.*\.(html|xml)/,
 				basePath:        ``,
 				s3Options:       {
 					accessKeyId:     accessKeyId,
@@ -529,11 +536,17 @@ exports.uploadS3 = function() {
 					ContentType(fileName) {
 						if (/\.html/.test(fileName)) {
 							return 'text/html';
+						} else if (/\.xml/.test(fileName)) {
+							return 'text/xml';
 						} else {
 							return 'text/plain';
 						}
 					}
 				},
+				cloudfrontInvalidateOptions: {
+					DistributionId: distId,
+					Items:          ["/*"]
+				}
 			}),
 			//new S3Plugin({
 			//	include:         /.*\.html$/,
@@ -605,7 +618,7 @@ exports.uploadS3 = function() {
 	}
 };
 
-exports.checkDuplicates = function() {
+exports.checkDuplicates = function () {
 	return {
 		plugins: [
 			new DuplicatePackageCheckerPlugin()
@@ -613,7 +626,7 @@ exports.checkDuplicates = function() {
 	}
 };
 
-exports.getStats = function() {
+exports.getStats = function () {
 	return {
 		profile: true,
 		plugins: [

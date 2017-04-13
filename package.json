@@ -62,6 +62,7 @@
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "sass-loader": "^6.0.3",
+    "sitemap-webpack-plugin": "^0.3.0",
     "stats-webpack-plugin": "^0.5.0",
     "style-loader": "^0.13.2",
     "svg-icon-template-loader": "0.0.6",
