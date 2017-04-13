@@ -8,7 +8,7 @@ import a from '../../utils/analytics';
 
 import {assetUrl} from 'config';
 
-import {Github, LinkedIn, Dribbble} from '../icon';
+import {Github, LinkedIn, Dribbble, Twitter} from '../icon';
 
 const IconButtons = ({off, left}) => {
 	const classes  = classNames(style.iconButtons);
@@ -27,7 +27,27 @@ const IconButtons = ({off, left}) => {
 				<ButtonCircle
 					backgroundColor="transparent"
 					color="white"
-					size={36}
+					size={32}
+					onClick={() => openLink('https://twitter.com/davidvictor','twitter')}>
+					<Twitter className={style.icon}/>
+				</ButtonCircle>
+			</Box>
+			<Box className={style.iconButtonWrap} flex style={{display:'none'}}>
+				<ButtonCircle
+					backgroundColor="transparent"
+					color="white"
+					size={32}
+					onClick={() => openLink('https://www.instagram.com/davidvictor','instagram')}>
+					<div className={style.icon}>
+						<img src={`${assetUrl}/social/instagram.png`} alt="Instagram"/>
+					</div>
+				</ButtonCircle>
+			</Box>
+			<Box className={style.iconButtonWrap} flex>
+				<ButtonCircle
+					backgroundColor="transparent"
+					color="white"
+					size={32}
 					onClick={() => openLink('https://dribbble.com/davidvictor','dribbble')}>
 					<Dribbble className={style.icon}/>
 				</ButtonCircle>
@@ -36,16 +56,17 @@ const IconButtons = ({off, left}) => {
 				<ButtonCircle
 					backgroundColor="transparent"
 					color="white"
-					size={36}
+					size={32}
 					onClick={() => openLink('https://github.com/davidvictor','gitHub')}>
 					<Github className={style.icon}/>
 				</ButtonCircle>
 			</Box>
+			
 			<Box className={style.iconButtonWrap} flex>
 				<ButtonCircle
 					backgroundColor="transparent"
 					color="white"
-					size={36}
+					size={32}
 					onClick={() => openLink('https://www.linkedin.com/in/dvictor','linkedIn')}>
 					<LinkedIn className={style.icon}/>
 				</ButtonCircle>

@@ -40,7 +40,7 @@ const commonConfig = merge([
 			pathinfo:   true,
 		},
 		resolve: {
-			extensions: ['.js', '.jsx', '.json', '.scss', '.css', '.md', '.graphql'],
+			extensions: ['.js', '.jsx', '.json', '.scss', '.css', '.md'],
 			modules:    ['node_modules'],
 			alias:      {
 				'config':    path.resolve(__dirname, 'config'),
@@ -64,7 +64,7 @@ const productionConfig = merge([
 			chunkFilename: '[name].[hash:8].js',
 		},
 	},
-	parts.buildHtml(),
+	parts.buildHtml('production'),
 	parts.uglifyJs(),
 	parts.extractBundles([{
 		name:      'vendor',
@@ -77,8 +77,9 @@ const productionConfig = merge([
 	parts.setFreeVariable('process.env.NODE_ENV', 'production'),
 	parts.clean(PATHS.build),
 	parts.assetBanner(),
-	parts.sitemap(sitemapPaths),
-	parts.uploadS3(),
+	parts.generateSitemap(sitemapPaths),
+	parts.generateFavicons('production'),
+	parts.uploadS3('production'),
 ]);
 
 const developmentConfig = merge([
@@ -89,8 +90,7 @@ const developmentConfig = merge([
 			chunkFilename: '[name].[hash:8].js',
 		},
 	},
-	parts.buildHtml(),
-	parts.uglifyJs(),
+	parts.buildHtml('development'),
 	parts.extractBundles([{
 		name:      'vendor',
 		minChunks: ({userRequest}) => (
@@ -102,8 +102,9 @@ const developmentConfig = merge([
 	parts.setFreeVariable('process.env.NODE_ENV', 'development'),
 	parts.clean(PATHS.build),
 	parts.assetBanner(),
-	parts.sitemap(sitemapPaths),
-	parts.uploadS3Dev(),
+	parts.generateSitemap(sitemapPaths),
+	parts.generateFavicons('development'),
+	parts.uploadS3('development'),
 ]);
 
 const localConfig = merge([
@@ -119,7 +120,8 @@ const localConfig = merge([
 			}], path.resolve(__dirname, './')),
 		]
 	},
-	parts.buildHtml(true),
+	parts.buildHtml('local'),
+	parts.generateFavicons('local'),
 	parts.devServer(),
 	parts.setFreeVariable('process.env.NODE_ENV', 'local'),
 ]);

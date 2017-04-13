@@ -91,15 +91,22 @@
 @media only screen and (max-width: 960px) {
 	.root {
 		height: calc(100vh - 60px);
+		&.isMobile {
+			.me {
+				bottom: 60px;
+			}
+			.venice {
+				bottom:   82px;
+			}
+		}
 	}
 	.me {
-		bottom: 60px;
 		width:  260px;
 		height: 260px;
 	}
 	.venice {
 		right:    18px;
-		bottom:   72px;
+		bottom:   18px;
 	}
 	.about {
 		padding: 24px;

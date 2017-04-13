@@ -8,6 +8,7 @@ import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import a from '../../utils/analytics';
 import style from './style.scss';
+import isMobile from '../../utils/isMobile';
 
 import {assetUrl} from 'config';
 
@@ -32,11 +33,6 @@ const Blurb = withActive(({active, on, off, toggle}) => {
 		on();
 		a.track('Clicked Roar');
 	};
-	//const isMobile = () => {
-	//	const md = new MobileDetect(window.navigator.userAgent);
-	//	//return md.mobile();
-	//	return false;
-	//};
 	return (
 		<div className='about-blurb'>
 			<p> Hi, I'm David. </p>
@@ -57,7 +53,9 @@ const Blurb = withActive(({active, on, off, toggle}) => {
 });
 
 const About = ({}, context) => {
-	const classes      = classNames("about", style.root);
+	const classes      = classNames("about", style.root,{
+		[style.isMobile] : isMobile(),
+	});
 	const handleButton = () => {
 		context.router.history.push({pathname: '/work/vetondemand'});
 		a.track('Clicked See My Work')

@@ -13,8 +13,9 @@ const WebpackBuildNotifierPlugin    = require('webpack-build-notifier');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const SitemapPlugin                 = require('sitemap-webpack-plugin');
+const FaviconsWebpackPlugin         = require('favicons-webpack-plugin');
 
-const {accessKeyId, secretAccessKey, distId, region, region2} = require('./config/aws');
+const {accessKeyId, secretAccessKey, cfId, cfIdDev, region} = require('./config/aws');
 
 const gitRevisionPlugin = new GitRevisionPlugin({
 	lightweightTags: true,
@@ -32,8 +33,18 @@ const extractGlobalStyle = new ExtractTextPlugin({
 
 const gitTag = gitRevisionPlugin.commithash().slice(0, 5);
 
-exports.buildHtml = function (local) {
-	const index = local ? 'src/template/index-local.html' : 'src/template/index.html';
+exports.buildHtml = function (env) {
+	let index;
+	switch (env) {
+		case 'production':
+			index = 'src/template/index.html';
+			break;
+		case 'development':
+			index = 'src/template/index-dev.html';
+			break;
+		default:
+			index = 'src/template/index-local.html';
+	}
 	return {
 		plugins: [
 			new HtmlWebpackPlugin({
@@ -123,7 +134,7 @@ exports.loadCSS = function () {
 									modules:        true,
 									sourceMap:      true,
 									importLoaders:  true,
-									localIdentName: '[name]_[local]_[hash:base64:5]',
+									localIdentName: '[name]__[local]__[hash:base64:5]',
 								},
 							},
 							{
@@ -139,11 +150,9 @@ exports.loadCSS = function () {
 							{
 								loader: 'sass-loader',
 								query:  {
-									//modules:        true,
 									sourceMap:      true,
 									outputStyle:    'compressed',
 									sourceComments: false,
-									//localIdentName: '[name]_[local]_[hash:base64:5]',
 								},
 							}
 						],
@@ -172,7 +181,7 @@ exports.loadCSS = function () {
 							{
 								loader: 'sass-loader',
 								query:  {
-									sourceMap:      false,
+									sourceMap:      true,
 									outputStyle:    'compressed',
 									sourceComments: false,
 								}
@@ -205,7 +214,7 @@ exports.loadCSS = function () {
 							{
 								loader: 'sass-loader',
 								query:  {
-									sourceMap:      false,
+									sourceMap:      true,
 									outputStyle:    'compressed',
 									sourceComments: false,
 								}
@@ -263,20 +272,6 @@ exports.loadJavaScript = function () {
 	};
 };
 
-exports.loadGraphQl = function () {
-	return {
-		module: {
-			rules: [
-				{
-					test:    /\.(graphql|gql)$/,
-					use:     'graphql-tag/loader',
-					exclude: [/node_modules/,]
-				},
-			],
-		},
-	};
-};
-
 exports.loadHtml = function () {
 	return {
 		module: {
@@ -321,10 +316,40 @@ exports.assetBanner = function () {
 	};
 };
 
-exports.sitemap = function (paths) {
+exports.generateSitemap = function (paths) {
 	return {
 		plugins: [
 			new SitemapPlugin('https://davidvictor.me', paths),
+		],
+	};
+};
+
+exports.generateFavicons = function (env) {
+	const image = env === 'production' ? 'favicon.png' : env === 'development' ? 'favicon-dev.png' : 'favicon-local.png';
+	return {
+		plugins: [
+			new FaviconsWebpackPlugin({
+				logo:            `./src/template/favicons/${image}`,
+				prefix:          'meta/[hash:5]/',
+				emitStats:       false,
+				statsFilename:   'iconstats-[hash:5].json',
+				persistentCache: true,
+				inject:          true,
+				background:      '#fff',
+				title:           "David Victor's Portfolio",
+				icons:           {
+					android:      env !== 'local',
+					appleIcon:    env !== 'local',
+					appleStartup: false,
+					coast:        false,
+					favicons:     true,
+					firefox:      false,
+					opengraph:    false,
+					twitter:      false,
+					yandex:       false,
+					windows:      false
+				}
+			})
 		],
 	};
 };
@@ -392,18 +417,10 @@ exports.uglifyJs = function (mangle) {
 	}
 };
 
-exports.useCDN = function () {
-	return {
-		output: {
-			publicPath: 'https://cdn.amptu.be/assets',
-		}
-	}
-};
-
-exports.uploadS3Dev = function () {
+exports.uploadS3 = function (env) {
 	return {
 		output:  {
-			publicPath: `https://cdn.davidvictor.me/development/${gitTag}`,
+			publicPath: `https://cdn.davidvictor.me/${env}/${gitTag}`,
 		},
 		plugins: [
 			new CompressionPlugin({
@@ -414,8 +431,8 @@ exports.uploadS3Dev = function () {
 				minRatio:  0.8
 			}),
 			new S3Plugin({
-				include:         /.*\.(css|js)/,
-				basePath:        `development/${gitTag}`,
+				include:         /.*\.(css|js|png|ico)/,
+				basePath:        `${env}/${gitTag}`,
 				s3Options:       {
 					accessKeyId:     accessKeyId,
 					secretAccessKey: secretAccessKey,
@@ -439,79 +456,10 @@ exports.uploadS3Dev = function () {
 							return 'application/javascript';
 						} else if (/\.css/.test(fileName)) {
 							return 'text/css';
-						} else if (/\.html/.test(fileName)) {
-							return 'text/html';
-						} else {
-							return 'text/plain';
-						}
-					}
-				},
-			}),
-			new S3Plugin({
-				include:         /.*\.html$/,
-				basePath:        ``,
-				s3Options:       {
-					accessKeyId:     accessKeyId,
-					secretAccessKey: secretAccessKey,
-					region:          region
-				},
-				s3UploadOptions: {
-					Bucket: 'beta.davidvictor.me',
-					/**
-					 * @return {string}
-					 */
-					ContentType(fileName) {
-						if (/\.html/.test(fileName)) {
-							return 'text/html';
-						} else {
-							return 'text/plain';
-						}
-					}
-				},
-			}),
-		]
-	}
-};
-
-exports.uploadS3 = function () {
-	return {
-		output:  {
-			publicPath: `https://cdn.davidvictor.me/production/${gitTag}`,
-		},
-		plugins: [
-			new CompressionPlugin({
-				asset:     "[path].gz[query]",
-				algorithm: "gzip",
-				test:      /\.js$|\.css$/,
-				threshold: 10240,
-				minRatio:  0.8
-			}),
-			new S3Plugin({
-				include:                     /.*\.(css|js)/,
-				basePath:                    `production/${gitTag}`,
-				s3Options:                   {
-					accessKeyId:     accessKeyId,
-					secretAccessKey: secretAccessKey,
-					region:          region
-				},
-				s3UploadOptions:             {
-					Bucket: 'assets.davidvictor.me',
-					/**
-					 * @return {string}
-					 */
-					ContentEncoding(fileName) {
-						if (/\.gz/.test(fileName)) {
-							return 'gzip';
-						}
-					},
-					/**
-					 * @return {string}
-					 */
-					ContentType(fileName) {
-						if (/\.js/.test(fileName)) {
-							return 'application/javascript';
-						} else if (/\.css/.test(fileName)) {
-							return 'text/css';
+						} else if (/\.png/.test(fileName)) {
+							return 'image/png';
+						} else if (/\.ico/.test(fileName)) {
+							return 'image/x-icon';
 						} else if (/\.html/.test(fileName)) {
 							return 'text/html';
 						} else {
@@ -522,14 +470,22 @@ exports.uploadS3 = function () {
 			}),
 			new S3Plugin({
 				include:                     /.*\.(html|xml)/,
-				basePath:        ``,
-				s3Options:       {
+				basePath:                    ``,
+				s3Options:                   {
 					accessKeyId:     accessKeyId,
 					secretAccessKey: secretAccessKey,
 					region:          region
 				},
-				s3UploadOptions: {
-					Bucket: 'davidvictor.me',
+				s3UploadOptions:             {
+					Bucket: env === 'production' ? 'davidvictor.me' : 'beta.davidvictor.me',
+					/**
+					 * @return {string}
+					 */
+					ContentEncoding(fileName) {
+						if (/\.gz/.test(fileName)) {
+							return 'gzip'
+						}
+					},
 					/**
 					 * @return {string}
 					 */
@@ -538,82 +494,20 @@ exports.uploadS3 = function () {
 							return 'text/html';
 						} else if (/\.xml/.test(fileName)) {
 							return 'text/xml';
+						} else if (/\.png/.test(fileName)) {
+							return 'image/png';
+						} else if (/\.ico/.test(fileName)) {
+							return 'image/x-icon';
 						} else {
 							return 'text/plain';
 						}
 					}
 				},
 				cloudfrontInvalidateOptions: {
-					DistributionId: distId,
+					DistributionId: env === 'production' ? cfId : cfIdDev,
 					Items:          ["/*"]
 				}
 			}),
-			//new S3Plugin({
-			//	include:         /.*\.html$/,
-			//	basePath:        ``,
-			//	s3Options:       {
-			//		accessKeyId:     accessKeyId,
-			//		secretAccessKey: secretAccessKey,
-			//		region:          region
-			//	},
-			//	s3UploadOptions: {
-			//		Bucket: 'www.davidvictor.me',
-			//		/**
-			//		 * @return {string}
-			//		 */
-			//		ContentType(fileName) {
-			//			if (/\.html/.test(fileName)) {
-			//				return 'text/html';
-			//			} else {
-			//				return 'text/plain';
-			//			}
-			//		}
-			//	},
-			//}),
-			//new S3Plugin({
-			//	include:         /.*\.html$/,
-			//	basePath:        ``,
-			//	s3Options:       {
-			//		accessKeyId:     accessKeyId,
-			//		secretAccessKey: secretAccessKey,
-			//		region:          region2
-			//	},
-			//	s3UploadOptions: {
-			//		Bucket: 'techbro.biz',
-			//		/**
-			//		 * @return {string}
-			//		 */
-			//		ContentType(fileName) {
-			//			if (/\.html/.test(fileName)) {
-			//				return 'text/html';
-			//			} else {
-			//				return 'text/plain';
-			//			}
-			//		}
-			//	},
-			//}),
-			//new S3Plugin({
-			//	include:         /.*\.html$/,
-			//	basePath:        ``,
-			//	s3Options:       {
-			//		accessKeyId:     accessKeyId,
-			//		secretAccessKey: secretAccessKey,
-			//		region:          region2
-			//	},
-			//	s3UploadOptions: {
-			//		Bucket: 'www.techbro.biz',
-			//		/**
-			//		 * @return {string}
-			//		 */
-			//		ContentType(fileName) {
-			//			if (/\.html/.test(fileName)) {
-			//				return 'text/html';
-			//			} else {
-			//				return 'text/plain';
-			//			}
-			//		}
-			//	},
-			//}),
 		]
 	}
 };
