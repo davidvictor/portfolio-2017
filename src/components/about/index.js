@@ -10,48 +10,40 @@ import isMobile from '../../utils/isMobile';
 
 import {assetUrl} from 'config';
 
-import {compose, withState, withHandlers} from 'recompose';
-
-const withActive = compose(
-	withState('active', 'setActive', false),
-	withHandlers({
-		on:     props => () => props.setActive(true),
-		off:    props => () => props.setActive(false),
-		toggle: props => () => props.setActive(a => !a),
-	})
-);
-
-const Blurb = withActive(({active, on, off, toggle}) => {
+class Blurb extends Component {
 	
-	const handleOff = () => {
-		off();
-	};
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
 	
-	const handleRoar = () => {
-		on();
-		a.track('Clicked Roar');
-	};
-	return (
-		<div className='about-blurb'>
-			<p> Hi, I'm David. </p>
-			<p> I'm a&nbsp;
-			<strong>product&nbsp;designer</strong>&nbsp;&&nbsp;
-			<strong>front&nbsp;end&nbsp;engineer</strong>.
-			</p>
-			<p> I develop innovative, creative solutions by combining a unique visual identity with sustained emotional resonance. </p>
-			<p> I define success as a&nbsp;
-			<span className="a" onClick={() => handleRoar()}><span>roar</span></span>, audible through the noise of now.
-			</p> {active ?
-			<ReactAudioPlayer
-				autoPlay
-				controls={false}
-				src={`${assetUrl}/base/roar.mp3`}
-				onEnded={() => handleOff()}
-				style={{position: 'absolute', visibility: 'hidden'}}
-			/> : false}
-		</div>
-	)
-});
+	render() {
+		const handleRoar = () => {
+			this.rap.audioEl.play();
+			a.track('Clicked Roar');
+		};
+		return (
+			<div className='about-blurb'>
+				<p> Hi, I'm David. </p>
+				<p> I'm a&nbsp;
+				<strong>product&nbsp;designer</strong>&nbsp;&&nbsp;
+				<strong>front&nbsp;end&nbsp;engineer</strong>.
+				</p>
+				<p> I develop innovative, creative solutions by combining a unique visual identity with sustained emotional resonance. </p>
+				<p> I define success as a&nbsp;
+				<span className="a" onClick={() => handleRoar()}><span>roar</span></span>, audible through the noise of now.
+				</p>
+				<ReactAudioPlayer
+					ref={c => this.rap = c }
+					preload="auto"
+					controls={false}
+					src={`${assetUrl}/base/roar.mp3`}
+					style={{position: 'absolute', visibility: 'hidden', height: '0', width: '0'}}
+				/>
+			</div>
+		)
+	}
+}
 
 const About = ({}, context) => {
 	const classes      = classNames("about", style.root, {
