@@ -465,6 +465,20 @@ exports.uploadS3 = function (env) {
 						} else {
 							return 'text/plain';
 						}
+					},
+					/**
+					 * @return {string}
+					 */
+					CacheControl(fileName) {
+						if (/\.js/.test(fileName)) {
+							return 'max-age=86400';
+						} else if (/\.css/.test(fileName)) {
+							return 'max-age=86400';
+						} else if (/\.png/.test(fileName)) {
+							return 'max-age=86400';
+						} else if (/\.ico/.test(fileName)) {
+							return 'max-age=86400';
+						}
 					}
 				},
 			}),
