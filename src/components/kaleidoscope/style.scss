@@ -5,13 +5,13 @@
 }
 
 .modal {
-	position:                   absolute;
-	top:              0;
-	left:             0;
-	right:            0;
-	bottom:           0;
-	outline:                    none;
-	//overflow-y: scroll;
+	position: absolute;
+	top:      0;
+	left:     0;
+	right:    0;
+	bottom:   0;
+	outline:  none;
+	cursor:   pointer;
 }
 
 .modalOverlay {
@@ -25,13 +25,12 @@
 }
 
 .debug {
-	position: absolute;
-	//width: 250px;
-	top: 24px;
-	left: 24px;
-	background: white;
-	padding: 24px;
-	font-size: 13px;
+	position:    absolute;
+	top:         24px;
+	left:        24px;
+	background:  white;
+	padding:     24px;
+	font-size:   13px;
 	font-weight: 700;
 }
 
@@ -40,15 +39,15 @@
 }
 
 .scroll {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	position:   absolute;
+	top:        0;
+	left:       0;
+	right:      0;
+	bottom:     0;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	.inner {
 		height: 150%;
-		width: 100%;
+		width:  100%;
 	}
 }

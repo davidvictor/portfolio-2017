@@ -14,7 +14,7 @@
 		letter-spacing:  0.06rem;
 		font-size:       16px;
 		transform:       translateX(0);
-		transition:      transform 200ms ease;
+		transition:      transform 200ms ease-in-out, color 200ms ease-in-out;
 		&:before {
 			position:   absolute;
 			left:       0;
