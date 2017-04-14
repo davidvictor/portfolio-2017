@@ -526,7 +526,6 @@ exports.getStats = function () {
 		plugins: [
 			new StatsPlugin('stats.json', {
 				chunkModules: true,
-				//exclude: [/node_modules[\\\/]react/]
 			})
 		]
 	}

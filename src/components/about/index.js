@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import {Button, ButtonOutline} from 'rebass';
+import {ButtonOutline} from 'rebass';
 import {browserHistory} from 'react-router-dom';
 import MediaQuery from 'react-responsive';
-import MobileDetect from 'mobile-detect';
-import Sound from 'react-sound';
-import {Flex, Box} from 'reflexbox';
+import ReactAudioPlayer from 'react-audio-player';
 import classNames from 'classnames';
 import a from '../../utils/analytics';
 import style from './style.scss';
@@ -29,7 +27,7 @@ const Blurb = withActive(({active, on, off, toggle}) => {
 		off();
 	};
 	
-	const handleRoar  = () => {
+	const handleRoar = () => {
 		on();
 		a.track('Clicked Roar');
 	};
@@ -44,17 +42,20 @@ const Blurb = withActive(({active, on, off, toggle}) => {
 			<p> I define success as a&nbsp;
 			<span className="a" onClick={() => handleRoar()}><span>roar</span></span>, audible through the noise of now.
 			</p> {active ?
-			<Sound
-				url={`${assetUrl}/base/roar.wav`}
-				playStatus={Sound.status.PLAYING}
-				onFinishedPlaying={() => handleOff()}/> : false}
+			<ReactAudioPlayer
+				autoPlay
+				controls={false}
+				src={`${assetUrl}/base/roar.mp3`}
+				onEnded={() => handleOff()}
+				style={{position: 'absolute', visibility: 'hidden'}}
+			/> : false}
 		</div>
 	)
 });
 
 const About = ({}, context) => {
-	const classes      = classNames("about", style.root,{
-		[style.isMobile] : isMobile(),
+	const classes      = classNames("about", style.root, {
+		[style.isMobile]: isMobile(),
 	});
 	const handleButton = () => {
 		context.router.history.push({pathname: '/work/vetondemand'});

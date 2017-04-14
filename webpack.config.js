@@ -44,7 +44,6 @@ const commonConfig = merge([
 			modules:    ['node_modules'],
 			alias:      {
 				'config':    path.resolve(__dirname, 'config'),
-				soundmanager2: 'soundmanager2/script/soundmanager2-nodebug-jsmin.js',
 			},
 		},
 		plugins: [
@@ -134,7 +133,7 @@ const testConfig = merge([
 			chunkFilename: '[name].js',
 		},
 	},
-	parts.buildHtml(),
+	parts.buildHtml('local'),
 	parts.extractBundles([{
 		name:      'vendor',
 		minChunks: ({userRequest}) => (
