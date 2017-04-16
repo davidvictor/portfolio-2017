@@ -71,11 +71,19 @@ class App extends Component {
 			[`${assetUrl}/hero/at-hero-mobile.jpg`,
 				`${assetUrl}/hero/vod-hero-mobile.jpg`,
 				`${assetUrl}/hero/lib-hero-mobile.jpg`,
-				`${assetUrl}/hero/esc-hero-mobile.jpg`] :
+				`${assetUrl}/hero/esc-hero-mobile.jpg`,
+				`${assetUrl}/amptube/lockup-horizontal-white.svg`,
+				`${assetUrl}/vetondemand/logo-h-white.svg`,
+				`${assetUrl}/lifeisbeautiful/logo-heart-white.png`,
+				`${assetUrl}/esc/logo-color.svg`] :
 			[`${assetUrl}/hero/at-hero.jpg`,
 				`${assetUrl}/hero/vod-hero.jpg`,
 				`${assetUrl}/hero/lib-hero.jpg`,
-				`${assetUrl}/hero/esc-hero.jpg`];
+				`${assetUrl}/hero/esc-hero.jpg`,
+				`${assetUrl}/amptube/lockup-horizontal-white.svg`,
+				`${assetUrl}/vetondemand/logo-h-white.svg`,
+				`${assetUrl}/lifeisbeautiful/logo-heart-white.png`,
+				`${assetUrl}/esc/logo-color.svg`];
 		images.forEach((src) => {
 			const img = document.createElement('img');
 			img.src   = src;

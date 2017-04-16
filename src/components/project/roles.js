@@ -4,6 +4,7 @@ import {Flex, Box} from 'reflexbox';
 import {Button, ButtonOutline, Close} from 'rebass';
 import classNames from 'classnames';
 import style from './style.scss';
+import a from '../../utils/analytics';
 import R from 'ramda';
 
 import {assetUrl, roleData} from 'config';
@@ -24,7 +25,9 @@ const Role = withActive(({label, active, on, off, toggle, children, context}) =>
 	const getParent      = () => {return document.querySelector('#root');};
 	const onRequestClose = () => {off()};
 	const afterOpen      = () => {
-		//mixpanel.track("Contact Modal Open");
+		//a.track("Role Modal Open", {
+		//label: label
+		//});
 	};
 	return (
 		<div className={classes}>

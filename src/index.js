@@ -6,6 +6,7 @@ import {
 import createHistory from 'history/createBrowserHistory'
 import App from './components/app';
 import './index.scss';
+//import 'autotrack';
 
 const history = createHistory();
 

@@ -406,7 +406,7 @@ exports.uglifyJs = function (mangle) {
 		}
 	} else {
 		ops = {
-			minimize:   false,
+			minimize:   true,
 			sourceMap:  true,
 			mangle:     false,
 			comments:   false,
