@@ -23,26 +23,14 @@ $faces: (
 						weight: 200,
 						style: normal
 					),
-					"brandonT": (
-						family: "brandon",
-						url: "#{$assetUrl}/fonts/brandon-text/BrandonText-Thin",
-						weight: 100,
-						style: normal
-					),
-					"gothamL": (
-						family: "gotham",
-						url: "#{$assetUrl}/fonts/gotham/Gotham-Light",
-						weight: 300,
-						style: normal
-					),
-					"gothamM": (
+					"gothamB": (
 						family: "gotham",
 						url: "#{$assetUrl}/fonts/gotham/Gotham-Bold",
 						weight: 700,
 						style: normal
 					),
 				);
-$font-formats: eot woff ttf;
+$font-formats: woff2 woff ttf;
 
 $black: hsla(345, 6%, 13%, 1);
 $gold: hsla(27, 28%, 51%, 1);

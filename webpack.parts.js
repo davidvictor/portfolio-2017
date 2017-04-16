@@ -31,6 +31,11 @@ const extractGlobalStyle = new ExtractTextPlugin({
 	allChunks: true
 });
 
+const extractFontsStyle = new ExtractTextPlugin({
+	filename:  `fonts.[hash:8].css`,
+	allChunks: true
+});
+
 const gitTag = gitRevisionPlugin.commithash().slice(0, 5);
 
 exports.buildHtml = function (env) {
@@ -107,7 +112,7 @@ exports.devServer = function () {
 	};
 };
 
-exports.loadCSS = function () {
+exports.loadCSS = function (preload) {
 	return {
 		module:  {
 			rules: [
@@ -115,9 +120,7 @@ exports.loadCSS = function () {
 					test:    /\.css$/,
 					use:     extractGlobalStyle.extract({
 						fallback: 'style-loader',
-						loader:   [
-							'css-loader',
-						],
+						loader:  preload ?  ['css-loader/locals'] : ['css-loader'],
 					}),
 					include: [
 						/node_modules/,
@@ -129,7 +132,7 @@ exports.loadCSS = function () {
 						fallback: 'style-loader',
 						use:      [
 							{
-								loader: 'css-loader',
+								loader: preload ? 'css-loader/locals' : 'css-loader',
 								query:  {
 									modules:        true,
 									sourceMap:      true,
@@ -159,6 +162,7 @@ exports.loadCSS = function () {
 					}),
 					exclude: [
 						/src\/styles\/global\.scss/,
+						/src\/styles\/fonts\.scss/,
 						/node_modules/,
 					]
 				},
@@ -167,7 +171,7 @@ exports.loadCSS = function () {
 					use:     extractStyle.extract({
 						fallback: 'style-loader',
 						use:      [
-							'css-loader',
+							preload ? 'css-loader/locals' : 'css-loader',
 							{
 								loader:  'postcss-loader',
 								options: {
@@ -193,6 +197,7 @@ exports.loadCSS = function () {
 					],
 					exclude: [
 						/src\/styles\/global\.scss/,
+						/src\/styles\/fonts\.scss/,
 					],
 				},
 				{
@@ -200,7 +205,7 @@ exports.loadCSS = function () {
 					use:     extractGlobalStyle.extract({
 						fallback: 'style-loader',
 						use:      [
-							'css-loader',
+							preload ? 'css-loader/locals' : 'css-loader',
 							{
 								loader:  'postcss-loader',
 								options: {

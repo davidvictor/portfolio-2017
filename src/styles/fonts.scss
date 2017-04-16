@@ -1,0 +1,9 @@
+@import 'vars';
+@each $font, $face in $faces {
+	@include font-face(
+			map-get($face, family),
+			map-get($face, url),
+			map-get($face, weight),
+			map-get($face, style),
+			$font-formats);
+}

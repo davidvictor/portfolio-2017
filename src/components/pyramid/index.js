@@ -157,15 +157,29 @@ class Pyramid extends Component {
 		const geoClasses     = classNames("geo", style.geo);
 		return this.state.isMobile ? (
 				<div className={classes}>
-					<svg className={pyramidClasses} ref="pyramid">
+					<svg className={pyramidClasses} ref="pyramid"/>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 56" className={geoClasses} ref="geo">
+						<g fill="#333" fillRule="evenodd">
+							<path d="M1.782 54.803h61.872L32.72 1.183 1.78 54.803zm62.942.62H.712L32.72-.057l32.004 55.48z"/>
+							<path d="M17.85 28.466l14.87 25.768 14.866-25.768H17.85zm14.87 27.006L16.78 27.848h31.877l-15.94 27.624z"/>
+							<path d="M33.026 54.853h-.618V.563h.618v54.29z"/>
+							<path d="M1.448 55.347l-.403-.472 31.47-26.955.403.472-31.47 26.955z"/>
+							<path d="M63.987 55.347l-31.47-26.955.4-.472 31.47 26.955-.4.472z"/>
+						</g>
 					</svg>
-					<img src={`${assetUrl}/geo/geo-29.svg`} className={geoClasses} ref="geo"/>
 				</div>
 			) :
 			<div className={classes} onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave}>
-				<svg className={pyramidClasses} ref="pyramid">
+				<svg className={pyramidClasses} ref="pyramid"/>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 56" className={geoClasses} ref="geo">
+					<g fill="#333" fillRule="evenodd">
+						<path d="M1.782 54.803h61.872L32.72 1.183 1.78 54.803zm62.942.62H.712L32.72-.057l32.004 55.48z"/>
+						<path d="M17.85 28.466l14.87 25.768 14.866-25.768H17.85zm14.87 27.006L16.78 27.848h31.877l-15.94 27.624z"/>
+						<path d="M33.026 54.853h-.618V.563h.618v54.29z"/>
+						<path d="M1.448 55.347l-.403-.472 31.47-26.955.403.472-31.47 26.955z"/>
+						<path d="M63.987 55.347l-31.47-26.955.4-.472 31.47 26.955-.4.472z"/>
+					</g>
 				</svg>
-				<img src={`${assetUrl}/geo/geo-29.svg`} className={geoClasses} ref="geo"/>
 			</div>;
 	}
 }

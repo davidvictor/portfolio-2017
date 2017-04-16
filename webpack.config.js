@@ -51,7 +51,7 @@ const commonConfig = merge([
 			new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 		],
 	},
-	parts.loadCSS(),
+	parts.loadCSS(false),
 	parts.loadJavaScript(),
 ]);
 
@@ -89,6 +89,7 @@ const developmentConfig = merge([
 			chunkFilename: '[name].[hash:8].js',
 		},
 	},
+	
 	parts.buildHtml('development'),
 	parts.extractBundles([{
 		name:      'vendor',
@@ -113,9 +114,6 @@ const localConfig = merge([
 			new TransferWebpackPlugin([{
 				from: 'public/images',
 				to:   'images'
-			},{
-				from: 'public/fonts',
-				to:   'fonts'
 			}], path.resolve(__dirname, './')),
 		]
 	},

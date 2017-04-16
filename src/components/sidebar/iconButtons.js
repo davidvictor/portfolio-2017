@@ -32,17 +32,6 @@ const IconButtons = ({off, left}) => {
 					<Twitter className={style.icon}/>
 				</ButtonCircle>
 			</Box>
-			<Box className={style.iconButtonWrap} flex style={{display:'none'}}>
-				<ButtonCircle
-					backgroundColor="transparent"
-					color="white"
-					size={32}
-					onClick={() => openLink('https://www.instagram.com/davidvictor','instagram')}>
-					<div className={style.icon}>
-						<img src={`${assetUrl}/social/instagram.png`} alt="Instagram"/>
-					</div>
-				</ButtonCircle>
-			</Box>
 			<Box className={style.iconButtonWrap} flex>
 				<ButtonCircle
 					backgroundColor="transparent"
@@ -84,5 +73,17 @@ export default IconButtons;
 //		href='https://www.dropbox.com/s/bkzc5ki6jaj1khs/davidvictor-resume-public.pdf'
 //		target="_blank">
 //		<Resume className={style.icon} color="rgb(35, 31, 32)"/>
+//	</ButtonCircle>
+//</Box>
+//
+//<Box className={style.iconButtonWrap} flex style={{display:'none'}}>
+//	<ButtonCircle
+//		backgroundColor="transparent"
+//		color="white"
+//		size={32}
+//		onClick={() => openLink('https://www.instagram.com/davidvictor','instagram')}>
+//		<div className={style.icon}>
+//			<img src={`${assetUrl}/social/instagram.png`} alt="Instagram"/>
+//		</div>
 //	</ButtonCircle>
 //</Box>

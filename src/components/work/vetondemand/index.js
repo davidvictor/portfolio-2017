@@ -183,8 +183,8 @@ const Research = () => {
 					<h3>INCOMES ARE FALLING</h3>
 					<p>Over the past decade, veterinarians have seen their wages fall. Increasing prices from pharmaceutical companies and the ever advancing march of technology have cut even deeper into practices nationwide.</p>
 				</Box>
-				<Box p={2} sm={12} md={9} lg={7} py={4}>
-					<blockquote>72% of cats and 42% of dogs only see a vet either once or not at all annually</blockquote>
+				<Box p={2} sm={12} md={9} lg={8} py={4}>
+					<blockquote>72% of cats and 42% of dogs only see a vet either once or not&nbsp;at&nbsp;all&nbsp;annually</blockquote>
 				</Box>
 				<Box p={2} sm={12} md={11} lg={10}>
 					<Flex justify="space-around" wrap>

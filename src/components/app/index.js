@@ -4,7 +4,6 @@ import {
 } from 'react-router-dom';
 import Sidebar from '../sidebar';
 import About from '../about';
-import Resume from '../resume';
 import Amptube from '../work/amptube';
 import VOD from '../work/vetondemand';
 import LIB from '../work/lifeisbeautiful';
@@ -15,6 +14,9 @@ import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
 import '../../styles/global.scss';
+import isMobile from '../../utils/isMobile';
+
+import {assetUrl} from 'config';
 
 import {scale, colors, fontSizes} from 'config';
 
@@ -63,6 +65,22 @@ class App extends Component {
 			}
 		}
 	}
+	
+	componentDidMount = () => {
+		const images  = isMobile() ?
+			[`${assetUrl}/hero/at-hero-mobile.jpg`,
+				`${assetUrl}/hero/vod-hero-mobile.jpg`,
+				`${assetUrl}/hero/lib-hero-mobile.jpg`,
+				`${assetUrl}/hero/esc-hero-mobile.jpg`] :
+			[`${assetUrl}/hero/at-hero.jpg`,
+				`${assetUrl}/hero/vod-hero.jpg`,
+				`${assetUrl}/hero/lib-hero.jpg`,
+				`${assetUrl}/hero/esc-hero.jpg`];
+		images.forEach((src) => {
+			const img = document.createElement('img');
+			img.src   = src;
+		});
+	};
 	
 	render() {
 		const classes    = classNames("app", style.root);
