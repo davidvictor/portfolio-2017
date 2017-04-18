@@ -4,10 +4,9 @@ import {browserHistory} from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import ReactAudioPlayer from 'react-audio-player';
 import classNames from 'classnames';
-import a from '../../utils/analytics';
 import style from './style.scss';
+import ReactGA from 'react-ga';
 import isMobile from '../../utils/isMobile';
-
 import {assetUrl} from 'config';
 
 class Blurb extends Component {
@@ -20,7 +19,10 @@ class Blurb extends Component {
 	render() {
 		const handleRoar = () => {
 			this.rap.audioEl.play();
-			a.track('Clicked Roar');
+			ReactGA.event({
+				category: 'Engagement',
+				action:   'Clicked Roar',
+			});
 		};
 		return (
 			<div className='about-blurb'>
@@ -51,7 +53,10 @@ const About = ({}, context) => {
 	});
 	const handleButton = () => {
 		context.router.history.push({pathname: '/work/vetondemand'});
-		a.track('Clicked See My Work')
+		ReactGA.event({
+			category: 'Navigation',
+			action:   'Clicked See My Work',
+		});
 	};
 	const bgImage      = 'url(' + assetUrl + '/base/dv-headshot.jpg)';
 	return (

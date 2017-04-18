@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router';
-import a from '../../utils/analytics';
+import ReactGA from 'react-ga';
 
 class PageShit extends Component {
 	componentDidUpdate(prevProps) {
 		if (this.props.location !== prevProps.location) {
 			window.scrollTo(0, 0);
-			a.track(window.location.pathname);
+			ReactGA.set({ page: window.location.pathname });
+			ReactGA.pageview(window.location.pathname);
 		}
 	}
-	
 	render() {
 		return false
 	}

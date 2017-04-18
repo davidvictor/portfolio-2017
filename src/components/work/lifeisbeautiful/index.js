@@ -2,12 +2,20 @@ import React, {Component} from 'react';
 import {Flex, Box} from 'reflexbox';
 import Project from '../../project';
 import ImageZoom from 'react-medium-image-zoom';
-import a from '../../../utils/analytics';
-import isMobile from '../../../utils/isMobile';
 import classNames from 'classnames';
 import style from './style.scss';
 import _ from 'lodash';
 import {assetUrl} from 'config';
+import ReactGA from 'react-ga';
+
+const trackZoom = (project, image) => {
+	ReactGA.event({
+		category: 'Engagement',
+		action:   'Image Zoomed',
+		label:    project,
+		//value:    image
+	});
+};
 
 const Brand = () => {
 	return (
@@ -24,10 +32,7 @@ const Brand = () => {
 							src: `${assetUrl}/lifeisbeautiful/logo-lockup@2x.png`,
 							alt: 'Logo',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Life is Beautiful',
-							src:  'logo-lockup.png'
-						})}
+						onZoom={() => trackZoom('Life is Beautiful', 'logo-lockup.png')}
 					/>
 				</Box>
 			</Flex>
@@ -80,10 +85,7 @@ const Web = () => {
 							src: `${assetUrl}/lifeisbeautiful/website@2x.png`,
 							alt: 'Website',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Life is Beautiful',
-							src:  'website.png'
-						})}
+						onZoom={() => trackZoom('Life is Beautiful','website.png')}
 					/>
 				</Box>
 			</Flex>
@@ -122,10 +124,7 @@ const App = () => {
 								src: screen.zoom,
 								alt: 'Festival App',
 							}}
-							onZoom={() => a.track('Image Zoomed', {
-								page: 'Life is Beautiful',
-								src:  screen.src.split('/lifeisbeautiful/')[1]
-							})}
+							onZoom={() => trackZoom('Life is Beautiful',screen.src.split('/lifeisbeautiful/')[1])}
 						/>
 					</Box>
 				)}
@@ -140,7 +139,6 @@ const Poster = () => {
 			<Flex justify="center" mt={5} mb={3} wrap>
 				<Box px={2}>
 					<ImageZoom
-						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/poster.jpg`,
 							alt:   'Lineup Poster',
@@ -150,10 +148,7 @@ const Poster = () => {
 							src: `${assetUrl}/lifeisbeautiful/poster@2x.jpg`,
 							alt: 'Lineup Poster'
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Life is Beautiful',
-							src:  'poster.jpg'
-						})}
+						onZoom={() => trackZoom('Life is Beautiful','poster.jpg')}
 					/>
 				</Box>
 			</Flex>
@@ -167,7 +162,6 @@ const Guide = () => {
 			<Flex justify="center" py={4} px={2} wrap>
 				<Box mt={2}>
 					<ImageZoom
-						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/map.jpg`,
 							alt:   'Guide Inside Cover',
@@ -177,17 +171,13 @@ const Guide = () => {
 							src: `${assetUrl}/lifeisbeautiful/map@2x.jpg`,
 							alt: 'Guide Inside Cover',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Life is Beautiful',
-							src:  'map.jpg'
-						})}
+						onZoom={() => trackZoom('Life is Beautiful','map.jpg')}
 					/>
 				</Box>
 				<Box flex px={2}>
 					<Flex justify="space-between" align="center" flex flexColumn>
 						<Box my={2}>
 							<ImageZoom
-								//shouldPreload={!isMobile()}
 								image={{
 									src:   `${assetUrl}/lifeisbeautiful/schedule.jpg`,
 									alt:   'Schedule',
@@ -197,15 +187,11 @@ const Guide = () => {
 									src: `${assetUrl}/lifeisbeautiful/schedule@2x.jpg`,
 									alt: 'Schedule',
 								}}
-								onZoom={() => a.track('Image Zoomed', {
-									page: 'Life is Beautiful',
-									src:  'schedule.jpg'
-								})}
+								onZoom={() => trackZoom('Life is Beautiful','schedule.jpg')}
 							/>
 						</Box>
 						<Box>
 							<ImageZoom
-								//shouldPreload={!isMobile()}
 								image={{
 									src:   `${assetUrl}/lifeisbeautiful/guide-inside.png`,
 									alt:   'Guide Inside Cover',
@@ -215,10 +201,7 @@ const Guide = () => {
 									src: `${assetUrl}/lifeisbeautiful/guide-inside@2x.png`,
 									alt: 'Guide Inside Cover',
 								}}
-								onZoom={() => a.track('Image Zoomed', {
-									page: 'Life is Beautiful',
-									src:  'guide-inside.png'
-								})}
+								onZoom={() => trackZoom('Life is Beautiful','guide-inside.png')}
 							/>
 						</Box>
 					</Flex>
@@ -247,7 +230,6 @@ const VIP = () => {
 				{artworks.map((artwork, idx) =>
 					<Box col={10} sm={12} md={3} lg={3} px={2} style={{textAlign: 'center'}} key={_.uniqueId('vip_')}>
 						<ImageZoom
-							//shouldPreload={!isMobile()}
 							image={{
 								src:   artwork.src,
 								alt:   'VIP Artwork',
@@ -257,10 +239,7 @@ const VIP = () => {
 								src: artwork.zoom,
 								alt: 'VIP Artwork',
 							}}
-							onZoom={() => a.track('Image Zoomed', {
-								page: 'Life is Beautiful',
-								src:  artwork.src.split('/lifeisbeautiful/')[1]
-							})}
+							onZoom={() => trackZoom('Life is Beautiful',artwork.src.split('/lifeisbeautiful/')[1])}
 						/>
 					</Box>
 				)}
@@ -289,7 +268,6 @@ const Tickets = () => {
 			<Flex justify="space-around" py={4} px={2} wrap>
 				<Box col={12} mb={2}>
 					<ImageZoom
-						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/ad-728x90_music.gif`,
 							alt:   'Banner Ad',
@@ -299,15 +277,11 @@ const Tickets = () => {
 							src: `${assetUrl}/lifeisbeautiful/ad-728x90_music.gif`,
 							alt: 'Banner Ad',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Life is Beautiful',
-							src:  'ad-728x90_music'
-						})}
+						onZoom={() => trackZoom('Life is Beautiful','ad-728x90_music')}
 					/>
 				</Box>
 				<Box pr={1} mb={2}>
 					<ImageZoom
-						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/ticket-animate.gif`,
 							alt:   'Commemorative Ticket',
@@ -317,15 +291,11 @@ const Tickets = () => {
 							src: `${assetUrl}/lifeisbeautiful/ticket-animate@2x.gif`,
 							alt: 'Commemorative Ticket',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Life is Beautiful',
-							src:  'ticket-animate.gif'
-						})}
+						onZoom={() => trackZoom('Life is Beautiful','ticket-animate.gif')}
 					/>
 				</Box>
 				<Box>
 					<ImageZoom
-						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/lifeisbeautiful/wristbands.png`,
 							alt:   'Wristbands',
@@ -335,10 +305,7 @@ const Tickets = () => {
 							src: `${assetUrl}/lifeisbeautiful/wristbands@2x.png`,
 							alt: 'Wristbands',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Life is Beautiful',
-							src:  'wristbands.png'
-						})}
+						onZoom={() => trackZoom('Life is Beautiful','wristbands.png')}
 					/>
 				</Box>
 			</Flex>
@@ -384,10 +351,7 @@ const Culinary = () => {
 								src: logo.zoom,
 								alt: 'Culinary Logo',
 							}}
-							onZoom={() => a.track('Image Zoomed', {
-								page: 'Life is Beautiful',
-								src:  logo.src.split('/lifeisbeautiful/')[1]
-							})}
+							onZoom={() => trackZoom('Life is Beautiful',logo.src.split('/lifeisbeautiful/')[1])}
 						/>
 					</Box>
 				)}
@@ -411,10 +375,7 @@ const Love = () => {
 							src: `${assetUrl}/lifeisbeautiful/equal-love@2x.png`,
 							alt: 'Equal Love Promo Logo',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Life is Beautiful',
-							src:  'equal-love.png'
-						})}
+						onZoom={() => trackZoom('Life is Beautiful','equal-love.png')}
 					/>
 				</Box>
 			</Flex>
@@ -486,10 +447,7 @@ const Photos = () => {
 								src: photo.zoom,
 								alt: 'Festival Photo',
 							}}
-							onZoom={() => a.track('Image Zoomed', {
-								page: 'Life is Beautiful',
-								src:  photo.src.split('/lifeisbeautiful/')[1]
-							})}
+							onZoom={() => trackZoom('Life is Beautiful',photo.src.split('/lifeisbeautiful/')[1])}
 						/>
 					</Box>
 				)}
@@ -520,10 +478,7 @@ const PlanetHollywood = () => {
 							src: `${assetUrl}/lifeisbeautiful/planet-hollywood-crop@2x.jpg`,
 							alt: 'Vegas Strip Takeover',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Life is Beautiful',
-							src:  'planet-hollywood-crop.jpg'
-						})}
+						onZoom={() => trackZoom('Life is Beautiful','planet-hollywood-crop.jpg')}
 					/>
 				</Box>
 			</Flex>
@@ -532,11 +487,9 @@ const PlanetHollywood = () => {
 };
 
 const LifeisBeautiful = () => {
-	
 	const classes = classNames("lifeisbeautiful", style.root);
 	return (
 		<div className={classes}>
-			
 			<Project
 				title="Life is Beautiful"
 				url='https://lifeisbeautiful.com'
@@ -562,7 +515,6 @@ const LifeisBeautiful = () => {
 			</Project>
 		</div>
 	);
-	
 };
 
 export default  LifeisBeautiful;

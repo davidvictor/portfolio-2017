@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import ReactModal from 'react-modal';
-import {Button,ButtonCircle} from 'rebass';
+import {ButtonCircle} from 'rebass';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
 import {Email} from '../icon';
-import a from '../../utils/analytics';
+import ReactGA from 'react-ga';
 
 import {compose, withState, withHandlers} from 'recompose';
 
@@ -20,15 +20,19 @@ const withActive = compose(
 
 const ContactButton = withActive(({active, on, off, toggle, anchor}) => {
 	const classes        = classNames("contact", style.contactRoot);
+	const getParent           = () => {return document.querySelector('#root');};
 	const onRequestClose = () => {
 		off();
-		a.track("Contact Modal Close");
 	};
 	const afterOpen      = () => {
-		a.track("Contact Modal Open");
+		ReactGA.modalview('contact');
 	};
 	const handleEmail    = () => {
-		a.track("Email Address Clicked");
+		ReactGA.event({
+			category: 'Engagement',
+			action: 'Contact Me Clicked'
+		});
+		off();
 	};
 	return (
 		<div className={classes}>
@@ -48,7 +52,9 @@ const ContactButton = withActive(({active, on, off, toggle, anchor}) => {
 				onRequestClose={() => onRequestClose()}
 				className={style.modal}
 				overlayClassName={style.modalOverlay}
+				portalClassName="👅"
 				contentLabel="Contact David"
+				parentSelector={getParent}
 				shouldCloseOnOverlayClick={true}
 				onAfterOpen={afterOpen}>
 				<div className={style.emailMe}>

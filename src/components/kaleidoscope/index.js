@@ -1,21 +1,16 @@
 import React, {Component} from 'react';
 import ReactModal from 'react-modal';
 import Graphemescope from '../../utils/graphemescope';
-import {Close, Button, ButtonOutline, ButtonCircle} from 'rebass';
+import {Button} from 'rebass';
 import {Flex, Box} from 'reflexbox';
-import a from '../../utils/analytics';
 import log from '../../utils/log';
 import classNames from 'classnames';
 import style from './style.scss';
 import EventListener, {withOptions} from 'react-event-listener';
 import MobileDetect from 'mobile-detect';
-import {Motion, spring} from 'react-motion';
-//import ReactAccelerometer from 'react-accelerometer'
-//import { Motion, spring } from 'react-motion'
-//import Khole from "./kscope";
+import ReactGA from 'react-ga';
 import Pyramid from '../pyramid';
 import {assetUrl} from 'config';
-
 import {compose, withState, withHandlers} from 'recompose';
 
 const withActive = compose(
@@ -112,8 +107,6 @@ class KHole extends React.Component {
 	};
 	
 	handleScroll = (e) => {
-		//log('scroll',e);
-		//log('scroll', e);
 		if (!this.state.isMobile) {
 			this.setState({
 				sY: 1 - (
@@ -178,8 +171,10 @@ class KHole extends React.Component {
 			this.handleOff();
 		} else {
 			this.changePicture();
-			a.track("Kaleidoscope Clicked", {
-				index: this.state.index,
+			ReactGA.event({
+				category: 'Engagement',
+				action: 'Kaleidoscope Clicked',
+				value: this.state.index,
 			});
 		}
 	};
@@ -191,19 +186,13 @@ class KHole extends React.Component {
 	};
 	
 	componentDidMount = () => {
-		//this.handleOrientation();
-		
 		if (this.state.isMobile) {
 			window.addEventListener('devicemotion', this.handleAcceleration);
-			//window.addEventListener('orientationchange', this.handleOrientation);
 		}
-		
 		this.setContainer();
 		this.setScope();
 		log(this.state.index);
-		//this.interval = setInterval(this.changePicture, 3000);
 		this.changePicture();
-		//this.scope.resizeHandler();
 	};
 	
 	componentWillUnmount = () => {
@@ -259,7 +248,6 @@ class KHole extends React.Component {
 		return (
 			<div>
 				<div className={classes} style={kStyle}/>
-				
 				<Debug />
 				<EventListener
 					target="window"
@@ -295,10 +283,9 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 	const getParent      = () => {return document.querySelector('#root');};
 	const onRequestClose = () => {
 		off();
-		a.track("Kaleidoscope Close");
 	};
 	const afterOpen      = () => {
-		a.track("Kaleidoscope Open");
+		ReactGA.modalview('kaleidoscope');
 	};
 	const Scroller       = () => {
 		return (
@@ -318,6 +305,7 @@ const Kaleidoscope = withActive(({active, on, off, toggle}) => {
 				onRequestClose={() => onRequestClose()}
 				className={modalClasses}
 				overlayClassName={style.modalOverlay}
+				portalClassName="🔮"
 				contentLabel="Kaleidoscope"
 				parentSelector={getParent}
 				shouldCloseOnOverlayClick={true}

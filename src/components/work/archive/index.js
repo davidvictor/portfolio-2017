@@ -3,11 +3,18 @@ import {Flex, Box} from 'reflexbox';
 import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
 import style from './style.scss';
-import a from '../../../utils/analytics';
-import isMobile from '../../../utils/isMobile';
 import _ from 'lodash';
-
 import {assetUrl} from 'config';
+import ReactGA from 'react-ga';
+
+const trackZoom = (project, image) => {
+	ReactGA.event({
+		category: 'Engagement',
+		action:   'Image Zoomed',
+		label:    project,
+		//value:    image
+	});
+};
 
 const LogoGrid = () => {
 	const photos        = [
@@ -98,7 +105,6 @@ const LogoGrid = () => {
 			{photos.map((photo, idx) =>
 				<Box key={_.uniqueId('archive_')} my={0} sm={12} md={photo.size} lg={photo.size}>
 					<ImageZoom
-						//shouldPreload={!isMobile()}
 						zoomMargin={0}
 						defaultStyles={photo.dark ? defaultStyles : {}}
 						image={{
@@ -110,10 +116,7 @@ const LogoGrid = () => {
 							src: photo.zoom,
 							alt: 'Archive',
 						}}
-						onZoom={()=>a.track('Image Zoomed',{
-							page: 'Archive',
-							src: photo.src.split('/archive/')[1]
-						})}
+						onZoom={() => trackZoom('Archive', photo.src.split('/archive/')[1])}
 					/>
 				</Box>
 			)}

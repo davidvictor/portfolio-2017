@@ -6,10 +6,17 @@ import YouTube from 'react-youtube';
 import ImageZoom from 'react-medium-image-zoom';
 import classNames from 'classnames';
 import style from './style.scss';
-import isMobile from '../../../utils/isMobile';
-import a from '../../../utils/analytics';
-
 import {assetUrl} from 'config';
+import ReactGA from 'react-ga';
+
+const trackZoom = (project,image) => {
+	ReactGA.event({
+		category: 'Engagement',
+		action:   'Image Zoomed',
+		label:    project,
+		//value:    image
+	});
+};
 
 const Amplify = () => {
 	return (
@@ -23,10 +30,7 @@ const Amplify = () => {
 							alt:   'Amplify Animation',
 							style: {maxWidth: '361px', width: '100%'}
 						}}
-						onZoom={()=>a.track('Image Zoomed',{
-							page: 'Amptube',
-							src: `amplify-panel.gif`
-						})}
+						onZoom={()=>trackZoom('Amptube',`amplify-panel.gif`)}
 					/>
 				</Box>
 			</Flex>
@@ -39,10 +43,7 @@ const Amplify = () => {
 							alt:   'Amplify Leaderboard',
 							style: {maxWidth: '348px', width: '100%'}
 						}}
-						onZoom={()=>a.track('Image Zoomed',{
-							page: 'Amptube',
-							src: `leaderboard.png`
-						})}
+						onZoom={()=>trackZoom('Amptube',`leaderboard.png`)}
 					/>
 				</Box>
 			</Flex>
@@ -56,7 +57,6 @@ const UI = () => {
 			<Flex justify="center" mt={0} mb={5}>
 				<Box px={1}>
 					<ImageZoom
-						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/amptube/video-page.png`,
 							alt:   'Video Page',
@@ -66,10 +66,7 @@ const UI = () => {
 							src: `${assetUrl}/amptube/video-page@2x.png`,
 							alt: 'Video Page',
 						}}
-						onZoom={()=>a.track('Image Zoomed',{
-							page: 'Amptube',
-							src: `video-page.png`
-						})}
+						onZoom={()=>trackZoom('Amptube',`video-page.png`)}
 					/>
 				</Box>
 			</Flex>

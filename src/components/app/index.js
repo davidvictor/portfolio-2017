@@ -15,6 +15,7 @@ import classNames from 'classnames';
 import style from './style.scss';
 import '../../styles/global.scss';
 import isMobile from '../../utils/isMobile';
+import ReactGA from 'react-ga';
 
 import {assetUrl} from 'config';
 
@@ -66,7 +67,30 @@ class App extends Component {
 		}
 	}
 	
+	componentWillMount = () => {
+		if (window.performance) {
+			const timeSincePageLoad = Math.round(performance.now());
+			ReactGA.timing({
+				category: 'React',
+				variable: 'componentWillMount',
+				value: timeSincePageLoad,
+				label: 'App'
+			});
+		}
+	};
+	
 	componentDidMount = () => {
+		ReactGA.set({ page: window.location.pathname });
+		ReactGA.pageview(window.location.pathname);
+		if (window.performance) {
+			const timeSincePageLoad = Math.round(performance.now());
+			ReactGA.timing({
+				category: 'React',
+				variable: 'componentDidMount',
+				value: timeSincePageLoad,
+				label: 'App'
+			});
+		}
 		const images  = isMobile() ?
 			[`${assetUrl}/hero/at-hero-mobile.jpg`,
 				`${assetUrl}/hero/vod-hero-mobile.jpg`,
@@ -91,7 +115,7 @@ class App extends Component {
 	};
 	
 	render() {
-		const classes    = classNames("app", style.root);
+		const classes    = classNames("🔥", style.root);
 		return (
 			<div className={classes}>
 				<Flex align='flex-start'>

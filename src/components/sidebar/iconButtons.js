@@ -1,89 +1,74 @@
 import React, {Component} from 'react';
-import ContactButton from '../contact';
 import {ButtonCircle} from 'rebass';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';
-import a from '../../utils/analytics';
-
+import ReactGA from 'react-ga';
 import {assetUrl} from 'config';
-
 import {Github, LinkedIn, Dribbble, Twitter} from '../icon';
 
 const IconButtons = ({off, left}) => {
 	const classes  = classNames(style.iconButtons);
-	const openLink = (url,id) => {
-		if (url) {
-			if (off) {
-				off();
-			}
-			window.open(url);
-			a.track(`Clicked ${id}`)
-		}
-	};
 	return (
 		<Flex justify={left ? 'flex-start' : 'flex-end'} align='center' wrap={false} className={classes}>
 			<Box className={style.iconButtonWrap} flex>
-				<ButtonCircle
-					backgroundColor="transparent"
-					color="white"
-					size={32}
-					onClick={() => openLink('https://twitter.com/davidvictor','twitter')}>
-					<Twitter className={style.icon}/>
-				</ButtonCircle>
+				<ReactGA.OutboundLink
+					eventLabel={`Clicked Twitter`}
+					to={`https://twitter.com/davidvictor`}
+					target="_blank">
+					<ButtonCircle
+						backgroundColor="transparent"
+						color="white"
+						size={32}
+						onClick={() => off()}>
+						<Twitter className={style.icon}/>
+					</ButtonCircle>
+				</ReactGA.OutboundLink>
 			</Box>
 			<Box className={style.iconButtonWrap} flex>
-				<ButtonCircle
-					backgroundColor="transparent"
-					color="white"
-					size={32}
-					onClick={() => openLink('https://dribbble.com/davidvictor','dribbble')}>
-					<Dribbble className={style.icon}/>
-				</ButtonCircle>
+				<ReactGA.OutboundLink
+					eventLabel={`Clicked Dribbble`}
+					to={`https://dribbble.com/davidvictor`}
+					target="_blank">
+					<ButtonCircle
+						backgroundColor="transparent"
+						color="white"
+						size={32}
+						onClick={() => off()}>
+						<Dribbble className={style.icon}/>
+					</ButtonCircle>
+				</ReactGA.OutboundLink>
 			</Box>
 			<Box className={style.iconButtonWrap} flex>
-				<ButtonCircle
-					backgroundColor="transparent"
-					color="white"
-					size={32}
-					onClick={() => openLink('https://github.com/davidvictor','gitHub')}>
-					<Github className={style.icon}/>
-				</ButtonCircle>
+				<ReactGA.OutboundLink
+					eventLabel={`Clicked GitHub`}
+					to={`https://github.com/davidvictor`}
+					target="_blank">
+					<ButtonCircle
+						backgroundColor="transparent"
+						color="white"
+						size={32}
+						onClick={() => off()}>
+						<Github className={style.icon}/>
+					</ButtonCircle>
+				</ReactGA.OutboundLink>
 			</Box>
-			
 			<Box className={style.iconButtonWrap} flex>
-				<ButtonCircle
-					backgroundColor="transparent"
-					color="white"
-					size={32}
-					onClick={() => openLink('https://www.linkedin.com/in/dvictor','linkedIn')}>
-					<LinkedIn className={style.icon}/>
-				</ButtonCircle>
+				<ReactGA.OutboundLink
+					eventLabel={`Clicked LinkedIn`}
+					to={`https://www.linkedin.com/in/dvictor`}
+					target="_blank">
+					<ButtonCircle
+						backgroundColor="transparent"
+						color="white"
+						size={32}
+						onClick={() => off()}>
+						<LinkedIn className={style.icon}/>
+					</ButtonCircle>
+				</ReactGA.OutboundLink>
 			</Box>
 		</Flex>
 	)
 };
 
 export default IconButtons;
-
-//<Box className={style.iconButtonWrap} flex>
-//	<ButtonCircle
-//		backgroundColor="transparent"
-//		color="white"
-//		href='https://www.dropbox.com/s/bkzc5ki6jaj1khs/davidvictor-resume-public.pdf'
-//		target="_blank">
-//		<Resume className={style.icon} color="rgb(35, 31, 32)"/>
-//	</ButtonCircle>
-//</Box>
-//
-//<Box className={style.iconButtonWrap} flex style={{display:'none'}}>
-//	<ButtonCircle
-//		backgroundColor="transparent"
-//		color="white"
-//		size={32}
-//		onClick={() => openLink('https://www.instagram.com/davidvictor','instagram')}>
-//		<div className={style.icon}>
-//			<img src={`${assetUrl}/social/instagram.png`} alt="Instagram"/>
-//		</div>
-//	</ButtonCircle>
-//</Box>

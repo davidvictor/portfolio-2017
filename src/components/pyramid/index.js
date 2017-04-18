@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import style from './style.scss';
 import MobileDetect from 'mobile-detect';
-import a from '../../utils/analytics';
-
+import ReactGA from 'react-ga';
 import {assetUrl} from 'config';
 
 class Pyramid extends Component {
@@ -23,16 +22,12 @@ class Pyramid extends Component {
 		startDeg = (
 			typeof startDeg === undefined ? 0 : startDeg);
 		
-		/** generate group to embed other group */
 		let group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
 		
-		/** the polygon you want to create */
 		let polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
 		
-		/** an array for storing points of this regular polygon */
 		let pos = [];
 		
-		/** the radius of the given circle */
 		const radius = this.refs['pyramid'].clientWidth / 2;
 		
 		for (let i = 0; i < sides; i++) {
@@ -49,10 +44,8 @@ class Pyramid extends Component {
 		group.appendChild(polygon);
 		obj.appendChild(group);
 		
-		/** set up the origin position of your transformation */
 		group.style.transformOrigin = radius + 'px ' + radius + 'px';
 		
-		/** return the group so that we can create multinested elements recursively */
 		return group;
 	}
 	
@@ -97,15 +90,18 @@ class Pyramid extends Component {
 				Math.sin(thetaValue) + Math.sin(innerCornerDeg * Math.PI / 180 - thetaValue));
 			
 			for (let i = 1; i < num; i++) {
-				let el = document.querySelector('.polygon' + (
+				let el               = document.querySelector('.polygon' + (
 					i + 1));
-				el.style.transform = 'scale(' + scaleRatio + ') rotate(' + theta + 'deg)';
-				el.style.strokeWidth = (i * .5) / scaleRatio + 'px';
+				el.style.transform   = 'scale(' + scaleRatio + ') rotate(' + theta + 'deg)';
+				el.style.strokeWidth = (
+					i * .5) / scaleRatio + 'px';
 			}
 		}, dur);
 		
-		a.track("Pyramid Hovered");
-		
+		ReactGA.event({
+			category: 'Engagement',
+			action:   'Pyramid Hovered'
+		});
 	}
 	
 	isMobile = () => {

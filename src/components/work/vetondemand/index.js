@@ -7,12 +7,19 @@ import YouTube from 'react-youtube';
 import ReactModal from 'react-modal';
 import classNames from 'classnames';
 import style from './style.scss';
-import a from '../../../utils/analytics';
 import isMobile from '../../../utils/isMobile';
-
 import {assetUrl} from 'config';
-
 import {compose, withState, withHandlers} from 'recompose';
+import ReactGA from 'react-ga';
+
+const trackZoom = (project, image) => {
+	ReactGA.event({
+		category: 'Engagement',
+		action:   'Image Zoomed',
+		label:    project,
+		//value:    image
+	});
+};
 
 const withActive = compose(
 	withState('active', 'setActive', false),
@@ -22,7 +29,6 @@ const withActive = compose(
 		toggle: props => () => props.setActive(a => !a),
 	})
 );
-
 
 const Logos = () => {
 	const classes = classNames(style.logos);
@@ -116,7 +122,6 @@ const Photos = () => {
 				{photos.map((photo, idx) =>
 					<Box key={idx} style={{padding: '2px'}} sm={11} md={6} lg={4}>
 						<ImageZoom
-							//shouldPreload={!isMobile()}
 							zoomMargin={0}
 							defaultStyles={defaultStyles}
 							image={{
@@ -128,10 +133,7 @@ const Photos = () => {
 								src: photo.zoom,
 								alt: 'Brand Photo',
 							}}
-							onZoom={() => a.track('Image Zoomed', {
-								page: 'Vet On Demand',
-								src: photo.src.split('/photo/')[1]
-							})}
+							onZoom={() => trackZoom('Vet On Demand', photo.src.split('/photo/')[1])}
 						/>
 					</Box>
 				)}
@@ -156,10 +158,7 @@ const Research = () => {
 							src: `${assetUrl}/vetondemand/chart-2.png`,
 							alt: 'Chart',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Vet On Demand',
-							src: 'chart-2.png'
-						})}
+						onZoom={() => trackZoom('Vet On Demand', 'chart-2.png')}
 					/>
 					<h3>THERE ARE PLENTY OF VETS</h3>
 					<p>The U.S. supply of veterinarians in 2012 was 90,200, and that supply exceeded the demand for veterinary services by about 11,250 full-time equivalent veterinarians.</p>
@@ -175,10 +174,7 @@ const Research = () => {
 							src: `${assetUrl}/vetondemand/chart-1.png`,
 							alt: 'Chart',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Vet On Demand',
-							src: 'chart-1.png'
-						})}
+						onZoom={() => trackZoom('Vet On Demand', 'chart-1.png')}
 					/>
 					<h3>INCOMES ARE FALLING</h3>
 					<p>Over the past decade, veterinarians have seen their wages fall. Increasing prices from pharmaceutical companies and the ever advancing march of technology have cut even deeper into practices nationwide.</p>
@@ -258,20 +254,16 @@ const Mobile = () => {
 						{ios.map((phone, idx) =>
 							<Box col={12} sm={12} md={6} lg={3} py={2} px={2} key={idx}>
 								<ImageZoom
-									//shouldPreload={!isMobile()}
 									image={{
 										src:   phone.src,
 										alt:   'Mobile App',
-										style: {maxWidth: '130px', width:'100%'}
+										style: {maxWidth: '130px', width: '100%'}
 									}}
 									zoomImage={{
 										src: phone.zoom,
 										alt: 'Mobile App',
 									}}
-									onZoom={() => a.track('Image Zoomed', {
-										page: 'Vet On Demand',
-										src: photo.src.split('/sm/')[1]
-									})}
+									onZoom={() => trackZoom('Vet On Demand', photo.src.split('/sm/')[1])}
 								/>
 							</Box>
 						)}
@@ -285,20 +277,16 @@ const Mobile = () => {
 						{android.map((phone, idx) =>
 							<Box col={12} sm={12} md={4} lg={4} p={2} key={idx}>
 								<ImageZoom
-									//shouldPreload
 									image={{
 										src:   phone.src,
 										alt:   'Mobile App',
-										style: {maxWidth: '180px', width:'100%'}
+										style: {maxWidth: '180px', width: '100%'}
 									}}
 									zoomImage={{
 										src: phone.zoom,
 										alt: 'Mobile App',
 									}}
-									onZoom={() => a.track('Image Zoomed', {
-										page: 'Vet On Demand',
-										src: photo.src.split('/sm/')[1]
-									})}
+									onZoom={() => trackZoom('Vet On Demand', photo.src.split('/sm/')[1])}
 								/>
 							</Box>
 						)}
@@ -316,7 +304,6 @@ const Web = () => {
 			<Flex justify="center" mb={6} mt={4} wrap>
 				<Box p={2} col={10} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
-						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/vetondemand/web/dashboard-left.png`,
 							alt:   'Web',
@@ -326,15 +313,11 @@ const Web = () => {
 							src: `${assetUrl}/vetondemand/web/dashboard-left@2x.png`,
 							alt: 'Web',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Vet On Demand',
-							src: 'dashboard-left.png'
-						})}
+						onZoom={() => trackZoom('Vet On Demand', 'dashboard-left.png')}
 					/>
 				</Box>
 				<Box p={2} col={10} sm={12} lg={6} style={{textAlign: 'center'}}>
 					<ImageZoom
-						//shouldPreload={!isMobile()}
 						image={{
 							src:   `${assetUrl}/vetondemand/web/call-right.png`,
 							alt:   'Web',
@@ -344,10 +327,7 @@ const Web = () => {
 							src: `${assetUrl}/vetondemand/web/call-right@2x.png`,
 							alt: 'Web',
 						}}
-						onZoom={() => a.track('Image Zoomed', {
-							page: 'Vet On Demand',
-							src: 'call-right.png'
-						})}
+						onZoom={() => trackZoom('Vet On Demand', 'call-right.png')}
 					/>
 				</Box>
 			</Flex>
@@ -357,8 +337,8 @@ const Web = () => {
 
 const Video = withActive(({active, on, off, toggle}) => {
 	const getParent      = () => {return document.querySelector('#root');};
-	const classes = classNames(style.video, 'typeset-project');
-	const opts    = {
+	const classes        = classNames(style.video, 'typeset-project');
+	const opts           = {
 		height:     '360',
 		width:      '640',
 		playerVars: {
@@ -370,7 +350,7 @@ const Video = withActive(({active, on, off, toggle}) => {
 			showinfo:       0,
 		}
 	};
-	const mobileOpts    = {
+	const mobileOpts     = {
 		height:     '360',
 		width:      '640',
 		playerVars: {
@@ -382,35 +362,37 @@ const Video = withActive(({active, on, off, toggle}) => {
 			showinfo:       0,
 		}
 	};
-	const handleOpen = () => {
+	const handleOpen     = () => {
 		on();
 	};
-	const handlePlay = () => {
-		a.track('Video Played', {
-			video: 'Vet On Demand'
-		})
+	const handlePlay     = () => {
+		ReactGA.event({
+			category: 'Engagement',
+			action: 'Video Played',
+			value: 'Vet On Demand'
+		});
 	};
 	const onRequestClose = () => {
 		off();
-		a.track("Video Close");
 	};
 	const afterOpen      = () => {
-		a.track("Video Open");
+		ReactGA.modalview('Video');
 	};
 	return (
 		<div className={classes}>
 			<Flex justify="center" mb={6} mt={4} wrap>
 				<Box style={{textAlign: 'center'}}>
-					{isMobile() ? <div className={style.videoPlayer}>
-						<YouTube
-							videoId="T1MXErdWYVs"
-							opts={mobileOpts}
-							onPlay={handlePlay}
-						/>
-					</div> :
-					<div className={style.videoPoster} onClick={() => handleOpen()}>
-						<div className={style.videoPosterImage}/>
-					</div> }
+					{isMobile() ?
+						<div className={style.videoPlayer}>
+							<YouTube
+								videoId="T1MXErdWYVs"
+								opts={mobileOpts}
+								onPlay={handlePlay}
+							/>
+						</div> :
+						<div className={style.videoPoster} onClick={() => handleOpen()}>
+							<div className={style.videoPosterImage}/>
+						</div> }
 				</Box>
 			</Flex>
 			<ReactModal
@@ -419,6 +401,7 @@ const Video = withActive(({active, on, off, toggle}) => {
 				onRequestClose={() => onRequestClose()}
 				className={style.modal}
 				overlayClassName={style.modalOverlay}
+				portalClassName="🎥"
 				contentLabel="Kaleidoscope"
 				parentSelector={getParent}
 				shouldCloseOnOverlayClick={true}
@@ -451,50 +434,33 @@ const VetOnDemand = () => {
 				roles={['strategy', 'branding', 'ui', 'ux', 'code']}
 				description="Vet On Demand is the first mobile application to provide personalized, real time access to veterinary advice and recommendations through the power of live video conferencing."
 				contribution="While running a small dev shop in Nashville, I was introduced to two brothers who loved their dogs as much as each other. Inspired by a wave of healthcare applications sweeping the industry, we set out to build the first telemedicine platform for veterinary care. My team lead the product development process from start to finish. We validated the business case with extensive research, partnered with local veterinarians to help guide the roadmap, and built a cross platform telemedicine application strong enough operate in a regulatory and legal landscape even tighter than what our two-legged doctor friends face. Building and running Vet on Demand remains the most valuable experience of my life so far."
-				bg={{src:`${assetUrl}/hero/vod-hero.jpg`,mobile:`${assetUrl}/hero/vod-hero-mobile.jpg`}}
+				bg={{src: `${assetUrl}/hero/vod-hero.jpg`, mobile: `${assetUrl}/hero/vod-hero-mobile.jpg`}}
 				logo={{src: `${assetUrl}/vetondemand/logo-h-white.svg`, width: '300px'}}>
-				
 				
 				<Heading title="Research"
 				         subtitle="Becoming a Dog Whisperer"
-				         icon={`${assetUrl}/lionhouse/data.svg`}
-				/>
-				
+				         icon={`${assetUrl}/lionhouse/data.svg`}/>
 				<Research/>
-				
 				<Heading title="Insight"
 				         subtitle="Every pet should have access to the care they deserve."
-				         icon={`${assetUrl}/lionhouse/devise.svg`}
-				/>
-				
+				         icon={`${assetUrl}/lionhouse/devise.svg`}/>
 				<Insight/>
-				
 				<Heading title="Branding"
 				         subtitle="Trusted. Convenient. Affordable."
-				         icon={`${assetUrl}/lionhouse/design.svg`}
-				/>
-				
+				         icon={`${assetUrl}/lionhouse/design.svg`}/>
 				<Logos/>
 				<Palette/>
 				<Type/>
 				<Photos/>
 				<Video/>
-				
 				<Heading title="Mobile"
 				         subtitle="It's like having a vet in your pocket."
-				         icon={`${assetUrl}/lionhouse/ui-alt.svg`}
-				/>
-				
+				         icon={`${assetUrl}/lionhouse/ui-alt.svg`}/>
 				<Mobile/>
-				
 				<Heading title="Web"
 				         subtitle="Instantly scalable, always available."
-				         icon={`${assetUrl}/lionhouse/ux.svg`}
-				/>
-				
+				         icon={`${assetUrl}/lionhouse/ux.svg`}/>
 				<Web/>
-			
-			
 			</Project>
 		</div>
 	);

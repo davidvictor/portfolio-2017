@@ -4,7 +4,6 @@ import {Flex, Box} from 'reflexbox';
 import {Button, ButtonOutline, Close} from 'rebass';
 import classNames from 'classnames';
 import style from './style.scss';
-import a from '../../utils/analytics';
 import R from 'ramda';
 
 import {assetUrl, roleData} from 'config';
@@ -24,23 +23,19 @@ const Role = withActive(({label, active, on, off, toggle, children, context}) =>
 	const classes        = classNames(style.role);
 	const getParent      = () => {return document.querySelector('#root');};
 	const onRequestClose = () => {off()};
-	const afterOpen      = () => {
-		//a.track("Role Modal Open", {
-		//label: label
-		//});
-	};
+	const afterOpen      = () => {};
+	const enableModal    = false;
 	return (
 		<div className={classes}>
 			<ButtonOutline
-				color={context.rebass.colors.gold}
-				//onClick={toggle}
+				color={context.rebass.colors.gold}        //onClick={toggle}
 				pill
 				py={2}
 				px={3}
 				style={{display: 'block'}}
 				className={style.roleButton}>
 				{label}
-			</ButtonOutline>
+			</ButtonOutline> { enableModal ?
 			<ReactModal
 				isOpen={active}
 				onRequestClose={() => onRequestClose()}
@@ -59,29 +54,29 @@ const Role = withActive(({label, active, on, off, toggle, children, context}) =>
 					        py={4}
 					        px={6}>Close</Button>
 				</div>
-			</ReactModal>
+			</ReactModal> : false}
 		</div>
 	);
 });
 
 const Roles = ({roles}, context) => {
-	const classes = classNames("roles", style.roles);
+	const classes       = classNames("roles", style.roles);
 	const filteredRoles = R.filter(R.compose(R.flip(R.contains)(roles), R.prop('id')), roleData);
 	return roles ? (
-		<div className={classes}>
-			<Flex wrap align="center">
-				{filteredRoles.map((role, idx) =>
-					<Box key={idx}>
-						<Role label={role.name} context={context}>
-							<img src={role.icon} alt={role.name}/>
-							<h1>{role.name}</h1>
-							<p>{role.description}</p>
-						</Role>
-					</Box>
-				)}
-			</Flex>
-		</div>
-	) : false;
+			<div className={classes}>
+				<Flex wrap align="center">
+					{filteredRoles.map((role, idx) =>
+						<Box key={idx}>
+							<Role label={role.name} context={context}>
+								<img src={role.icon} alt={role.name}/>
+								<h1>{role.name}</h1>
+								<p>{role.description}</p>
+							</Role>
+						</Box>
+					)}
+				</Flex>
+			</div>
+		) : false;
 };
 
 Roles.propTypes = {

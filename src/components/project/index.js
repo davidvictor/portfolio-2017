@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import VisibilitySensor from 'react-visibility-sensor';
 import Hero from './hero';
 import Roles from './roles';
 import Headroom from 'react-headroom';
@@ -7,17 +6,12 @@ import {Flex, Box} from 'reflexbox';
 import {Button, ButtonOutline} from 'rebass';
 import classNames from 'classnames';
 import style from './style.scss';
+import ReactGA from 'react-ga';
 
 const Deets = ({title, url, live}, context) => {
 	const classes      = classNames("deets", style.deets, {
 		[style.isLive]: live,
 	});
-	const openLink     = (url) => {
-		if (url) {
-			const win = window.open(url, '_blank');
-			win.focus();
-		}
-	};
 	const wrapperStyle = {};
 	return (
 		<Headroom wrapperStyle={wrapperStyle} disableInlineStyles>
@@ -26,27 +20,31 @@ const Deets = ({title, url, live}, context) => {
 					<Box pl={2} pr={4}>
 						<label className={style.label}>Project</label>
 						<h1>{title}</h1>
-					</Box>
-					{url ?
-						<Box pl={2} pr={2} flexAuto style={{textAlign: 'right'}}>
-							{live ?
+					</Box> {url ?
+					<Box pl={2} pr={2} flexAuto style={{textAlign: 'right'}}>
+						{live ?
+							<ReactGA.OutboundLink
+								eventLabel="Clicked View Project"
+								to={url}
+								target="_blank">
 								<Button
 									inverted
 									px={3}
 									py={2}
 									color={context.rebass.colors.white}
-									backgroundColor={context.rebass.colors.red}
-									onClick={() => openLink(url)}>
-									Live
-								</Button> :
+									backgroundColor={context.rebass.colors.red}> Live </Button>
+							</ReactGA.OutboundLink>
+							:
+							<ReactGA.OutboundLink
+								eventLabel="Clicked View Project"
+								to={url}
+								target="_blank">
 								<ButtonOutline
 									px={3}
 									py={2}
-									color={context.rebass.colors.primary}
-									onClick={() => openLink(url)}>
-									Visit
-								</ButtonOutline>}
-						</Box> : false}
+									color={context.rebass.colors.primary}> Visit </ButtonOutline>
+							</ReactGA.OutboundLink>}
+					</Box> : false}
 				</Flex>
 			</div>
 		</Headroom>
@@ -77,34 +75,13 @@ const About = ({title, roles, description, contribution}) => {
 			</Flex>
 		</div>
 	);
-	
 };
 
 class Project extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			visible: false
-		};
+		this.state = {};
 	}
-	
-	componentWillReceiveProps = (nextProps) => {
-		this.setState({
-			visible: nextProps.visible
-		})
-	};
-	
-	shouldComponentUpdate = (nextProps, nextState) => {
-		return this.state.visible !== nextState.visible;
-	};
-	
-	onChange = (isVisible) => {
-		if (this.state.visible !== isVisible) {
-			this.setState({
-				visible: isVisible
-			});
-		}
-	};
 	
 	render() {
 		const {
@@ -119,24 +96,15 @@ class Project extends Component {
 			      children
 		      }              = this.props;
 		const classes        = classNames("project", style.root);
-		const contentClasses = classNames("project-content", style.content, {
-			[style.visible]: this.state.visible
-		});
-		const heroClasses    = classNames({
-			[style.visible]: this.state.visible
-		});
+		const contentClasses = classNames("project-content", style.content);
 		return (
 			<div className={classes}>
-				<Hero {...this.props} className={heroClasses}>
+				<Hero {...this.props}>
 					<Deets title={title} url={url} roles={roles} live={live}/>
 				</Hero>
-			
-					<div className={contentClasses}>
-						<About title={title} roles={roles} description={description} contribution={contribution}/>
-						{children}
-					</div>
-			
-			
+				<div className={contentClasses}>
+					<About title={title} roles={roles} description={description} contribution={contribution}/> {children}
+				</div>
 			</div>
 		);
 	}

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import Sidebar from './sidebar';
-import {Button, ButtonOutline} from 'rebass';
 import {browserHistory} from 'react-router-dom';
-import MediaQuery from 'react-responsive';
 import {Flex, Box} from 'reflexbox';
 import classNames from 'classnames';
 import style from './style.scss';

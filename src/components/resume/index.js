@@ -7,7 +7,7 @@ import a from '../../utils/analytics';
 import classNames from 'classnames';
 import style from './style.scss';
 import ResumeContent from './resume';
-
+import ReactGA from 'react-ga';
 import {compose, withState, withHandlers} from 'recompose';
 
 const withActive = compose(
@@ -29,13 +29,15 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 	const getScrollParent     = () => {return document.querySelector('.resume-modal-content');};
 	const onRequestClose      = () => {
 		off();
-		a.track("Resume Close");
 	};
 	const afterOpen           = () => {
-		a.track("Resume Open");
+		ReactGA.modalview('resume');
 	};
 	const onDownload          = () => {
-		a.track("Resume Downloaded");
+		ReactGA.event({
+			category: 'Engagement',
+			action: 'Resume Downloaded'
+		});
 		onRequestClose();
 	};
 	return (
@@ -49,6 +51,7 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 				onRequestClose={() => onRequestClose()}
 				className={modalClasses}
 				overlayClassName={style.modalOverlay}
+				portalClassName="🕶"
 				contentLabel="David's Resume"
 				parentSelector={getParent}
 				shouldCloseOnOverlayClick={true}

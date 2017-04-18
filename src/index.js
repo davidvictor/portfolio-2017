@@ -5,10 +5,24 @@ import {
 } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory'
 import App from './components/app';
-import './index.scss';
-//import 'autotrack';
+import ReactGA from 'react-ga';
 
 const history = createHistory();
+
+ReactGA.initialize('UA-96838381-1',{
+	debug: process.env.NODE_ENV !== 'production',
+	titleCase: false,
+});
+
+if (window.performance) {
+	const timeSincePageLoad = Math.round(performance.now());
+	ReactGA.timing({
+		category: 'React',
+		variable: 'render',
+		value: timeSincePageLoad,
+		label: 'root'
+	});
+}
 
 const app = (
 	<Router history={history}>
