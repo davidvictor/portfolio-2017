@@ -30,7 +30,7 @@ const ContactButton = withActive(({active, on, off, toggle, anchor}) => {
 	const handleEmail    = () => {
 		ReactGA.event({
 			category: 'Engagement',
-			action: 'Contact Me Clicked'
+			action: 'Clicked Contact Email'
 		});
 		off();
 	};
@@ -60,7 +60,7 @@ const ContactButton = withActive(({active, on, off, toggle, anchor}) => {
 				<div className={style.emailMe}>
 					<Flex justify='center' align='center' wrap={false}>
 						<Box>
-							<a href="mailTo:hello@davidvictor.me"
+							<a href="mailTo:hello@davidvictor.me?subject=Hi%20David!"
 							   onClick={() => handleEmail()}>hello<span>@</span>davidvictor.me</a>
 						</Box>
 					</Flex>

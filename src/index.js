@@ -11,8 +11,12 @@ const history = createHistory();
 
 ReactGA.initialize('UA-96838381-1',{
 	debug: process.env.NODE_ENV !== 'production',
-	titleCase: false,
+	titleCase: true,
 });
+
+if ((location.hostname == 'localhost') || (location.hostname == 'beta.davidvictor.me')) {
+	ReactGA.set({ 'sendHitTask': null });
+}
 
 if (window.performance) {
 	const timeSincePageLoad = Math.round(performance.now());
