@@ -66,7 +66,7 @@ const ContactButton = withActive(({active, on, off, toggle}) => {
 									</button>
 								</Box>
 								<Box flexAuto style={{textAlign: 'right'}} className={style.downloadButton}>
-									<Button href="https://d1x0bq6kwb2k3o.cloudfront.net/resume/davidvictor-resume-2017-b.pdf"
+									<Button href="https://d1x0bq6kwb2k3o.cloudfront.net/resume/davidvictor-resume-public.pdf"
 									        target="_blank"
 									        onClick={() => onDownload()}
 									        backgroundColor={`rgb(165, 127, 95)`}

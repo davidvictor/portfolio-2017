@@ -76,7 +76,7 @@ const Palette = () => {
 	];
 	return (
 		<div>
-			<Flex justify="center" my={4}>
+			<Flex justify="center" mb={4}>
 				{colors.map((color, idx) =>
 					<Box key={idx}>
 						<div className={`color-card ${color.name} ${style.colorCard}`}>
@@ -445,14 +445,6 @@ const VetOnDemand = () => {
 				         subtitle="Every pet should have access to the care they deserve."
 				         icon={`${assetUrl}/lionhouse/devise.svg`}/>
 				<Insight/>
-				<Heading title="Branding"
-				         subtitle="Trusted. Convenient. Affordable."
-				         icon={`${assetUrl}/lionhouse/design.svg`}/>
-				<Logos/>
-				<Palette/>
-				<Type/>
-				<Photos/>
-				<Video/>
 				<Heading title="Mobile"
 				         subtitle="It's like having a vet in your pocket."
 				         icon={`${assetUrl}/lionhouse/ui-alt.svg`}/>
@@ -461,6 +453,14 @@ const VetOnDemand = () => {
 				         subtitle="Instantly scalable, always available."
 				         icon={`${assetUrl}/lionhouse/ux.svg`}/>
 				<Web/>
+				<Heading title="Branding"
+				         subtitle="Trusted. Convenient. Affordable."
+				         icon={`${assetUrl}/lionhouse/design.svg`}/>
+				<Logos/>
+				<Palette/>
+				<Type/>
+				<Photos/>
+				<Video/>
 			</Project>
 		</div>
 	);

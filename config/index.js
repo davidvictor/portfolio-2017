@@ -110,7 +110,7 @@ const resumeData = {
 				{
 					id:          's1',
 					title:       "End-to-end design",
-					description: "for a veterinary telemedicine platform. Led the product development process from start to finish. Produced cross-platform interface designs for iOS & Android, the brochure website, and the vet web app interface. Validated the business case with extensive research. Contributed to the companie’s marketing plan and oversaw significant martech integrations."
+					description: "for a veterinary telemedicine platform. Led the product development process from start to finish. Produced cross-platform interface designs for iOS & Android, the brochure website, and the vet web app interface. Validated the business case with extensive research. Contributed to the company’s marketing plan and oversaw significant martech integrations."
 				}
 			]
 		}, {
@@ -192,9 +192,9 @@ const resumeData = {
 			]
 		}
 	],
-	expertise:            ['Art Direction', 'Product Design', 'Product Management', 'Creative Direction', 'Branding', 'UX Design', 'UI Design', 'Mobile Web', 'Analytics'],
-	technology:           ['HTML5', 'CSS3', 'ES6', 'Sass', 'Git', 'React', 'Redux', 'GraphQL', 'Webpack', 'Node', 'Express','Angular','Wordpress'],
-	tools:                ['Sketch', 'Photoshop', 'Illustrator', 'InDesign', 'AfterEffects', 'Premiere', 'PaintCode', 'IntelliJ', 'Paw', 'Xcode', 'Terminal'],
+	expertise:            ['Art Direction', 'Product Design', 'Creative Direction', 'Branding', 'UX Design', 'UI Design', 'Mobile Web', 'Analytics'],
+	technology:           ['HTML5', 'CSS3', 'Javascript', 'ES6', 'Sass', 'Git', 'React', 'Redux', 'GraphQL', 'Webpack', 'Node', 'Express', 'Angular', 'Wordpress'],
+	tools:                ['Sketch', 'Photoshop', 'Illustrator', 'InDesign', 'AfterEffects', 'Premiere', 'PaintCode', 'Principle', 'Framer.js', 'proto.io', 'Paw', 'Xcode', 'Terminal'],
 	platforms:            ['FB Ads', 'FB Insights', 'Amazon S3', 'Cloudfront', 'Google Analytics', 'AdWords', 'YouTube', 'Stripe', 'New Relic', 'Mixpanel', 'Segment', 'SendGrid', 'MailChimp', 'HubSpot', 'Sentry', 'Fullstory', 'Appboy', 'Heap', 'Intercom', 'Iron.io', 'Twitter',]
 };
 
@@ -208,7 +208,7 @@ module.exports = {
 	roleData:  roleData,
 	resume:    resumeData,
 	analytics: process.env.NODE_ENV === 'production',
-	logs: process.env.NODE_ENV !== 'production',
+	logs:      process.env.NODE_ENV !== 'production',
 };
 
 //

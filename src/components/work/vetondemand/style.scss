@@ -8,10 +8,12 @@
 	margin:    0 auto;
 	max-width: 600px;
 	.logoH {
-		max-width: 200px;
+		max-width: 100%;
+		height: 50px;
 	}
 	.logoV {
-		max-width: 150px;
+		max-width: 100%;
+		height: 72px;
 	}
 }
 
@@ -145,10 +147,10 @@ $ccWidth: 180px;
 	}
 	.logos {
 		.logoH {
-			max-width: 150px;
+			height: 36px;
 		}
 		.logoV {
-			max-width: 110px;
+			height: 50px;
 		}
 	}
 	.type {
